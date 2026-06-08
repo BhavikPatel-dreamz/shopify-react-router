@@ -88,3 +88,17 @@ export function CartIcon(props: SVGProps<SVGSVGElement>) {
         </svg>
     );
 }
+
+export function CloseIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg
+            viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+            width="9"
+            height="17"
+            {...props}
+        >
+            <path d="M8.59082 1L1.00005 8.49933L8.59082 16" stroke="#000000" stroke-width="1" stroke-linejoin="round"></path>
+        </svg>
+    );
+}
+    

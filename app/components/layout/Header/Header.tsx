@@ -95,20 +95,7 @@ export default function Header() {
   const darkFont = logoSrc === logo.dark;
 
   return (
-    <header
-      className={`
-        header-wrapper
-        ${isHome ? "header-transparent" : ""}
-        ${location.pathname === "/pages/rare-rabbit" ||
-              location.pathname === "/pages/rareism" ||
-              location.pathname === "/pages/kids" ||
-              location.pathname === "/pages/rarez-landing-page"
-              ? "header-transparent-landing-page"
-              : ""
-            }
-        ${darkFont ? "dark-font" : ""}
-      `}
-    >
+    <header className={` header-wrapper ${isHome ? "header-transparent" : ""} ${location.pathname === "/pages/rare-rabbit" || location.pathname === "/pages/rareism" || location.pathname === "/pages/kids" || location.pathname === "/pages/rarez-landing-page" ? "header-transparent-landing-page" : ""} ${darkFont ? "dark-font" : ""} `} >
       <div className="header-inner">
         {/* LEFT PART */}
 
@@ -134,7 +121,7 @@ export default function Header() {
                 {
                   label: "SHOES",
                   path: "/pages/rarez-landing-page",
-                  type: "shoes",
+                  type: "rare-shoes",
                 },
               ].map((item) => (
                 <li
