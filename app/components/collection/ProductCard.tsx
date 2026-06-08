@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import SizeModal from "./SizeModal";
-import CartDrawer from "../Cart/CartDrawer";
 
 interface Props {
   product: any;
+  onOpenCart?: () => void;
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, onOpenCart }: Props) {
   const price = Number(product.priceRange?.minVariantPrice?.amount);
 
   const compareAtPrice =
@@ -26,8 +26,7 @@ export default function ProductCard({ product }: Props) {
       return acc;
     }, {}) || {};
 
-    const [openSize, setOpenSize] = useState(false);
-    const [openCart, setOpenCart] = useState(false);
+  const [openSize, setOpenSize] = useState(false);
 
 
   return (
@@ -60,17 +59,15 @@ export default function ProductCard({ product }: Props) {
 
           {/* SIZE MODAL */}
           <div className = "product-size-swatch-wrapper">
-      {openSize && (
+          {openSize && (
         <SizeModal
           product={product}
           onClose={() => setOpenSize(false)}
-          openCart={() => setOpenCart(true)}
+          openCart={onOpenCart}
         />
       )}
 
-      {openCart && (
-  <CartDrawer onClose={() => setOpenCart(false)} />
-)}
+     
       </div>
         </div>
 
@@ -186,8 +183,7 @@ export default function ProductCard({ product }: Props) {
         
       </div>
 
-     
-
+    
       
     </div>
   );

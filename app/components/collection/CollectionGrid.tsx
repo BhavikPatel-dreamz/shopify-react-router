@@ -3,11 +3,13 @@ import ProductCard from "./ProductCard";
 interface Props {
   products: any[];
   isLoadingMore?: boolean;
+  onOpenCart?: () => void;
 }
 
 export default function CollectionGrid({
   products,
   isLoadingMore = false,
+  onOpenCart,
 }: Props) {
   return (
     <div className="product-grid-wrapper py-6">
@@ -16,6 +18,7 @@ export default function CollectionGrid({
           <ProductCard
             key={product.id}
             product={product}
+            onOpenCart={onOpenCart}
           />
         ))}
       </div>

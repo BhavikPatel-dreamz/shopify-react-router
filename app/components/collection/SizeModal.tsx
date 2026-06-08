@@ -4,7 +4,6 @@ import { useCart } from "~/lib/useCart";
 
 export default function SizeModal({ product, onClose, openCart }: any) {
   const [selectedSize, setSelectedSize] = useState("");
-
   const addItem = useCart((s) => s.addItem);
 
   const sizeOption = product?.options?.find(
@@ -34,7 +33,7 @@ export default function SizeModal({ product, onClose, openCart }: any) {
       size: size,
     });
     onClose();
-    openCart();
+    openCart?.();
   };
 
   return (
