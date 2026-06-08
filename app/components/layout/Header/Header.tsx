@@ -95,20 +95,7 @@ export default function Header() {
   const darkFont = logoSrc === logo.dark;
 
   return (
-    <header
-      className={`
-        header-wrapper
-        ${isHome ? "header-transparent" : ""}
-        ${location.pathname === "/men" ||
-              location.pathname === "/women" ||
-              location.pathname === "/kids" ||
-              location.pathname === "/shoes"
-              ? "header-transparent-landing-page"
-              : ""
-            }
-        ${darkFont ? "dark-font" : ""}
-      `}
-    >
+    <header className={` header-wrapper ${isHome ? "header-transparent" : ""} ${location.pathname === "/men" || location.pathname === "/women" || location.pathname === "/kids" || location.pathname === "/shoes" ? "header-transparent-landing-page" : ""} ${darkFont ? "dark-font" : ""} `} >
       <div className="header-inner">
         {/* LEFT PART */}
 

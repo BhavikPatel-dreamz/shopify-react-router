@@ -1494,6 +1494,10 @@
     height: 14px
 }
 
+body.cart-drawer-open header.header-wrapper {
+    z-index: 1;
+}
+
 @media screen and (max-width: 767px) {
     .product-main-inner .product-detail .product-title-price .product-title-wishlist .quick-add-button svg {
         height: 12px

@@ -5699,9 +5699,12 @@ select::-ms-expand {
     overflow: auto;
     scrollbar-width: none;
     padding-right: 10px;
-    justify-content: space-between
+    justify-content: space-between;
+    height: calc(100% - 341px);
 }
-
+body.cart-drawer-open {
+    overflow: hidden;
+}
 @media screen and (max-width: 767px) {
     .cart-drawer-section .cart-drawer .cart-drawer-inner {
         padding-right: 0
@@ -5842,7 +5845,8 @@ select::-ms-expand {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 135px
+    width: 135px;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width: 767px) {
