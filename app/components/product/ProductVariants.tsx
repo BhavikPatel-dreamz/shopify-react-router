@@ -1,3 +1,6 @@
+import { useState } from "react";
+import SizeGuideDrawer from "./SizeChartModal";
+
 export default function ProductVariants({
   options,
   selectedSize,
@@ -7,16 +10,24 @@ export default function ProductVariants({
     (option: any) =>
       option.name.toLowerCase() === "size"
   );
+  const [isSizeGuideOpen, setIsSizeGuideOpen] =
+    useState(false);
 
   return (
     <>
       <div className="product-items product-low-inventory xs-hide">
         <div className="low-inventory-wrapper">
-          <div className="size-guide-button">
+          <div className="size-guide-button"
+          onClick={() => setIsSizeGuideOpen(true)}>
             SIZE GUIDE
           </div>
         </div>
       </div>
+
+      <SizeGuideDrawer
+      isOpen={isSizeGuideOpen}
+      onClose={() => setIsSizeGuideOpen(false)}
+    />
 
       <div className="xs-show">
         <div className="product-items product-banner-wrapper">
@@ -43,7 +54,6 @@ export default function ProductVariants({
           )}
         </div>
       </div>
-
       
     </>
   );

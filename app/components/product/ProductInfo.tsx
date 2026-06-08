@@ -3,6 +3,7 @@ import ProductAccordion from "./ProductAccordion";
 import ProductActions from "./ProductActions";
 import ProductPrice from "./ProductPrice";
 import ProductVariants from "./ProductVariants";
+import EstimatedDelivery from "./EstimatedDelivery";
 
 
 export default function ProductInfo({
@@ -57,6 +58,8 @@ export default function ProductInfo({
               }}
             />
 
+             <EstimatedDelivery />
+
             <ProductActions
               error={error}
               onAddToCart={() => {
@@ -73,9 +76,13 @@ export default function ProductInfo({
        
       </div>
 
+     
+
       <ProductAccordion
         product={product}
       />
+
+
     </div>
   );
 }

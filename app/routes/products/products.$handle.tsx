@@ -7,6 +7,8 @@ import CartDrawer from "~/components/Cart/CartDrawer";
 import { PRODUCT_QUERY } from "~/graphQL/product";
 import { createStorefrontClient } from "~/server/storefront.server";
 
+
+
 export async function loader({ params }: Route.LoaderArgs) {
   const storefront = createStorefrontClient();
 
@@ -34,6 +36,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 export default function ProductPage() {
   const { product } = useLoaderData<typeof loader>();
   const [openCart, setOpenCart] = useState(false);
+  
 
   return (
     <div className="product-wrapper">
@@ -73,12 +76,14 @@ export default function ProductPage() {
               product={product}
               onOpenCart={() => setOpenCart(true)}
             />
+           
           </div>
       </div>
       </div>
       {openCart && (
         <CartDrawer onClose={() => setOpenCart(false)} />
       )}
+
     </div>
   );
 }
