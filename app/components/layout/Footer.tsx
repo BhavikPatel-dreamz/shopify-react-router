@@ -1,66 +1,21 @@
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router";
+import "../../styles/footer.css";
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        background: "#f5f5f5",
-        padding: "60px 80px 40px",
-      }}
-    >
-      {/* Newsletter Section - Full Width */}
-      <div
-        style={{
-          marginBottom: "80px",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "48px",
-            fontWeight: 400,
-            marginBottom: "40px",
-          }}
-        >
-          Let's Connect
-        </h2>
-
-        <p
-          style={{
-            marginBottom: "20px",
-            fontSize: "24px",
-          }}
-        >
-          Subscribe our Newsletter
-        </p>
-
-        <div
-          style={{
-            display: "flex",
-            borderBottom: "1px solid #cfcfcf",
-            paddingBottom: "12px",
-            maxWidth: "500px",
-          }}
-        >
+    <footer className="footer">
+      {/* Newsletter Section */}
+      <div className="footer-newsletter">
+        <h2 className="footer-newsletter-title">Let's Connect</h2>
+        <p className="footer-newsletter-subtitle">Subscribe our Newsletter</p>
+        <div className="footer-newsletter-form">
           <input
             type="email"
             placeholder="Enter your email address"
-            style={{
-              flex: 1,
-              border: "none",
-              outline: "none",
-              background: "transparent",
-              fontSize: "15px",
-            }}
+            className="footer-newsletter-input"
           />
-          <button
-            style={{
-              border: "none",
-              background: "transparent",
-              cursor: "pointer",
-              fontSize: "22px",
-            }}
-          >
+          <button className="footer-newsletter-button">
             <svg width="31" height="6" viewBox="0 0 31 6" fill="none">
               <path
                 d="M30.2475 3.24749C30.3842 3.11081 30.3842 2.8892 30.2475 2.75251L28.0201 0.525128C27.8834 0.388445 27.6618 0.388445 27.5251 0.525128C27.3884 0.661812 27.3884 0.883419 27.5251 1.0201L29.505 3L27.5251 4.9799C27.3884 5.11658 27.3884 5.33819 27.5251 5.47488C27.6618 5.61156 27.8834 5.61156 28.0201 5.47488L30.2475 3.24749ZM-3.91068e-08 3.35L30 3.35L30 2.65L3.91068e-08 2.65L-3.91068e-08 3.35Z"
@@ -71,32 +26,12 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Links Grid - Full Width */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
-          gap: "60px",
-          marginBottom: "60px",
-        }}
-      >
+      {/* Main Links Grid */}
+      <div className="footer-links-grid">
         {/* Social Media */}
         <div>
-          <h4
-            style={{
-              marginBottom: "18px",
-              fontSize: "16px",
-              fontWeight: 500,
-            }}
-          >
-            Follow Us
-          </h4>
-          <div
-            style={{
-              display: "flex",
-              gap: "20px",
-            }}
-          >
+          <h4 className="footer-links-title">Follow Us</h4>
+          <div className="footer-social-icons">
             <SocialIcon href="https://www.facebook.com/RareRabbitIndia">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path
@@ -137,15 +72,7 @@ export default function Footer() {
 
         {/* Company Links */}
         <div>
-          <h4
-            style={{
-              marginBottom: "18px",
-              fontSize: "16px",
-              fontWeight: 500,
-            }}
-          >
-            Company
-          </h4>
+          <h4 className="footer-links-title">Company</h4>
           <FooterLink href="/pages/about-us">About us</FooterLink>
           <FooterLink href="/pages/help">Help</FooterLink>
           <FooterLink href="https://ui-chatbot.shopster.chat/?pcode=rarerabbit">
@@ -156,15 +83,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h4
-            style={{
-              marginBottom: "18px",
-              fontSize: "16px",
-              fontWeight: 500,
-            }}
-          >
-            Quick Links
-          </h4>
+          <h4 className="footer-links-title">Quick Links</h4>
           <FooterLink href="/account">My Account</FooterLink>
           <FooterLink href="https://returns.logisy.tech/returns">
             Returns / Exchange
@@ -176,11 +95,7 @@ export default function Footer() {
         </div>
 
         {/* Legal Links - Right aligned */}
-        <div
-          style={{
-            textAlign: "right",
-          }}
-        >
+        <div className="footer-legal-links">
           <FooterLink href="/pages/rare-rabbit-our-theme">
             Our Themes
           </FooterLink>
@@ -190,61 +105,34 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Section - Full Width */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
-          flexWrap: "wrap",
-          gap: "30px",
-          marginTop: "40px",
-        }}
-      >
+      {/* Bottom Section */}
+      <div className="footer-bottom">
         {/* Most Searched */}
         <div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              marginBottom: "30px",
-            }}
-          >
-            <span style={{ fontSize: "14px", fontWeight: 500 }}>
-              Most Searched
-            </span>
+          <div className="footer-most-searched">
+            <span className="footer-most-searched-text">Most Searched</span>
             <ChevronDown size={14} />
           </div>
-          <p style={{ fontSize: "12px", color: "#666" }}>
+          <p className="footer-copyright">
             All Rights Reserved TheHouseOfRare © {new Date().getFullYear()}
           </p>
         </div>
 
         {/* App Store Buttons */}
-        <div
-          style={{
-            display: "flex",
-            gap: "60px",
-          }}
-        >
+        <div className="footer-app-buttons">
           <a
             href="https://play.google.com/store/apps/details?id=rarerabbit.android.app"
-            style={{ textDecoration: "none", color: "inherit" }}
+            className="footer-app-link"
           >
-            <div style={{ fontSize: "10px", marginBottom: "4px" }}>
-              Get it on
-            </div>
-            <div style={{ fontSize: "16px", fontWeight: 500 }}>Google Play</div>
+            <div className="footer-app-subtitle">Get it on</div>
+            <div className="footer-app-title">Google Play</div>
           </a>
           <a
             href="https://apps.apple.com/in/app/the-house-of-rare/id1563278819"
-            style={{ textDecoration: "none", color: "inherit" }}
+            className="footer-app-link"
           >
-            <div style={{ fontSize: "10px", marginBottom: "4px" }}>
-              Download on the
-            </div>
-            <div style={{ fontSize: "16px", fontWeight: 500 }}>App Store</div>
+            <div className="footer-app-subtitle">Download on the</div>
+            <div className="footer-app-title">App Store</div>
           </a>
         </div>
       </div>
@@ -260,22 +148,8 @@ function FooterLink({
   href: string;
 }) {
   return (
-    <div
-      style={{
-        marginBottom: "12px",
-      }}
-    >
-      <Link
-        to={href}
-        style={{
-          textDecoration: "none",
-          color: "#000",
-          fontSize: "14px",
-          transition: "color 0.2s",
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = "#666")}
-        onMouseLeave={(e) => (e.currentTarget.style.color = "#000")}
-      >
+    <div className="footer-link-item">
+      <Link to={href} className="footer-link">
         {children}
       </Link>
     </div>
@@ -294,26 +168,7 @@ function SocialIcon({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "32px",
-        height: "32px",
-        borderRadius: "50%",
-        // background: "#e5e5e5",
-        color: "#000",
-        transition: "all 0.2s",
-        textDecoration: "none",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = "#000";
-        e.currentTarget.style.color = "#fff";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = "#e5e5e5";
-        e.currentTarget.style.color = "#000";
-      }}
+      className="footer-social-icon"
     >
       {children}
     </a>
