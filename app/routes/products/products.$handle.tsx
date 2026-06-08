@@ -45,12 +45,14 @@ export default function ProductPage() {
           </a>
           <span className="breadcrumb-divider" aria-hidden="true">
             {" "}
-            /
+            / 
+            {" "}
           </span>
           <a href="/pages/rare-rabbit">Rare Rabbit</a>
           <span className="breadcrumb-divider" aria-hidden="true">
             {" "}
-            /
+             / 
+            {" "}
           </span>
           <span className="product-title text-sm-12 text-xs-12 bold">
             Anto Dark Brown
