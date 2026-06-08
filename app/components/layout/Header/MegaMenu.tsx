@@ -1,0 +1,170 @@
+import { useState } from "react";
+import { Link } from "react-router";
+
+interface MegaMenuProps {
+    sections: any[];
+    parentLink?: string;
+    isOpen?: boolean;
+}
+
+export default function MegaMenu({
+    sections,
+    parentLink,
+    isOpen = false,
+}: MegaMenuProps) {
+    const [activeSection, setActiveSection] = useState(
+        sections?.[0]
+    );
+
+    if (!sections?.length) return null;
+
+    return (
+        <div
+            className={`header-mega-menu-wrapper ${isOpen ? "show" : "hide"}`}
+            menu-text={parentLink}
+        >
+            <div className="header-mega-menu-innerr">
+                <div className="header-sub-list-wrapper">
+
+                    {/* LEFT MENU */}
+
+                    <div className="help-text-wrapper">
+                        <div className="card">
+
+                            <ul className="header-mega-menu-ul">
+                                {sections.map((section, index) => (
+                                    <li
+                                        key={section.title}
+                                        className={`link-item ${activeSection?.title === section.title
+                                                ? "active"
+                                                : ""
+                                            }`}
+                                        data-id={section.title
+                                            .toLowerCase()
+                                            .replace(/\s+/g, "-")}
+                                        onMouseEnter={() =>
+                                            setActiveSection(section)
+                                        }
+                                    >
+                                        <span className="links">
+                                            {section.title}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="help-text-wrapper-inner">
+                                <Link
+                                    to="/help"
+                                    className="help-text"
+                                >
+                                    HELP
+                                </Link>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {/* CENTER CONTENT */}
+
+                    <div className="list-container">
+                        {sections.map((section) => (
+                            <div
+                                key={section.title}
+                                className={`list-result-inner ${activeSection?.title === section.title
+                                        ? ""
+                                        : "hide"
+                                    }`}
+                                data-id={section.title
+                                    .toLowerCase()
+                                    .replace(/\s+/g, "-")}
+                            >
+                                <div className="title-wrapper">
+                                    <span className="sub-list-title">
+                                        {section.title}
+                                    </span>
+                                </div>
+
+                                {section.links?.length > 0 ? (
+                                    <div className="list-wrapperer">
+
+                                        <div className="sublist-child-list-wrapper">
+                                            <ul className="submenu-child-list">
+                                                {section.links.map((link: any) => (
+                                                    <li key={link.title} className="list">
+                                                        <Link
+                                                            to={link.url}
+                                                            className="submenu-title"
+                                                        >
+                                                            {link.title}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        {section.image && (
+                                            <div className="sublist-image-wrapper">
+                                                <div
+                                                    className={`menu-image-inner ${section.title === activeSection?.title
+                                                            ? "active"
+                                                            : ""
+                                                        }`}
+                                                    data-id={section.title
+                                                        .toLowerCase()
+                                                        .replace(/\s+/g, "-")}
+                                                    menu-text={parentLink}
+                                                >
+                                                    <Link
+                                                        to={section.imageLink || "/"}
+                                                        className="mega-image"
+                                                    >
+                                                        <img
+                                                            src={section.image}
+                                                            alt={section.title}
+                                                            className="banner-image"
+                                                        />
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                    </div>
+                                ) : (
+                                    section.image && (
+                                        <div className="list-wrapperer">
+                                            <div className="sublist-image-wrapper">
+                                                <div
+                                                    className={`menu-image-inner ${section.title === activeSection?.title
+                                                            ? "active"
+                                                            : ""
+                                                        }`}
+                                                    data-id={section.title
+                                                        .toLowerCase()
+                                                        .replace(/\s+/g, "-")}
+                                                    menu-text={parentLink}
+                                                >
+                                                    <Link
+                                                        to={section.imageLink || "/"}
+                                                        className="mega-image"
+                                                    >
+                                                        <img
+                                                            src={section.image}
+                                                            alt={section.title}
+                                                            className="banner-image"
+                                                        />
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    );
+}
