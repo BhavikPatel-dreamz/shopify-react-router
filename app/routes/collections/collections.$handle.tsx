@@ -7,6 +7,7 @@ import CollectionToolbar from "~/components/collection/CollectionToolbar";
 import CollectionGrid from "~/components/collection/CollectionGrid";
 import "../../styles/collections.css";
 
+import CartDrawer from "~/components/Cart/CartDrawer";
 
 export async function loader({
   params,
@@ -106,6 +107,7 @@ export default function Collection() {
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const [products, setProducts] = useState(collection.products.nodes);
   const [cursor, setCursor] = useState(pageInfo?.endCursor);
+   const [openCart, setOpenCart] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(
     Boolean(pageInfo?.hasNextPage),
   );
@@ -163,6 +165,10 @@ export default function Collection() {
 
   const [grid, setGrid] = useState(4);
 
+  const openCartDrawer = () => {
+  setOpenCart(true);
+};
+
   return (
     <div className="shopify-section">
       <div className="main-collection-banner-section">
@@ -207,6 +213,7 @@ export default function Collection() {
             <CollectionGrid
               products={products}
               isLoadingMore={fetcher.state !== "idle"}
+              onOpenCart={() => setOpenCart(true)}
             />
 
             <div ref={loadMoreRef} className="py-8 text-center">
@@ -221,6 +228,9 @@ export default function Collection() {
           </div>
         </div>
       </div>
+       {openCart && (
+        <CartDrawer onClose={() => setOpenCart(false)} />
+      )}
     </div>
   );
 }
