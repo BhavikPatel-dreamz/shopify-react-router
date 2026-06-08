@@ -1,15 +1,12 @@
-import { useState } from "react";
-
 export default function ProductVariants({
   options,
+  selectedSize,
+  onSelectSize,
 }: any) {
   const sizeOption = options.find(
     (option: any) =>
       option.name.toLowerCase() === "size"
   );
-
-  const [selectedSize, setSelectedSize] =
-    useState(sizeOption?.values?.[0]);
 
   return (
     <>
@@ -33,9 +30,7 @@ export default function ProductVariants({
               <button
                 key={size}
                 type="button"
-                onClick={() =>
-                  setSelectedSize(size)
-                }
+                onClick={() => onSelectSize(size)}
                 className={`variant-option ${
                   selectedSize === size
                     ? "active"
@@ -48,6 +43,8 @@ export default function ProductVariants({
           )}
         </div>
       </div>
+
+      
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ProductAccordion from "./ProductAccordion";
 import ProductActions from "./ProductActions";
 import ProductPrice from "./ProductPrice";
@@ -6,7 +7,13 @@ import ProductVariants from "./ProductVariants";
 
 export default function ProductInfo({
   product,
+  onOpenCart,
 }: any) {
+  const sizeOption = product.options?.find(
+    (option: any) => option.name?.toLowerCase() === "size",
+  );
+  const [selectedSize, setSelectedSize] = useState("");
+  const [error, setError] = useState("");
 
   console.log(product);
 
@@ -43,9 +50,24 @@ export default function ProductInfo({
             <ProductVariants
               variants={product.variants.nodes}
               options={product.options}
+              selectedSize={selectedSize}
+              onSelectSize={(size: string) => {
+                setSelectedSize(size);
+                setError("");
+              }}
             />
 
-            <ProductActions />
+            <ProductActions
+              error={error}
+              onAddToCart={() => {
+                if (!selectedSize) {
+                  setError("Please select size.");
+                  return;
+                }
+
+                onOpenCart?.();
+              }}
+            />
           </div>
         </div>
        

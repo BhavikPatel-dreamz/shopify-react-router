@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router";
 import type { Route } from "./+types/products.$handle";
 import ProductGallery from "~/components/product/ProductGallery";
 import ProductInfo from "~/components/product/ProductInfo";
+import CartDrawer from "~/components/Cart/CartDrawer";
 import { PRODUCT_QUERY } from "~/graphQL/product";
 import { createStorefrontClient } from "~/server/storefront.server";
 
@@ -31,6 +33,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 
 export default function ProductPage() {
   const { product } = useLoaderData<typeof loader>();
+  const [openCart, setOpenCart] = useState(false);
 
   return (
     <div className="product-wrapper">
@@ -66,10 +69,16 @@ export default function ProductPage() {
           </div>
 
           <div className="product-details-wrapper product-details-wrapper-js">
-            <ProductInfo product={product} />
+            <ProductInfo
+              product={product}
+              onOpenCart={() => setOpenCart(true)}
+            />
           </div>
       </div>
       </div>
+      {openCart && (
+        <CartDrawer onClose={() => setOpenCart(false)} />
+      )}
     </div>
   );
 }
