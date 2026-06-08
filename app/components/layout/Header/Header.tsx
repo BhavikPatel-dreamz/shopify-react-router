@@ -118,23 +118,23 @@ export default function Header() {
               {[
                 {
                   label: "MEN",
-                  path: "/men",
+                  path: "/pages/rare-rabbit",
                   type: "men",
                 },
                 {
                   label: "WOMEN",
-                  path: "/women",
-                  type: "women",
+                  path: "/pages/rareism",
+                  type: "rareism",
                 },
                 {
                   label: "KIDS",
-                  path: "/kids",
-                  type: "kids",
+                  path: "/pages/kids",
+                  type: "rare-kid",
                 },
                 {
                   label: "SHOES",
-                  path: "/shoes",
-                  type: "shoes",
+                  path: "/pages/rarez-landing-page",
+                  type: "rare-shoes",
                 },
               ].map((item) => (
                 <li
