@@ -4,6 +4,7 @@ import ProductActions from "./ProductActions";
 import ProductPrice from "./ProductPrice";
 import ProductVariants from "./ProductVariants";
 import EstimatedDelivery from "./EstimatedDelivery";
+import { useCart } from "~/lib/useCart";
 
 
 export default function ProductInfo({
@@ -15,6 +16,7 @@ export default function ProductInfo({
   );
   const [selectedSize, setSelectedSize] = useState("");
   const [error, setError] = useState("");
+  const addItem = useCart((state) => state.addItem);
 
   console.log(product);
 
@@ -26,6 +28,23 @@ export default function ProductInfo({
       }
       return acc;
     }, {}) || {};
+
+    const handleAddToCart = () => {
+  if (!selectedSize) {
+    setError("Please select size.");
+    return;
+  }
+
+  addItem({
+    id: product.id,
+    title: product.title,
+    image: product.featuredImage?.url,
+    price: product.priceRange?.minVariantPrice?.amount,
+    size: selectedSize,
+  });
+
+  onOpenCart?.(); // open drawer AFTER adding
+};
 
   return (
     <div className="product-details-inner">
@@ -62,14 +81,7 @@ export default function ProductInfo({
 
             <ProductActions
               error={error}
-              onAddToCart={() => {
-                if (!selectedSize) {
-                  setError("Please select size.");
-                  return;
-                }
-
-                onOpenCart?.();
-              }}
+             onAddToCart={() => handleAddToCart()}
             />
           </div>
         </div>
