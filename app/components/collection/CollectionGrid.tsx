@@ -10,7 +10,7 @@ export default function CollectionGrid({
   isLoadingMore = false,
 }: Props) {
   return (
-    <div className="py-6">
+    <div className="product-grid-wrapper py-6">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {products.map((product) => (
           <ProductCard
@@ -20,9 +20,12 @@ export default function CollectionGrid({
         ))}
       </div>
 
+      {/* Loader state (when fetching more products) */}
       {isLoadingMore && (
-        <div className="py-8 text-center text-sm opacity-70">
-          Loading more products...
+        <div className="py-10 text-center">
+          <p className="text-sm opacity-60">
+            Loading more products...
+          </p>
         </div>
       )}
     </div>
