@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import SizeModal from "./SizeModal";
+import CartDrawer from "../Cart/CartDrawer";
 
 interface Props {
   product: any;
@@ -26,6 +27,8 @@ export default function ProductCard({ product }: Props) {
     }, {}) || {};
 
     const [openSize, setOpenSize] = useState(false);
+    const [openCart, setOpenCart] = useState(false);
+
 
   return (
     <div className="collection-product-main">
@@ -61,10 +64,17 @@ export default function ProductCard({ product }: Props) {
         <SizeModal
           product={product}
           onClose={() => setOpenSize(false)}
+          openCart={() => setOpenCart(true)}
         />
       )}
+
+      {openCart && (
+  <CartDrawer onClose={() => setOpenCart(false)} />
+)}
       </div>
         </div>
+
+        
 
         {/* PRODUCT INFO */}
         <div className="product-detail">
@@ -175,6 +185,8 @@ export default function ProductCard({ product }: Props) {
         </div>
         
       </div>
+
+     
 
       
     </div>
