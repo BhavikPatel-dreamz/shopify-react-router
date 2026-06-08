@@ -29,10 +29,16 @@ query Collection(
         hasNextPage
         endCursor
     }
+
       nodes {
         id
         title
         handle
+        options {
+          id
+          name
+          values
+        }
 
         featuredImage {
           url

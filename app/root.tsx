@@ -5,32 +5,25 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 
-import Header from "./components/layout/Header";
+import Header from "./components/layout/Header/Header";
 import Footer from "./components/layout/Footer";
 
 import "./app.css";
 import "./styles/product.css";
+import "./styles/collections.css";
 
+import "./styles/common.css";
 
-export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href:
-      "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const bodyClass = location.pathname === "/" ? "template-index" : "";
+
   return (
     <html lang="en">
       <head>
@@ -39,7 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={bodyClass}>
         {children}
         <ScrollRestoration />
         <Scripts />

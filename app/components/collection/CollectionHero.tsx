@@ -6,7 +6,9 @@ export default function CollectionHero({
   collection,
 }: Props) {
   return (
-    <section>
+    <div className="main-collection-banner-wrapper">
+      <div className="collection-banner-inner">
+        <div className = "desktop-image">
       {collection.image && (
         <img
           src={collection.image.url}
@@ -14,11 +16,13 @@ export default function CollectionHero({
             collection.image.altText ||
             collection.title
           }
-          className="w-full"
+          className="image-wrapper"
         />
+    
       )}
-
+      </div>
+      </div>
       
-    </section>
+    </div>
   );
 }
