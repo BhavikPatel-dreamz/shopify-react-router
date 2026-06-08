@@ -26,7 +26,7 @@ const logos = {
       "https://cdn.shopify.com/s/files/1/0752/6435/files/rare-rabbit-white.png",
     dark:
       "https://cdn.shopify.com/s/files/1/0752/6435/files/hor_1_ac34ebd3-4498-4f64-b50b-ae6bd5404df8.png?v=1720351640",
-    href: "/men",
+    href: "/pages/rare-rabbit",
   },
 
   women: {
@@ -34,7 +34,7 @@ const logos = {
       "https://cdn.shopify.com/s/files/1/0752/6435/files/rareism_white.png",
     dark:
       "https://cdn.shopify.com/s/files/1/0752/6435/files/LOGO_RAREISM_750_X_541_light_1d28ee09-7205-49c6-aec4-c4b4826dccb2.png?v=1757083866",
-    href: "/women",
+    href: "/pages/rareism",
   },
 
   kids: {
@@ -42,7 +42,7 @@ const logos = {
       "https://cdn.shopify.com/s/files/1/0752/6435/files/rsm_white.png",
     dark:
       "https://cdn.shopify.com/s/files/1/0752/6435/files/rsm_black-1.png?v=1720346771",
-    href: "/kids",
+    href: "/pages/kids",
   },
 
   shoes: {
@@ -50,7 +50,7 @@ const logos = {
       "https://cdn.shopify.com/s/files/1/0752/6435/files/rarez_white.png",
     dark:
       "https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41820.png?v=1720342909",
-    href: "/shoes",
+    href: "/pages/rarez-landing-page",
   },
 };
 
@@ -77,13 +77,13 @@ export default function Header() {
   
   let logo = logos.home;
 
-  if (location.pathname.startsWith("/women")) {
+  if (location.pathname.startsWith("/pages/rareism")) {
     logo = logos.women;
-  } else if (location.pathname.startsWith("/kids")) {
+  } else if (location.pathname.startsWith("/pages/kids")) {
     logo = logos.kids;
-  } else if (location.pathname.startsWith("/shoes")) {
+  } else if (location.pathname.startsWith("/pages/rarez-landing-page")) {
     logo = logos.shoes;
-  } else if (location.pathname.startsWith("/men")) {
+  } else if (location.pathname.startsWith("/pages/rare-rabbit")) {
     logo = logos.men;
   }
 
@@ -99,10 +99,10 @@ export default function Header() {
       className={`
         header-wrapper
         ${isHome ? "header-transparent" : ""}
-        ${location.pathname === "/men" ||
-              location.pathname === "/women" ||
-              location.pathname === "/kids" ||
-              location.pathname === "/shoes"
+        ${location.pathname === "/pages/rare-rabbit" ||
+              location.pathname === "/pages/rareism" ||
+              location.pathname === "/pages/kids" ||
+              location.pathname === "/pages/rarez-landing-page"
               ? "header-transparent-landing-page"
               : ""
             }
@@ -118,22 +118,22 @@ export default function Header() {
               {[
                 {
                   label: "MEN",
-                  path: "/men",
+                  path: "/pages/rare-rabbit",
                   type: "men",
                 },
                 {
                   label: "WOMEN",
-                  path: "/women",
+                  path: "/pages/rareism",
                   type: "women",
                 },
                 {
                   label: "KIDS",
-                  path: "/kids",
+                  path: "/pages/kids",
                   type: "kids",
                 },
                 {
                   label: "SHOES",
-                  path: "/shoes",
+                  path: "/pages/rarez-landing-page",
                   type: "shoes",
                 },
               ].map((item) => (
@@ -187,13 +187,13 @@ export default function Header() {
 
         <div
           className={` middle-part
-           ${location.pathname.startsWith("/women")
+           ${location.pathname.startsWith("/pages/rareism")
               ? "rareism-brand"
-              : location.pathname.startsWith("/kids")
+              : location.pathname.startsWith("/pages/kids")
                 ? "rare-kid-brand"
-                : location.pathname.startsWith("/shoes")
+                : location.pathname.startsWith("/pages/rarez-landing-page")
                   ? "rare-shoes-brand"
-                  : location.pathname.startsWith("/men")
+                  : location.pathname.startsWith("/pages/rare-rabbit")
                     ? "rare-rabbit-brand"
                     : "home-brand"
             }
@@ -205,23 +205,23 @@ export default function Header() {
                   ? "dark-logo-active"
                   : "light-logo-active"
                 }
-                ${location.pathname === "/men" ||
-                  location.pathname === "/women" ||
-                  location.pathname === "/kids" ||
-                  location.pathname === "/shoes"
+                ${location.pathname === "/pages/rare-rabbit" ||
+                  location.pathname === "/pages/rareism" ||
+                  location.pathname === "/pages/kids" ||
+                  location.pathname === "/pages/rarez-landing-page"
                   ? "landing-page-logo"
                   : ""
                 }
               `} 
             >
               <Link to={logo.href} className={`brand-image
-                  ${location.pathname.startsWith("/women")
+                  ${location.pathname.startsWith("/pages/rareism")
                       ? "rareism-image"
-                      : location.pathname.startsWith("/kids")
+                      : location.pathname.startsWith("/pages/kids")
                         ? "rare-kid-image"
-                        : location.pathname.startsWith("/shoes")
+                        : location.pathname.startsWith("/pages/rarez-landing-page")
                           ? "rare-footwear-image"
-                          : location.pathname.startsWith("/men")
+                          : location.pathname.startsWith("/pages/rare-rabbit")
                             ? "rare-rabbit-image"
                             : "home-image"
                     }
@@ -295,19 +295,19 @@ export default function Header() {
 
       <div className={` header-bottom xs-show ${scrolled ? "fix-top" : ""} ${isHome ? "index-page" : ""} `} >
         <div className="title-label">
-          <Link to="/men">MEN</Link>
+          <Link to="/pages/rare-rabbit">MEN</Link>
         </div>
 
         <div className="title-label">
-          <Link to="/women">WOMEN</Link>
+          <Link to="/pages/rareism">WOMEN</Link>
         </div>
 
         <div className="title-label">
-          <Link to="/kids">KIDS</Link>
+          <Link to="/pages/kids">KIDS</Link>
         </div>
 
         <div className="title-label">
-          <Link to="/shoes">SHOES</Link>
+          <Link to="/pages/rarez-landing-page">SHOES</Link>
         </div>
       </div>
     </header>
