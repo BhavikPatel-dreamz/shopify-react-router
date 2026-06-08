@@ -1,0 +1,144 @@
+/* ============================================
+   Rare Rabbit Our Theme Page Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rare-rabbit-theme-page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+/* Container */
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Image Grid Section */
+.image-grid-section-wrapper {
+  width: 100%;
+}
+
+/* Desktop Grid - 3 images per row */
+.images-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.image a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* NO hover effects - completely static */
+}
+
+/* Large Image - Now spans full width on its row */
+.large-image-class {
+  grid-column: span 2;
+}
+
+/* Mobile Wrapper - Hidden on Desktop */
+.mobile-image-wrapper {
+  display: none;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .container {
+    padding: 30px 20px;
+  }
+  
+  .images-wrapper {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .images-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  
+  .large-image-class {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .xs-hide {
+    display: none !important;
+  }
+  
+  .xs-show {
+    display: block !important;
+  }
+  
+  .container {
+    padding: 20px 16px;
+  }
+  
+  .mobile-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .left-image-wrapper,
+  .right-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 16px 12px;
+  }
+  
+  .mobile-image-wrapper {
+    gap: 12px;
+  }
+  
+  .left-image-wrapper,
+  .right-image-wrapper {
+    gap: 12px;
+  }
+}
+
+/* Hide Mobile on Desktop */
+@media (min-width: 769px) {
+  .xs-show {
+    display: none !important;
+  }
+  
+  .xs-hide {
+    display: grid !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .image img {
+    transform: none;
+  }
+}

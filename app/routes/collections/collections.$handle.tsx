@@ -5,6 +5,8 @@ import { createStorefrontClient } from "~/server/storefront.server";
 import CollectionHero from "~/components/collection/CollectionHero";
 import CollectionToolbar from "~/components/collection/CollectionToolbar";
 import CollectionGrid from "~/components/collection/CollectionGrid";
+import "../../styles/collections.css";
+
 import CartDrawer from "~/components/Cart/CartDrawer";
 
 export async function loader({

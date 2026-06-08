@@ -1,0 +1,246 @@
+/* ============================================
+   Rare Rabbit Page Styles
+   ============================================ */
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rare-rabbit-page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000000;
+}
+
+/* ============================================
+   Fixed Header Offset
+   ============================================ */
+/* Add padding to main content to account for fixed header */
+.rare-rabbit-page {
+  padding-top: 78px; /* Height of fixed header */
+}
+
+/* Pull first section up behind transparent header */
+.rare-rabbit-page .image-wrapper-section:first-child {
+  margin-top: -78px;
+}
+
+/* ============================================
+   Image Wrapper Sections
+   ============================================ */
+.rare-rabbit-page .image-wrapper-section {
+  width: 100%;
+  position: relative;
+}
+
+.rare-rabbit-page .image-wrapper {
+  width: 100%;
+}
+
+.rare-rabbit-page .image-block {
+  width: 100%;
+}
+
+.rare-rabbit-page .image-inner {
+  width: 100%;
+}
+
+.rare-rabbit-page .image-inner a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.rare-rabbit-page .image-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* NO hover effects - completely static */
+}
+
+/* ============================================
+   Responsive Images (Picture Element)
+   ============================================ */
+.rare-rabbit-page picture {
+  display: block;
+  width: 100%;
+}
+
+/* ============================================
+   Title Section
+   ============================================ */
+.rare-rabbit-page .show-title-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #000000;
+}
+
+.rare-rabbit-page .section-title-text {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ============================================
+   Dark/Light Header Variations
+   ============================================ */
+.rare-rabbit-page .image-wrapper-section[data-header="dark"] {
+  background-color: #000000;
+}
+
+.rare-rabbit-page .image-wrapper-section[data-header="light"] {
+  background-color: #ffffff;
+}
+
+/* ============================================
+   Loading States
+   ============================================ */
+.rare-rabbit-page img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rare-rabbit-page img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Simple fade-in animation for sections */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rare-rabbit-page .image-wrapper-section {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger animation for multiple sections */
+.rare-rabbit-page .image-wrapper-section:nth-child(1) { animation-delay: 0.05s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(2) { animation-delay: 0.1s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(3) { animation-delay: 0.15s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(4) { animation-delay: 0.2s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(5) { animation-delay: 0.25s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(6) { animation-delay: 0.3s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(7) { animation-delay: 0.35s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(8) { animation-delay: 0.4s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(9) { animation-delay: 0.45s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(10) { animation-delay: 0.5s; }
+.rare-rabbit-page .image-wrapper-section:nth-child(11) { animation-delay: 0.55s; }
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+/* Tablet Styles (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .rare-rabbit-page {
+    padding-top: 70px;
+  }
+  
+  .rare-rabbit-page .image-wrapper-section:first-child {
+    margin-top: -70px;
+  }
+  
+  .rare-rabbit-page .show-title-section {
+    padding: 30px 20px;
+  }
+  
+  .rare-rabbit-page .section-title-text {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Desktop Styles (1025px and above) */
+@media (min-width: 1025px) {
+  .rare-rabbit-page .show-title-section {
+    padding: 50px 20px;
+  }
+  
+  .rare-rabbit-page .section-title-text {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+}
+
+/* Mobile Styles (up to 767px) */
+@media (max-width: 767px) {
+  .rare-rabbit-page {
+    padding-top: 60px;
+  }
+  
+  .rare-rabbit-page .image-wrapper-section:first-child {
+    margin-top: -60px;
+  }
+  
+  .rare-rabbit-page .show-title-section {
+    padding: 25px 15px;
+  }
+  
+  .rare-rabbit-page .section-title-text {
+    font-size: 11px;
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+}
+
+/* Small Mobile Styles (up to 480px) */
+@media (max-width: 480px) {
+  .rare-rabbit-page {
+    padding-top: 55px;
+  }
+  
+  .rare-rabbit-page .image-wrapper-section:first-child {
+    margin-top: -55px;
+  }
+  
+  .rare-rabbit-page .show-title-section {
+    padding: 20px 12px;
+  }
+  
+  .rare-rabbit-page .section-title-text {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* ============================================
+   Accessibility & Performance
+   ============================================ */
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .rare-rabbit-page .image-wrapper-section {
+    animation: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .rare-rabbit-page {
+    padding-top: 0;
+  }
+  
+  .rare-rabbit-page .image-wrapper-section:first-child {
+    margin-top: 0;
+  }
+  
+  .rare-rabbit-page .image-inner a {
+    text-decoration: none;
+  }
+  
+  .rare-rabbit-page .section-title-text {
+    color: #000;
+    font-size: 14px;
+  }
+}
