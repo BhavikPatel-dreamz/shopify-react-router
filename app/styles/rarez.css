@@ -1,0 +1,141 @@
+/* ============================================
+   RareZ Footwear Page Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rarez-page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000000;
+}
+
+/* Fixed Header Offset */
+.rarez-page {
+  padding-top: 78px;
+}
+
+.rarez-page .image-wrapper-section:first-child {
+  margin-top: -78px;
+}
+
+/* Image Wrapper Sections */
+.rarez-page .image-wrapper-section {
+  width: 100%;
+  position: relative;
+}
+
+.rarez-page .image-wrapper {
+  width: 100%;
+}
+
+.rarez-page .image-block {
+  width: 100%;
+}
+
+.rarez-page .image-inner {
+  width: 100%;
+}
+
+.rarez-page .image-inner a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.rarez-page .image-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive Images */
+.rarez-page picture {
+  display: block;
+  width: 100%;
+}
+
+/* Dark/Light Header Variations */
+.rarez-page .image-wrapper-section[data-header="dark"] {
+  background-color: #000000;
+}
+
+.rarez-page .image-wrapper-section[data-header="light"] {
+  background-color: #ffffff;
+}
+
+/* Loading States */
+.rarez-page img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rarez-page img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rarez-page .image-wrapper-section {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger animation */
+.rarez-page .image-wrapper-section:nth-child(1) { animation-delay: 0.05s; }
+.rarez-page .image-wrapper-section:nth-child(2) { animation-delay: 0.1s; }
+.rarez-page .image-wrapper-section:nth-child(3) { animation-delay: 0.15s; }
+.rarez-page .image-wrapper-section:nth-child(4) { animation-delay: 0.2s; }
+.rarez-page .image-wrapper-section:nth-child(5) { animation-delay: 0.25s; }
+.rarez-page .image-wrapper-section:nth-child(6) { animation-delay: 0.3s; }
+.rarez-page .image-wrapper-section:nth-child(7) { animation-delay: 0.35s; }
+.rarez-page .image-wrapper-section:nth-child(8) { animation-delay: 0.4s; }
+.rarez-page .image-wrapper-section:nth-child(9) { animation-delay: 0.45s; }
+.rarez-page .image-wrapper-section:nth-child(10) { animation-delay: 0.5s; }
+.rarez-page .image-wrapper-section:nth-child(11) { animation-delay: 0.55s; }
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .rarez-page {
+    padding-top: 70px;
+  }
+  .rarez-page .image-wrapper-section:first-child {
+    margin-top: -70px;
+  }
+}
+
+@media (max-width: 767px) {
+  .rarez-page {
+    padding-top: 60px;
+  }
+  .rarez-page .image-wrapper-section:first-child {
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rarez-page {
+    padding-top: 55px;
+  }
+  .rarez-page .image-wrapper-section:first-child {
+    margin-top: -55px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .rarez-page .image-wrapper-section {
+    animation: none;
+  }
+}
