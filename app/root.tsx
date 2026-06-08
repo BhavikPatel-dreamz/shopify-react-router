@@ -15,6 +15,8 @@ import Footer from "./components/layout/Footer";
 
 import "./app.css";
 import "./styles/product.css";
+import "./styles/collections.css";
+
 import "./styles/common.css";
 
 
