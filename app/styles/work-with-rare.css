@@ -1,0 +1,85 @@
+/* ============================================
+   Work With Rare Page Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.work-with-rare-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* RTE Content */
+.rte {
+  width: 100%;
+}
+
+/* Job Listing Iframe */
+#job-listing {
+  width: 100%;
+}
+
+.job-iframe {
+  width: 100%;
+  border: none;
+  display: block;
+  min-height: 500px;
+  height: 867px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .container {
+    padding: 50px 20px;
+  }
+  
+  .job-iframe {
+    height: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 16px;
+  }
+  
+  .job-iframe {
+    min-height: 450px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 16px;
+  }
+  
+  .job-iframe {
+    min-height: 400px;
+    height: 500px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .work-with-rare-page {
+    background: white;
+  }
+  
+  .job-iframe {
+    height: auto;
+    min-height: auto;
+  }
+}

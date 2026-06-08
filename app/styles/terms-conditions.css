@@ -1,0 +1,132 @@
+/* ============================================
+   Terms & Conditions Page Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.terms-conditions-page {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 60px 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* RTE Content */
+.rte {
+  font-family: inherit;
+  line-height: 1.6;
+  color: #333;
+}
+
+.rte p {
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.rte strong {
+  font-weight: 600;
+  color: #000;
+}
+
+.rte a {
+  color: #000;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.rte a:hover {
+  color: #666;
+}
+
+.rte ul,
+.rte ol {
+  margin: 20px 0;
+  padding-left: 40px;
+}
+
+.rte li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.rte h1,
+.rte h2,
+.rte h3,
+.rte h4,
+.rte h5,
+.rte h6 {
+  margin: 30px 0 20px;
+  font-weight: 500;
+  color: #000;
+}
+
+/* Contact Info Section */
+.contact-info {
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .terms-conditions-page {
+    padding: 40px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .rte p,
+  .rte li,
+  .contact-info {
+    font-size: 14px;
+  }
+
+  .rte ul,
+  .rte ol {
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-conditions-page {
+    padding: 30px 0;
+  }
+
+  .rte p,
+  .rte li,
+  .contact-info {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .terms-conditions-page {
+    padding: 0;
+  }
+
+  .rte a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+}

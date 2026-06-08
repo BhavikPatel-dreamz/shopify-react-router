@@ -1,0 +1,153 @@
+/* ============================================
+   Help Page Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.help-page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+/* Section Inner */
+.page-help-section {
+  width: 100%;
+}
+
+.section-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Help Banner */
+.help-banner-wrapper {
+  margin-bottom: 60px;
+}
+
+.help-banner {
+  width: 100%;
+}
+
+.help-banner .desktop-img {
+  display: block;
+}
+
+.help-banner .mobile-img {
+  display: none;
+}
+
+.help-banner .image-wrapper {
+  width: 100%;
+}
+
+.help-banner .image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Help Menu Links - Clean Horizontal Layout */
+.help-menu-wrapper {
+  padding: 20px 0 80px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.help-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.help-link-inner {
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.link-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #000;
+  padding: 20px 0;
+  transition: color 0.3s ease;
+  width: 100%;
+}
+
+.link-title:hover {
+  color: #999;
+}
+
+/* Arrow Icon */
+.arrow-right {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+}
+
+.link-title:hover .arrow-right {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+.arrow-right svg {
+  display: block;
+  width: 12px;
+  height: auto;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .help-banner .desktop-img {
+    display: none;
+  }
+
+  .help-banner .mobile-img {
+    display: block;
+  }
+
+  .section-inner {
+    padding: 0 16px;
+  }
+
+  .help-menu-wrapper {
+    padding: 20px 0 60px;
+    max-width: 100%;
+  }
+
+  .link-title {
+    font-size: 16px;
+    padding: 18px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-banner-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .help-menu-wrapper {
+    padding: 10px 0 40px;
+  }
+
+  .link-title {
+    font-size: 15px;
+    padding: 16px 0;
+  }
+}
+
+/* Simple Clean Design - No Extra Effects */
+.help-link-inner:first-child {
+  border-top: 1px solid #e5e5e5;
+}

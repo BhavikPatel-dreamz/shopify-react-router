@@ -26,10 +26,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Links Grid */}
-      <div className="footer-links-grid">
-        {/* Social Media */}
-        <div>
+      {/* Main Links Row */}
+      <div className="footer-links-row">
+        {/* Left Column - Follow Us */}
+        <div className="footer-col footer-col-follow">
           <h4 className="footer-links-title">Follow Us</h4>
           <div className="footer-social-icons">
             <SocialIcon href="https://www.facebook.com/RareRabbitIndia">
@@ -70,8 +70,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Company Links */}
-        <div>
+        {/* Middle Left Column - Company */}
+        <div className="footer-col">
           <h4 className="footer-links-title">Company</h4>
           <FooterLink href="/pages/about-us">About us</FooterLink>
           <FooterLink href="/pages/help">Help</FooterLink>
@@ -81,8 +81,8 @@ export default function Footer() {
           <FooterLink href="/pages/work-with-rare">Work for Rare</FooterLink>
         </div>
 
-        {/* Quick Links */}
-        <div>
+        {/* Middle Right Column - Quick Links */}
+        <div className="footer-col">
           <h4 className="footer-links-title">Quick Links</h4>
           <FooterLink href="/account">My Account</FooterLink>
           <FooterLink href="https://returns.logisy.tech/returns">
@@ -94,11 +94,9 @@ export default function Footer() {
           <FooterLink href="/pages/thor-store-locator">Store Locator</FooterLink>
         </div>
 
-        {/* Legal Links - Right aligned */}
-        <div className="footer-legal-links">
-          <FooterLink href="/pages/rare-rabbit-our-theme">
-            Our Themes
-          </FooterLink>
+        {/* Right Column - Our Themes, Blogs, Terms, Site Map */}
+        <div className="footer-col footer-col-right">
+          <FooterLink href="/pages/rare-rabbit-our-theme">Our Themes</FooterLink>
           <FooterLink href="/blogs/news">Blogs</FooterLink>
           <FooterLink href="/pages/terms-conditions">Terms</FooterLink>
           <FooterLink href="/pages/html-sitemap">Site Map</FooterLink>
@@ -107,8 +105,8 @@ export default function Footer() {
 
       {/* Bottom Section */}
       <div className="footer-bottom">
-        {/* Most Searched */}
-        <div>
+        {/* Left Side - Most Searched & Copyright */}
+        <div className="footer-bottom-left">
           <div className="footer-most-searched">
             <span className="footer-most-searched-text">Most Searched</span>
             <ChevronDown size={14} />
@@ -118,22 +116,24 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* App Store Buttons */}
-        <div className="footer-app-buttons">
-          <a
-            href="https://play.google.com/store/apps/details?id=rarerabbit.android.app"
-            className="footer-app-link"
-          >
-            <div className="footer-app-subtitle">Get it on</div>
-            <div className="footer-app-title">Google Play</div>
-          </a>
-          <a
-            href="https://apps.apple.com/in/app/the-house-of-rare/id1563278819"
-            className="footer-app-link"
-          >
-            <div className="footer-app-subtitle">Download on the</div>
-            <div className="footer-app-title">App Store</div>
-          </a>
+        {/* Right Side - App Store Buttons */}
+        <div className="footer-bottom-right">
+          <div className="footer-app-buttons">
+            <a
+              href="https://play.google.com/store/apps/details?id=rarerabbit.android.app"
+              className="footer-app-link"
+            >
+              <div className="footer-app-subtitle">Get it on</div>
+              <div className="footer-app-title">Google Play</div>
+            </a>
+            <a
+              href="https://apps.apple.com/in/app/the-house-of-rare/id1563278819"
+              className="footer-app-link"
+            >
+              <div className="footer-app-subtitle">Download on the</div>
+              <div className="footer-app-title">App Store</div>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
