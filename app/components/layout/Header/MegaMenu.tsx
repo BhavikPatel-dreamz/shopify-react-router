@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
 interface MegaMenuProps {
@@ -12,9 +12,13 @@ export default function MegaMenu({
     parentLink,
     isOpen = false,
 }: MegaMenuProps) {
-    const [activeSection, setActiveSection] = useState(
-        sections?.[0]
-    );
+    const [activeSection, setActiveSection] = useState<any>(null);
+
+    useEffect(() => {
+        if (sections?.length > 0) {
+            setActiveSection(sections[0]);
+        }
+    }, [sections]);
 
     if (!sections?.length) return null;
 
@@ -85,23 +89,24 @@ export default function MegaMenu({
                                     </span>
                                 </div>
 
-                                {section.links?.length > 0 ? (
+                                {(section.links?.length > 0 || section.image) && (
                                     <div className="list-wrapperer">
-
-                                        <div className="sublist-child-list-wrapper">
-                                            <ul className="submenu-child-list">
-                                                {section.links.map((link: any) => (
-                                                    <li key={link.title} className="list">
-                                                        <Link
-                                                            to={link.url}
-                                                            className="submenu-title"
-                                                        >
-                                                            {link.title}
-                                                        </Link>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                                        {section.links?.length > 0 && (
+                                            <div className="sublist-child-list-wrapper">
+                                                <ul className="submenu-child-list">
+                                                    {section.links.map((link: any) => (
+                                                        <li key={link.title} className="list">
+                                                            <Link
+                                                                to={link.url}
+                                                                className="submenu-title"
+                                                            >
+                                                                {link.title}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
 
                                         {section.image && (
                                             <div className="sublist-image-wrapper">
@@ -128,36 +133,7 @@ export default function MegaMenu({
                                                 </div>
                                             </div>
                                         )}
-
                                     </div>
-                                ) : (
-                                    section.image && (
-                                        <div className="list-wrapperer">
-                                            <div className="sublist-image-wrapper">
-                                                <div
-                                                    className={`menu-image-inner ${section.title === activeSection?.title
-                                                            ? "active"
-                                                            : ""
-                                                        }`}
-                                                    data-id={section.title
-                                                        .toLowerCase()
-                                                        .replace(/\s+/g, "-")}
-                                                    menu-text={parentLink}
-                                                >
-                                                    <Link
-                                                        to={section.imageLink || "/"}
-                                                        className="mega-image"
-                                                    >
-                                                        <img
-                                                            src={section.image}
-                                                            alt={section.title}
-                                                            className="banner-image"
-                                                        />
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
                                 )}
                             </div>
                         ))}
