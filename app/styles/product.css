@@ -1706,7 +1706,7 @@
 }
 
 .product-wrapper .main-product-wrapper .product-details-wrapper .static-tab-info .product-tabs .accordion-wrapper .accordion-inner {
-    display: none
+    display: block;
 }
 
 .product-wrapper .main-product-wrapper .product-details-wrapper .static-tab-info .product-tabs .accordion-wrapper .accordion-inner .accordion-content {

@@ -7,12 +7,32 @@ import ProductVariants from "./ProductVariants";
 export default function ProductInfo({
   product,
 }: any) {
-  return (
-    <div className="sticky top-4">
 
-      <h1 className="text-3xl font-medium">
-        {product.title}
+  console.log(product);
+
+
+  const metafieldsMap =
+    product.metafields?.reduce((acc: any, field: any) => {
+      if (field) {
+        acc[field.key] = field.value;
+      }
+      return acc;
+    }, {}) || {};
+
+  return (
+    <div className="product-details-inner">
+      <div className="product-items product-heading">
+       
+      <h1 className="main-title">
+        <span className="sub-title">
+                {metafieldsMap.sub_title}
+              </span>
+        <span>
+          {metafieldsMap.main_title}
+        </span>
       </h1>
+      </div>
+      
 
       <ProductPrice
         variants={product.variants.nodes}

@@ -9,38 +9,45 @@ export default function ProductVariants({
   );
 
   const [selectedSize, setSelectedSize] =
-    useState(sizeOption?.values[0]);
+    useState(sizeOption?.values?.[0]);
 
   return (
-    <div className="mt-6">
-
-      <h3 className="mb-2 font-medium">
-        Size
-      </h3>
-
-      <div className="flex gap-2 flex-wrap">
-
-        {sizeOption?.values.map(
-          (size: string) => (
-            <button
-              key={size}
-              onClick={() =>
-                setSelectedSize(size)
-              }
-              className={`
-                border px-4 py-2
-                ${
-                  selectedSize === size
-                    ? "bg-black text-white"
-                    : ""
-                }
-              `}
-            >
-              {size}
-            </button>
-          )
-        )}
+    <>
+      <div className="product-items product-low-inventory xs-hide">
+        <div className="low-inventory-wrapper">
+          <div className="size-guide-button">
+            SIZE GUIDE
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div className="xs-show">
+        <div className="product-items product-banner-wrapper">
+        </div>
+      </div>
+
+      <div className="product-items product-variant-wrapper">
+        <div className="variant-selector">
+          {sizeOption?.values?.map(
+            (size: string) => (
+              <button
+                key={size}
+                type="button"
+                onClick={() =>
+                  setSelectedSize(size)
+                }
+                className={`variant-option ${
+                  selectedSize === size
+                    ? "active"
+                    : ""
+                }`}
+              >
+                {size}
+              </button>
+            )
+          )}
+        </div>
+      </div>
+    </>
   );
 }

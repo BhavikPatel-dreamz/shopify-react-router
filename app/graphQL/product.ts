@@ -72,18 +72,27 @@ query ProductDetails(
     }
 
     metafields(
-      identifiers: [
-        { namespace: "custom", key: "subtitle" }
-        { namespace: "custom", key: "fit" }
-        { namespace: "custom", key: "fabric" }
-        { namespace: "custom", key: "manufacturer_details" }
-        { namespace: "custom", key: "shipping_returns" }
-      ]
-    ) {
-      key
-      value
-      type
-    }
+  identifiers: [
+    { namespace: "my_fields", key: "crumb_title" }
+    { namespace: "my_fields", key: "fit" }
+    { namespace: "my_fields", key: "fabric" }
+    { namespace: "my_fields", key: "pattern" }
+    { namespace: "my_fields", key: "occasion" }
+    { namespace: "my_fields", key: "collar" }
+    { namespace: "my_fields", key: "sleeve_length" }
+    { namespace: "my_fields", key: "closure" }
+    { namespace: "my_fields", key: "product_tag" }
+    { namespace: "my_fields", key: "sub_title" }
+    { namespace: "my_fields", key: "main_title" }
+    { namespace: "custom", key: "manufacturer_details" }
+    { namespace: "custom", key: "shipping_returns" }
+  ]
+) {
+  namespace
+  key
+  value
+  type
+}
   }
 }
 `;
