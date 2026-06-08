@@ -7,7 +7,6 @@ export default function Footer() {
       style={{
         background: "#f5f5f5",
         padding: "60px 80px 40px",
-        marginTop: "80px",
       }}
     >
       {/* Newsletter Section - Full Width */}
@@ -302,7 +301,7 @@ function SocialIcon({
         width: "32px",
         height: "32px",
         borderRadius: "50%",
-        background: "#e5e5e5",
+        // background: "#e5e5e5",
         color: "#000",
         transition: "all 0.2s",
         textDecoration: "none",

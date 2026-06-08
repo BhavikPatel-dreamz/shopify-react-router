@@ -1,0 +1,146 @@
+/* ============================================
+   Kids Page Styles (Rare Ones)
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.kids-page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000000;
+}
+
+/* Fixed Header Offset */
+.kids-page {
+  padding-top: 78px;
+}
+
+.kids-page .image-wrapper-section:first-child {
+  margin-top: -78px;
+}
+
+/* Image Wrapper Sections */
+.kids-page .image-wrapper-section {
+  width: 100%;
+  position: relative;
+}
+
+.kids-page .image-wrapper {
+  width: 100%;
+}
+
+.kids-page .image-block {
+  width: 100%;
+}
+
+.kids-page .image-inner {
+  width: 100%;
+}
+
+.kids-page .image-inner a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.kids-page .image-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive Images */
+.kids-page picture {
+  display: block;
+  width: 100%;
+}
+
+/* Dark/Light Header Variations */
+.kids-page .image-wrapper-section[data-header="dark"] {
+  background-color: #000000;
+}
+
+.kids-page .image-wrapper-section[data-header="light"] {
+  background-color: #ffffff;
+}
+
+/* Loading States */
+.kids-page img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.kids-page img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.kids-page .image-wrapper-section {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger animation */
+.kids-page .image-wrapper-section:nth-child(1) { animation-delay: 0.05s; }
+.kids-page .image-wrapper-section:nth-child(2) { animation-delay: 0.1s; }
+.kids-page .image-wrapper-section:nth-child(3) { animation-delay: 0.15s; }
+.kids-page .image-wrapper-section:nth-child(4) { animation-delay: 0.2s; }
+.kids-page .image-wrapper-section:nth-child(5) { animation-delay: 0.25s; }
+.kids-page .image-wrapper-section:nth-child(6) { animation-delay: 0.3s; }
+.kids-page .image-wrapper-section:nth-child(7) { animation-delay: 0.35s; }
+.kids-page .image-wrapper-section:nth-child(8) { animation-delay: 0.4s; }
+.kids-page .image-wrapper-section:nth-child(9) { animation-delay: 0.45s; }
+.kids-page .image-wrapper-section:nth-child(10) { animation-delay: 0.5s; }
+.kids-page .image-wrapper-section:nth-child(11) { animation-delay: 0.55s; }
+.kids-page .image-wrapper-section:nth-child(12) { animation-delay: 0.6s; }
+.kids-page .image-wrapper-section:nth-child(13) { animation-delay: 0.65s; }
+.kids-page .image-wrapper-section:nth-child(14) { animation-delay: 0.7s; }
+.kids-page .image-wrapper-section:nth-child(15) { animation-delay: 0.75s; }
+.kids-page .image-wrapper-section:nth-child(16) { animation-delay: 0.8s; }
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .kids-page {
+    padding-top: 70px;
+  }
+  .kids-page .image-wrapper-section:first-child {
+    margin-top: -70px;
+  }
+}
+
+@media (max-width: 767px) {
+  .kids-page {
+    padding-top: 60px;
+  }
+  .kids-page .image-wrapper-section:first-child {
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kids-page {
+    padding-top: 55px;
+  }
+  .kids-page .image-wrapper-section:first-child {
+    margin-top: -55px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .kids-page .image-wrapper-section {
+    animation: none;
+  }
+}

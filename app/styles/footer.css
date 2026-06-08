@@ -1,0 +1,327 @@
+/* ============================================
+   Footer Styles
+   ============================================ */
+
+/* Footer Base */
+.footer {
+  background: #f5f5f5;
+  padding: 60px 80px 40px;
+}
+
+/* ============================================
+   Newsletter Section
+   ============================================ */
+.footer-newsletter {
+  margin-bottom: 80px;
+}
+
+.footer-newsletter-title {
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.footer-newsletter-subtitle {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  border-bottom: 1px solid #cfcfcf;
+  padding-bottom: 12px;
+  max-width: 500px;
+}
+
+.footer-newsletter-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+}
+
+.footer-newsletter-input::placeholder {
+  color: #999;
+}
+
+.footer-newsletter-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.footer-newsletter-button:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   Links Grid
+   ============================================ */
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-links-title {
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Legal Links - Right Aligned */
+.footer-legal-links {
+  text-align: right;
+}
+
+/* ============================================
+   Footer Links
+   ============================================ */
+.footer-link-item {
+  margin-bottom: 12px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #666;
+}
+
+/* ============================================
+   Social Icons
+   ============================================ */
+.footer-social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  color: #000;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-social-icon:hover {
+  background: #000;
+  color: #fff;
+}
+
+.footer-social-icon svg {
+  fill: currentColor;
+}
+
+/* ============================================
+   Bottom Section
+   ============================================ */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Most Searched */
+.footer-most-searched {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.footer-most-searched:hover {
+  opacity: 0.7;
+}
+
+.footer-most-searched-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: #666;
+}
+
+/* App Store Buttons */
+.footer-app-buttons {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-app-link {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.footer-app-link:hover {
+  opacity: 0.7;
+}
+
+.footer-app-subtitle {
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+
+.footer-app-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 50px 40px 35px;
+  }
+
+  .footer-newsletter {
+    margin-bottom: 60px;
+  }
+
+  .footer-newsletter-title {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  .footer-newsletter-subtitle {
+    font-size: 20px;
+  }
+
+  .footer-links-grid {
+    gap: 40px;
+  }
+
+  .footer-links-title {
+    font-size: 15px;
+  }
+
+  .footer-app-buttons {
+    gap: 40px;
+  }
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+  .footer {
+    padding: 40px 24px 30px;
+  }
+
+  .footer-newsletter {
+    margin-bottom: 50px;
+  }
+
+  .footer-newsletter-title {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  .footer-newsletter-subtitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .footer-newsletter-form {
+    max-width: 100%;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-legal-links {
+    text-align: left;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .footer-app-buttons {
+    gap: 40px;
+  }
+
+  .footer-app-title {
+    font-size: 15px;
+  }
+
+  .footer-copyright {
+    font-size: 11px;
+  }
+}
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 16px 25px;
+  }
+
+  .footer-newsletter-title {
+    font-size: 28px;
+  }
+
+  .footer-newsletter-subtitle {
+    font-size: 16px;
+  }
+
+  .footer-links-title {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .footer-link {
+    font-size: 13px;
+  }
+
+  .footer-app-buttons {
+    gap: 30px;
+  }
+
+  .footer-app-title {
+    font-size: 14px;
+  }
+
+  .footer-most-searched-text {
+    font-size: 13px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer-link,
+  .footer-newsletter-button,
+  .footer-social-icon,
+  .footer-most-searched,
+  .footer-app-link {
+    transition: none;
+  }
+}

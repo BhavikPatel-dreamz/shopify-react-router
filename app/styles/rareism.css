@@ -1,0 +1,156 @@
+/* ============================================
+   Rareism Page Styles
+   ============================================ */
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rareism-page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000000;
+}
+
+/* ============================================
+   Fixed Header Offset
+   ============================================ */
+.rareism-page {
+  padding-top: 78px;
+}
+
+.rareism-page .image-wrapper-section:first-child {
+  margin-top: -78px;
+}
+
+/* ============================================
+   Image Wrapper Sections
+   ============================================ */
+.rareism-page .image-wrapper-section {
+  width: 100%;
+  position: relative;
+}
+
+.rareism-page .image-wrapper {
+  width: 100%;
+}
+
+.rareism-page .image-block {
+  width: 100%;
+}
+
+.rareism-page .image-inner {
+  width: 100%;
+}
+
+.rareism-page .image-inner a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.rareism-page .image-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   Responsive Images
+   ============================================ */
+.rareism-page picture {
+  display: block;
+  width: 100%;
+}
+
+/* ============================================
+   Dark/Light Header Variations
+   ============================================ */
+.rareism-page .image-wrapper-section[data-header="dark"] {
+  background-color: #000000;
+}
+
+.rareism-page .image-wrapper-section[data-header="light"] {
+  background-color: #ffffff;
+}
+
+/* ============================================
+   Loading States
+   ============================================ */
+.rareism-page img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rareism-page img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rareism-page .image-wrapper-section {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger animation */
+.rareism-page .image-wrapper-section:nth-child(1) { animation-delay: 0.05s; }
+.rareism-page .image-wrapper-section:nth-child(2) { animation-delay: 0.1s; }
+.rareism-page .image-wrapper-section:nth-child(3) { animation-delay: 0.15s; }
+.rareism-page .image-wrapper-section:nth-child(4) { animation-delay: 0.2s; }
+.rareism-page .image-wrapper-section:nth-child(5) { animation-delay: 0.25s; }
+.rareism-page .image-wrapper-section:nth-child(6) { animation-delay: 0.3s; }
+.rareism-page .image-wrapper-section:nth-child(7) { animation-delay: 0.35s; }
+.rareism-page .image-wrapper-section:nth-child(8) { animation-delay: 0.4s; }
+.rareism-page .image-wrapper-section:nth-child(9) { animation-delay: 0.45s; }
+.rareism-page .image-wrapper-section:nth-child(10) { animation-delay: 0.5s; }
+.rareism-page .image-wrapper-section:nth-child(11) { animation-delay: 0.55s; }
+.rareism-page .image-wrapper-section:nth-child(12) { animation-delay: 0.6s; }
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .rareism-page {
+    padding-top: 70px;
+  }
+  .rareism-page .image-wrapper-section:first-child {
+    margin-top: -70px;
+  }
+}
+
+@media (max-width: 767px) {
+  .rareism-page {
+    padding-top: 60px;
+  }
+  .rareism-page .image-wrapper-section:first-child {
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rareism-page {
+    padding-top: 55px;
+  }
+  .rareism-page .image-wrapper-section:first-child {
+    margin-top: -55px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .rareism-page .image-wrapper-section {
+    animation: none;
+  }
+}

@@ -1,0 +1,211 @@
+/* ============================================
+   Header Styles
+   ============================================ */
+
+/* Header Base Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Header Variations */
+.header-transparent {
+  background: transparent;
+  border-bottom: none;
+}
+
+.header-white {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Header Container */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+}
+
+/* Navigation Links */
+.header-nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.header-nav-link {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+/* Logo */
+.header-logo {
+  display: inline-block;
+}
+
+.header-logo-img {
+  height: 66px;
+  width: auto;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.header-logo-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Right Side Icons */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.header-icon-svg {
+  display: block;
+  transition: stroke 0.3s ease;
+}
+
+/* Wishlist & Cart Images */
+.header-wishlist-img,
+.header-cart-img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.header-icon-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Cart Link */
+.header-cart-link {
+  position: relative;
+  text-decoration: none;
+}
+
+/* Cart Badge */
+.header-cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 9px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.header-cart-badge-white {
+  background: #fff;
+  color: #000;
+}
+
+.header-cart-badge-black {
+  background: #000;
+  color: #fff;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 16px 40px;
+  }
+  
+  .header-nav {
+    gap: 24px;
+  }
+  
+  .header-nav-link {
+    font-size: 13px;
+  }
+  
+  .header-icons {
+    gap: 18px;
+  }
+  
+  .header-logo-img {
+    height: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 12px 20px;
+  }
+  
+  .header-nav {
+    gap: 16px;
+  }
+  
+  .header-nav-link {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  
+  .header-icons {
+    gap: 14px;
+  }
+  
+  .header-logo-img {
+    height: 28px;
+  }
+  
+  .header-icon-svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .header-wishlist-img,
+  .header-cart-img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .header-cart-badge {
+    top: -6px;
+    right: -8px;
+    min-width: 14px;
+    height: 14px;
+    font-size: 8px;
+    padding: 0 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 10px 16px;
+  }
+  
+  .header-nav {
+    gap: 12px;
+  }
+  
+  .header-nav-link {
+    font-size: 11px;
+  }
+  
+  .header-logo-img {
+    height: 24px;
+  }
+}
