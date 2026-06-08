@@ -22,28 +22,34 @@ export default function ProductInfo({
   return (
     <div className="product-details-inner">
       <div className="product-items product-heading">
-       
-      <h1 className="main-title">
-        <span className="sub-title">
-                {metafieldsMap.sub_title}
-              </span>
-        <span>
-          {metafieldsMap.main_title}
-        </span>
-      </h1>
+
+        <h1 className="main-title">
+          <span className="sub-title">
+            {metafieldsMap.sub_title}
+          </span>
+          <span>
+            {metafieldsMap.main_title}
+          </span>
+        </h1>
       </div>
-      
 
-      <ProductPrice
-        variants={product.variants.nodes}
-      />
+      <div className="product-items product-form">
+        <div className="product-form-wrapper">
+          <div className="product-form">
+            <ProductPrice
+              variants={product.variants.nodes}
+            />
 
-      <ProductVariants
-        variants={product.variants.nodes}
-        options={product.options}
-      />
+            <ProductVariants
+              variants={product.variants.nodes}
+              options={product.options}
+            />
 
-      <ProductActions />
+            <ProductActions />
+          </div>
+        </div>
+       
+      </div>
 
       <ProductAccordion
         product={product}
