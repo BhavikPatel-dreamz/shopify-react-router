@@ -4,10 +4,8 @@ import type { Route } from "./+types/products.$handle";
 import ProductGallery from "~/components/product/ProductGallery";
 import ProductInfo from "~/components/product/ProductInfo";
 import CartDrawer from "~/components/Cart/CartDrawer";
-import { PRODUCT_QUERY } from "~/graphQL/product";
+import { PRODUCT_QUERY, RELATED_PRODUCTS_QUERY } from "~/graphQL/product";
 import { createStorefrontClient } from "~/server/storefront.server";
-
-
 
 export async function loader({ params }: Route.LoaderArgs) {
   const storefront = createStorefrontClient();
@@ -21,20 +19,48 @@ export async function loader({ params }: Route.LoaderArgs) {
       language: "EN",
     },
   });
-
+  
   if (!data.product) {
     throw new Response("Not Found", {
       status: 404,
     });
   }
 
+  const product = data.product;
+
+  const colorTags = product.tags.filter((tag: string) =>
+  tag.startsWith("color-")
+);
+
+ if (colorTags.length === 0) {
+    return { product, relatedProducts: [] };
+  }
+
+  const queryString = colorTags.join(" OR ");
+
+  // 2️⃣ RELATED PRODUCTS QUERY (🔥 ADD THIS)
+  const relatedData = await storefront.query<{
+    products: any;
+  }>(RELATED_PRODUCTS_QUERY, {
+    variables: {
+      handle: params.handle,
+      query: queryString,
+      tags: product.tags, // IMPORTANT: pass current product tags
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  const relatedProducts = relatedData.products?.nodes || [];
+
   return {
-    product: data.product,
+    product,
+    relatedProducts,
   };
 }
 
 export default function ProductPage() {
-  const { product } = useLoaderData<typeof loader>();
+  const { product, relatedProducts } = useLoaderData<typeof loader>();
   const [openCart, setOpenCart] = useState(false);
   
 
@@ -74,6 +100,7 @@ export default function ProductPage() {
           <div className="product-details-wrapper product-details-wrapper-js">
             <ProductInfo
               product={product}
+              relatedProducts={relatedProducts}
               onOpenCart={() => setOpenCart(true)}
             />
            

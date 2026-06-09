@@ -1,11 +1,13 @@
 import { create } from "zustand";
 
 interface CartItem {
+  product: any;
   id: string;
   title: string;
   image: string;
   price: number;
   size: string;
+  quantity: number;
 }
 
 interface CartState {
