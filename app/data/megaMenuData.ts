@@ -26,8 +26,7 @@ export const megaMenuData = {
             title: "DENIM",
             url: "/collections/rare-rabbit-ss-26",
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_denim.webp?v=11832121638737094556",
-            imageLink: "/pages/thor-denim",
-
+            imageLink: "/collections/rare-rabbit-ss-26",
         },
 
         {
@@ -54,7 +53,7 @@ export const megaMenuData = {
                 { title: "BANDHGALA", url: "/collections/bandhgala-guild-collection" },
             ],
             image:"https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_ALL_PRODUCTS.webp?v=1779181383",
-            imageLink: "/collections/rr-new-arrivals-for-men",
+            imageLink: "/collections/rare-rabbit-all-product",
         },
 
         {
@@ -83,7 +82,7 @@ export const megaMenuData = {
         {
             title: "INNER WEAR",
             url: "/collections/rare-rabbit-innerwear",
-            imageLink: "/pages/rare-rabbit-innerv",
+            imageLink: "/collections/rare-rabbit-innerwear",
             links: [
                 { title: "TRUNKS", url: "/collections/trunks" },
                 { title: "BRIEFS", url: "/collections/briefs" },
@@ -121,8 +120,7 @@ export const megaMenuData = {
                 { title: "DENIM ON DENIM", url: "/pages/denim-shop-the-look" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/SHOP_THE_LOOK-_web.webp?v=1779182547",
-            imageLink: "/pages/rr-shop-the-look",
-
+            imageLink: "/men/shop-the-look",
         },
 
         {
@@ -144,7 +142,6 @@ export const megaMenuData = {
             url: "/collections/gift-card-1",
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
             imageLink: "/collections/gift-card-1",
-
         },
     ],
 
@@ -168,7 +165,7 @@ export const megaMenuData = {
                 { title: "RUBY", url: "/collections/rareism-ruby" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-THE_EDIT.webp?v=1779271946",
-            imageLink: "/women/new-arrivals",
+            imageLink: "/collections/rareism-new-arrivals",
         },
 
         {
@@ -250,7 +247,6 @@ export const megaMenuData = {
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-COLLABORATIONS.webp?v=1779272227",
             imageLink: "/pages/rareism-bobo",
-
         },
 
         {
@@ -286,7 +282,6 @@ export const megaMenuData = {
             url: "/collections/rare-ones-ss-26-jeans",
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_The_edit-1.webp?v=8880706383563276293",
             imageLink: "/collections/rare-ones-ss-26-jeans",
-
         },
 
         {
@@ -328,7 +323,6 @@ export const megaMenuData = {
                 { title: "SOCKS", url: "/collections/rare-ones-socks" },
                 { title: "BACKPACK", url: "/collections/rare-ones-kids-backpack" },
                 { title: "CAP", url: "/collections/rare-ones-cap" },
-
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_SALE-1_03fb1d43-c32b-4b8d-8b5b-811e0cac2c6e.webp?v=1779282308",
             imageLink: "/collections/rare-ones-kids-sneaker",
@@ -378,7 +372,6 @@ export const megaMenuData = {
             url: "/collections/rarez-ragno",
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ__RAGNO_-_DESKTOP.webp?v=7759168167461581707",
             imageLink: "/collections/rarez-ragno",
-
         },
 
         {
@@ -393,7 +386,6 @@ export const megaMenuData = {
                 { title: "HIGH-TOP SNEAKERS", url: "/collections/high-top-footwear" },
                 { title: "SANDALS", url: "/collections/slippers-sandals" },
                 { title: "BOOTS", url: "/collections/rarez-boots" },
-
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ__ALL_PRODUCTS_DESKTOP.webp?v=1780305304",
             imageLink: "/collections/rare-rr-men-shoes",
