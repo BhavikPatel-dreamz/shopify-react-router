@@ -1,24 +1,23 @@
 import { useCart } from "~/lib/useCart";
 import { useEffect, useState } from "react";
 import { CloseIcon, WishlistIcon } from "~/images/Icons";
-import ProductVariants from "../product/ProductVariants";
 import SizeSelectorCart from "./SizeSelectorCart";
+import QuantitySelector from "../product/QuantitySelector";
+import CartPrice from "./CartPrice";
 
 export default function CartDrawer({ onClose }: any) {
   const items = useCart((s) => s.items);
-
-  console.log("cart items", items);
-  const [selectedVariantId, setSelectedVariantId] = useState("");
-  const [error, setError] = useState("");
+  const updateItemVariant = useCart((s) => s.updateItemVariant);
+  const updateItemQuantity = useCart((s) => s.updateItemQuantity);
+  const removeItem = useCart((s) => s.removeItem);
 
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [editingItemKey, setEditingItemKey] = useState<string | null>(null);
 
   useEffect(() => {
-    // ensure body class is set while drawer is mounted
     document.body.classList.add("cart-drawer-open");
     setIsActive(true);
 
-    // observe external changes to body class and keep local state in sync
     const obs = new MutationObserver(() => {
       setIsActive(document.body.classList.contains("cart-drawer-open"));
     });
@@ -34,33 +33,32 @@ export default function CartDrawer({ onClose }: any) {
   }, []);
 
   const handleClose = () => {
-    // remove active classes but keep component mounted
     document.body.classList.remove("cart-drawer-open");
     setIsActive(false);
     if (typeof onClose === "function") {
       try {
         onClose();
-      } catch (e) {
-        // ignore errors from external handler
-      }
+      } catch (e) {}
     }
   };
 
-  const [isEditingSize, setIsEditingSize] = useState(false);
+  const handleRemove = (itemKey: string) => {
+    removeItem(itemKey);
+    if (editingItemKey === itemKey) {
+      setEditingItemKey(null);
+    }
+  };
 
   return (
     <>
-      {/* BACKDROP */}
       <div
         className={`PageOverlay ${isActive ? "is-visible" : ""}`}
         onClick={handleClose}
       />
 
-      {/* DRAWER */}
       <div className={`cart-drawer-section ${isActive ? "active" : ""}`}>
         <div className="section-inner">
           <div className="cart-drawer">
-            {/* HEADER */}
             <div className="cart-drawer-header">
               <div className="header-top">
                 <div className="cart-title-wrapper">
@@ -93,12 +91,12 @@ export default function CartDrawer({ onClose }: any) {
                 </div>
               </div>
             </div>
-            {/* ITEMS */}
+
             <div className="cart-drawer-inner">
               <div className="cart-content-wrapper">
                 <div className="cart-content">
-                  {items.map((item, index) => (
-                    <div className="cart-item" key={index}>
+                  {items.map((item) => (
+                    <div className="cart-item" key={item.cartItemKey}>
                       <div className="cart-item-image-wrapper">
                         <div className="image-wrapper">
                           <img
@@ -106,6 +104,7 @@ export default function CartDrawer({ onClose }: any) {
                             className="w-16 h-20 object-cover"
                             width="400"
                             height="500"
+                            alt={item.title}
                           />
                         </div>
                       </div>
@@ -116,32 +115,79 @@ export default function CartDrawer({ onClose }: any) {
                               <h3>{item.title}</h3>
                               <h4 className="cart-size">
                                 SIZE: {item.size}
-                                <button className="edit-size-btn"
-                                  onClick={() => setIsEditingSize(true)}
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setEditingItemKey((prev) =>
+                                      prev === item.cartItemKey
+                                        ? null
+                                        : item.cartItemKey,
+                                    )
+                                  }
                                 >
-                                  Edit Size
+                                  {editingItemKey === item.cartItemKey
+                                    ? "Done"
+                                    : "Edit Size"}
                                 </button>
                               </h4>
                             </div>
 
                             <div className="item-price-wrapper">
-                              <span className="money">₹{item.price}</span>
-                              
-                            </div>
-
-                            
-                          </div>
-                          
-                          
-                          <SizeSelectorCart
+                              <CartPrice
                                 variants={item.product.variants.nodes}
-                                options={item.product.options}
-                                selectedVariantId={selectedVariantId}
-                                onSelectVariant={(id) =>
-                                  setSelectedVariantId(id)
-                                }
-                                isEditingSize = {isEditingSize}
+                                selectedVariantId={item.selectedVariantId}
                               />
+                            </div>
+                          </div>
+
+                          <SizeSelectorCart
+                            variants={item.product.variants.nodes}
+                            options={item.product.options}
+                            selectedVariantId={item.selectedVariantId}
+                            onSelectVariant={(variantId) => {
+                              const variant = item.product.variants.nodes.find(
+                                (v: any) => v.id === variantId,
+                              );
+
+                              updateItemVariant(item.cartItemKey, {
+                                selectedVariantId: variantId,
+                                size:
+                                  variant?.title ||
+                                  item.size,
+                                price: Number(variant?.price?.amount || 0),
+                              });
+                            }}
+                            isEditingSize={editingItemKey === item.cartItemKey}
+                          />
+                        </div>
+
+                        <div className="item-actions-wrapper">
+                          <QuantitySelector
+                            quantity={item.quantity}
+                            onIncrease={() =>
+                              updateItemQuantity(
+                                item.cartItemKey,
+                                item.quantity + 1,
+                              )
+                            }
+                            onDecrease={() =>
+                              updateItemQuantity(
+                                item.cartItemKey,
+                                Math.max(1, item.quantity - 1),
+                              )
+                            }
+                            onChange={(value) =>
+                              updateItemQuantity(item.cartItemKey, value)
+                            }
+                          />
+
+                          <button
+                            type="button"
+                            className="cart-item-remove"
+                            onClick={() => handleRemove(item.cartItemKey)}
+                          >
+                            <CloseIcon />
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -150,7 +196,6 @@ export default function CartDrawer({ onClose }: any) {
               </div>
             </div>
 
-            {/* CHECKOUT */}
             <div className="cart-bottom-wrapper">
               <div className="cart-bottom">
                 <button className="checkout-btn">

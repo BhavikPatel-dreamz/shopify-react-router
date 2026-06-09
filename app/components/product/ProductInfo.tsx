@@ -5,7 +5,6 @@ import ProductPrice from "./ProductPrice";
 import ProductVariants from "./ProductVariants";
 import EstimatedDelivery from "./EstimatedDelivery";
 import { useCart } from "~/lib/useCart";
-import ProductSwatches from "./ProductSwatches";
 import ColorSwatches from "./ColorSwatches";
 import { getColorSwatchesFromProducts } from "~/lib/getColorSwatchesFromProducts";
 import QuantitySelector from "./QuantitySelector";
@@ -15,14 +14,14 @@ export default function ProductInfo({
   relatedProducts,
   onOpenCart,
 }: any) {
-  const sizeOption = product.options?.find(
-    (option: any) => option.name?.toLowerCase() === "size",
-  );
   const [selectedSize, setSelectedSize] = useState("");
   const [error, setError] = useState("");
   const addItem = useCart((state) => state.addItem);
 
   const [quantity, setQuantity] = useState<number>(1);
+  const selectedVariant = product.variants?.nodes?.find((variant: any) =>
+    variant.title?.toLowerCase().includes(selectedSize.toLowerCase()),
+  );
 
   const handleDecrease = () => {
     setQuantity((prev) => Math.max(1, prev - 1));
@@ -31,16 +30,6 @@ export default function ProductInfo({
   const handleIncrease = () => {
     setQuantity((prev) => prev + 1);
   };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-
-    if (value >= 1) {
-      setQuantity(value);
-    }
-  };
-
-  console.log(product);
 
   const metafieldsMap =
     product.metafields?.reduce((acc: any, field: any) => {
@@ -57,10 +46,12 @@ export default function ProductInfo({
     }
 
     addItem({
+      cartItemKey: `${product.id}-${selectedVariant?.id || selectedSize}`,
+      selectedVariantId: selectedVariant?.id || "",
       id: product.id,
       title: product.title,
       image: product.featuredImage?.url,
-      price: product.priceRange?.minVariantPrice?.amount,
+      price: Number(selectedVariant?.price?.amount || 0),
       size: selectedSize,
       quantity: quantity,
       product: product,
@@ -101,6 +92,14 @@ export default function ProductInfo({
               }}
             />
 
+             {error && (
+                <div className="size-select-error">
+                  <p >
+                    {error}
+                  </p>
+                </div>
+              )}
+
             <QuantitySelector
               quantity={quantity}
               onIncrease={handleIncrease}
@@ -113,7 +112,6 @@ export default function ProductInfo({
             <EstimatedDelivery />
 
             <ProductActions
-              error={error}
               onAddToCart={() => handleAddToCart()}
             />
           </div>
