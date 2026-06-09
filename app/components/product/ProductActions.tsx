@@ -1,17 +1,8 @@
 export default function ProductActions({
   onAddToCart,
-  error,
 }: any) {
   return (
     <div className="product-form-buttons mt-8">
-      {error && (
-        <div className="message-wrapper">
-          <p className="msg-text error">
-            {error}
-          </p>
-        </div>
-      )}
-
       <div className="button-wrapper flex">
         <button
           type="button"
