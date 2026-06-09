@@ -1,12 +1,15 @@
 import { useCart } from "~/lib/useCart";
 import { useEffect, useState } from "react";
 import { CloseIcon, WishlistIcon } from "~/images/Icons";
+import ProductVariants from "../product/ProductVariants";
+import SizeSelectorCart from "./SizeSelectorCart";
 
-
-export default function CartDrawer({
-  onClose,
-}: any) {
+export default function CartDrawer({ onClose }: any) {
   const items = useCart((s) => s.items);
+
+  console.log("cart items", items);
+  const [selectedVariantId, setSelectedVariantId] = useState("");
+  const [error, setError] = useState("");
 
   const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -19,7 +22,10 @@ export default function CartDrawer({
     const obs = new MutationObserver(() => {
       setIsActive(document.body.classList.contains("cart-drawer-open"));
     });
-    obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    obs.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
 
     return () => {
       obs.disconnect();
@@ -40,6 +46,8 @@ export default function CartDrawer({
     }
   };
 
+  const [isEditingSize, setIsEditingSize] = useState(false);
+
   return (
     <>
       {/* BACKDROP */}
@@ -50,16 +58,13 @@ export default function CartDrawer({
 
       {/* DRAWER */}
       <div className={`cart-drawer-section ${isActive ? "active" : ""}`}>
-
         <div className="section-inner">
           <div className="cart-drawer">
             {/* HEADER */}
             <div className="cart-drawer-header">
               <div className="header-top">
                 <div className="cart-title-wrapper">
-                  <h2 className="cart-title">
-                    BAG ({items.length})
-                  </h2>
+                  <h2 className="cart-title">BAG ({items.length})</h2>
                 </div>
 
                 <div className="cart-drawer-close-btn">
@@ -78,59 +83,84 @@ export default function CartDrawer({
                   <div className="side-cart-share-wrapper">
                     <div className="share-cart-icon share-cart-wrapper-js">
                       <a href="#" className="share-cart-btn">
-                        <img src="https://cdn.shopify.com/s/files/1/0752/6435/files/share-new.png" alt="share" />
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0752/6435/files/share-new.png"
+                          alt="share"
+                        />
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-              {/* ITEMS */}
-              <div className="cart-drawer-inner">
-                <div className="cart-content-wrapper">
-                  <div className="cart-content">
-                    {items.map((item, index) => (
-                      <div className="cart-item" key={index}>
-                        <div className="cart-item-image-wrapper">
-                          <div className="image-wrapper">
-                            <img src={item.image} className="w-16 h-20 object-cover" width="400" height="500" />
-                          </div>
-                        </div>
-                        <div className="cart-item-content-wrapper">
-                          <div className="item-content-wrapper">
-                            <div className="name-price">
-                              <div className="name-variant">
-                                <h3>
-                                  {item.title}
-                                </h3>
-                                <h4 className="cart-size">
-                                  SIZE: {item.size}
-                                </h4>
-                              </div>
-
-                              <div className="item-price-wrapper">
-                                <span className="money">
-                                  ₹{item.price}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
+            {/* ITEMS */}
+            <div className="cart-drawer-inner">
+              <div className="cart-content-wrapper">
+                <div className="cart-content">
+                  {items.map((item, index) => (
+                    <div className="cart-item" key={index}>
+                      <div className="cart-item-image-wrapper">
+                        <div className="image-wrapper">
+                          <img
+                            src={item.image}
+                            className="w-16 h-20 object-cover"
+                            width="400"
+                            height="500"
+                          />
                         </div>
                       </div>
-                    ))}
-                  </div>
+                      <div className="cart-item-content-wrapper">
+                        <div className="item-content-wrapper">
+                          <div className="name-price">
+                            <div className="name-variant">
+                              <h3>{item.title}</h3>
+                              <h4 className="cart-size">
+                                SIZE: {item.size}
+                                <button className="edit-size-btn"
+                                  onClick={() => setIsEditingSize(true)}
+                                >
+                                  Edit Size
+                                </button>
+                              </h4>
+                            </div>
+
+                            <div className="item-price-wrapper">
+                              <span className="money">₹{item.price}</span>
+                              
+                            </div>
+
+                            
+                          </div>
+                          
+                          
+                          <SizeSelectorCart
+                                variants={item.product.variants.nodes}
+                                options={item.product.options}
+                                selectedVariantId={selectedVariantId}
+                                onSelectVariant={(id) =>
+                                  setSelectedVariantId(id)
+                                }
+                                isEditingSize = {isEditingSize}
+                              />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-
               </div>
+            </div>
 
-              {/* CHECKOUT */}
+            {/* CHECKOUT */}
             <div className="cart-bottom-wrapper">
               <div className="cart-bottom">
                 <button className="checkout-btn">
-                  CHECKOUT <span className="money"><span className="money">₹ 48,110</span></span>
+                  CHECKOUT{" "}
+                  <span className="money">
+                    <span className="money">₹ 48,110</span>
+                  </span>
                 </button>
               </div>
-              </div>
+            </div>
           </div>
         </div>
       </div>
