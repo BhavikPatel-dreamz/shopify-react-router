@@ -96,3 +96,42 @@ query ProductDetails(
   }
 }
 `;
+
+
+ export const RELATED_PRODUCTS_QUERY = `
+  query RelatedProducts($handle: String!, $query: String!) {
+
+    product(handle: $handle) {
+      id
+      title
+      handle
+      tags
+    }
+
+    products(first: 10, query: $query) {
+      nodes {
+        id
+        title
+        handle
+        tags
+
+
+        options {
+            id
+            name
+            values
+          }
+
+        metafield(namespace: "custom", key: "variant_color_image") {
+        reference {
+          ... on MediaImage {
+            image {
+              url
+            }
+          }
+        }
+      }
+      }
+    }
+  }
+`;

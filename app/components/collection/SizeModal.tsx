@@ -1,10 +1,12 @@
 import { useState } from "react";
-import CartDrawer from "../Cart/CartDrawer";
 import { useCart } from "~/lib/useCart";
 
 export default function SizeModal({ product, onClose, openCart }: any) {
   const [selectedSize, setSelectedSize] = useState("");
   const addItem = useCart((s) => s.addItem);
+  const selectedVariant = product?.variants?.nodes?.find((variant: any) =>
+    variant.title?.toLowerCase().includes(selectedSize.toLowerCase()),
+  );
 
   const sizeOption = product?.options?.find(
     (option: any) => option.name?.toLowerCase() === "size",
@@ -17,6 +19,11 @@ export default function SizeModal({ product, onClose, openCart }: any) {
   console.log("sizes", sizes);
 
   const handleAdd = (size: string) => {
+    setSelectedSize(size);
+    const variant = product?.variants?.nodes?.find((v: any) =>
+      v.title?.toLowerCase().includes(size.toLowerCase()),
+    );
+
     console.log("Adding to cart:", {
       id: product.id,
       title: product.title,
@@ -26,11 +33,15 @@ export default function SizeModal({ product, onClose, openCart }: any) {
     });
 
     addItem({
+      cartItemKey: `${product.id}-${variant?.id || size}`,
+      selectedVariantId: variant?.id || "",
       id: product.id,
       title: product.title,
       image: product.featuredImage?.url,
-      price: product.priceRange?.minVariantPrice?.amount,
+      price: Number(variant?.price?.amount || 0),
       size: size,
+      quantity: 1,
+      product: product,
     });
     onClose();
     openCart?.();

@@ -5977,31 +5977,31 @@ body.cart-drawer-open {
     justify-content: space-between
 }
 
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus {
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper quantity-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px
 }
 
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus .updateQuan {
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .quantity-wrapper .quantity-button {
     cursor: pointer;
     padding: 5px 0
 }
 
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus .icon-mobile-minus {
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .quantity-wrapper .icon-mobile-minus {
     height: 1px;
     width: 12px;
     display: flex
 }
 
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus .icon-mobile-plus {
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .quantity-wrapper .icon-mobile-plus {
     height: 10px;
     width: 11px;
     display: flex
 }
 
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus input {
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .quantity-wrapper input {
     background-color: #0000;
     outline: none;
     border: none;
@@ -6011,13 +6011,13 @@ body.cart-drawer-open {
     font-weight: 400
 }
 
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus input::-webkit-outer-spin-button,
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus input::-webkit-inner-spin-button {
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .quantity-wrapper input::-webkit-outer-spin-button,
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .quantity-wrapper input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0
 }
 
-.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .plus-minus input {
+.cart-drawer-section .cart-drawer .cart-drawer-inner .cart-content-wrapper .cart-item .cart-item-content-wrapper .item-actions-wrapper .quantity-wrapper input {
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
     appearance: textfield
