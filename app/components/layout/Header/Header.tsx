@@ -14,42 +14,32 @@ import "~/styles/header.css";
 
 const logos = {
   home: {
-    light:
-      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/hor_1_ac34ebd3-4498-4f64-b50b-ae6bd5404df8.png",
-    dark:
-      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/hor_2_1dd668d6-9d4b-40ca-9a09-0f65a289eea7.png",
+    light: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/hor_1_ac34ebd3-4498-4f64-b50b-ae6bd5404df8.png",
+    dark: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/hor_2_1dd668d6-9d4b-40ca-9a09-0f65a289eea7.png",
     href: "/",
   },
 
   men: {
-    light:
-      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41821.png",
-    dark:
-      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41821.png",
+    light: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41821.png",
+    dark: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41821.png",
     href: "/pages/rare-rabbit",
   },
 
   women: {
-    light:
-      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/LOGO_RAREISM_750_X_541_light_1d28ee09-7205-49c6-aec4-c4b4826dccb2.png",
-    dark:
-      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/LOGO_RAREISM_750_X_540_Dark_b3bd1fca-9554-4a29-929f-dcb32110746c.png",
+    light: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/LOGO_RAREISM_750_X_541_light_1d28ee09-7205-49c6-aec4-c4b4826dccb2.png",
+    dark: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/LOGO_RAREISM_750_X_540_Dark_b3bd1fca-9554-4a29-929f-dcb32110746c.png",
     href: "/pages/rareism",
   },
 
   kids: {
-    light:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/rsm_white.png",
-    dark:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/rsm_black-1.png?v=1720346771",
+    light: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/rsm_black-1.png",
+    dark: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/rsm_black_856240fb-9e57-4ab4-b03c-ba0d89c95cae.png",
     href: "/pages/kids",
   },
 
   shoes: {
-    light:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/rarez_white.png",
-    dark:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41820.png?v=1720342909",
+    light: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41820.png",
+    dark: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41821.png",
     href: "/pages/rarez-landing-page",
   },
 };
@@ -71,10 +61,19 @@ export default function Header() {
     location.pathname === "/pages/rareism" ||
     location.pathname === "/pages/rare-rabbit";
 
-  const LightFont =
+  const forceLightHeader =
     location.pathname === "/pages/kids" ||
-    location.pathname === "/pages/rarez-landing-page" ||
-    location.pathname === "/pages/rare-rabbit"; 
+    location.pathname === "/pages/rare-rabbit";
+
+  const forceDarkHeader =
+    location.pathname === "/pages/rarez-landing-page";
+
+  const currentTheme =
+    forceLightHeader
+      ? "dark"
+      : forceDarkHeader
+        ? "light"
+        : headerTheme;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -136,15 +135,6 @@ export default function Header() {
     logo = logos.men;
   }
 
-  const logoSrc =
-    headerTheme === "dark"
-      ? logo.light
-      : logo.dark;
-
-  const darkFont =
-    headerTheme === "light";
-
-
   useEffect(() => {
     const updateHeaderHeight = () => {
       const header = document.querySelector(
@@ -175,7 +165,16 @@ export default function Header() {
 
 
   return (
-    <header className={` header-wrapper ${isTransparentHeader ? "header-transparent" : ""} ${LightFont ? "light-font" : headerTheme === "dark" ? "light-font" : "dark-font"} ${hoveredLink ? "header-hovered" : ""} `} >
+    <header
+      className={`header-wrapper
+      ${isTransparentHeader ? "header-transparent" : ""}
+      ${currentTheme === "dark"
+          ? "light-font"
+          : "dark-font"
+        }
+      ${hoveredLink ? "header-hovered" : ""}
+    `}
+    >
       <div className="header-inner">
         {/* LEFT PART */}
 
@@ -228,8 +227,8 @@ export default function Header() {
                     <Link
                       to={item.path}
                       className={`parent-link ${hoveredLink === item.label || isCurrentPage
-                          ? "parent-active"
-                          : ""
+                        ? "parent-active"
+                        : ""
                         }`}
                     >
                       {item.label}
@@ -255,9 +254,23 @@ export default function Header() {
 
         <div className={`middle-part ${location.pathname.startsWith("/pages/rareism") ? "rareism-brand" : location.pathname.startsWith("/pages/kids") ? "rare-kid-brand" : location.pathname.startsWith("/pages/rarez-landing-page") ? "rare-shoes-brand" : location.pathname.startsWith("/pages/rare-rabbit") ? "rare-rabbit-brand" : "home-brand"} `} >
           <div className="header-logo-wrapper">
-            <div className={`header-logo-inner ${headerTheme === "dark" ? "dark-logo-active" : "light-logo-active"} ${location.pathname === "/pages/rare-rabbit" || location.pathname === "/pages/rareism" || location.pathname === "/pages/kids" || location.pathname === "/pages/rarez-landing-page" ? "landing-page-logo" : ""} `} >
+            <div
+              className={`header-logo-inner
+              ${currentTheme === "dark"
+                  ? "dark-logo-active"
+                  : "light-logo-active"
+                }
+              ${location.pathname === "/pages/rare-rabbit" ||
+                  location.pathname === "/pages/rareism" ||
+                  location.pathname === "/pages/kids" ||
+                  location.pathname === "/pages/rarez-landing-page"
+                  ? "landing-page-logo"
+                  : ""
+                }
+            `}
+            >
               <Link to={logo.href} className={`brand-image ${location.pathname.startsWith("/pages/rareism") ? "rareism-image" : location.pathname.startsWith("/pages/kids") ? "rare-kid-image" : location.pathname.startsWith("/pages/rarez-landing-page") ? "rare-footwear-image" : location.pathname.startsWith("/pages/rare-rabbit") ? "rare-rabbit-image" : "home-image"} `} >
-                <img src={logo.light}alt="logo"className="light-theme-logo"/>
+                <img src={logo.light} alt="logo" className="light-theme-logo" />
 
                 <img src={logo.dark} alt="logo" className="dark-theme-logo" />
               </Link>
