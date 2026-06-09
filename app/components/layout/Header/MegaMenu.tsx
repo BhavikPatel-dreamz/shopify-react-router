@@ -148,6 +148,7 @@ export default function MegaMenu({
                                                             src={section.image}
                                                             alt={section.title}
                                                             className="banner-image"
+                                                            style={{ cursor: 'pointer' }}
                                                         />
                                                     </Link>
                                                 </div>
