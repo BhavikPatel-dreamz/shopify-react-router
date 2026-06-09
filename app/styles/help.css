@@ -20,9 +20,7 @@
 }
 
 .section-inner {
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 /* Help Banner */
@@ -84,21 +82,12 @@
   width: 100%;
 }
 
-.link-title:hover {
-  color: #999;
-}
-
 /* Arrow Icon */
 .arrow-right {
   display: inline-flex;
   align-items: center;
   transition: transform 0.3s ease;
   opacity: 0.7;
-}
-
-.link-title:hover .arrow-right {
-  transform: translateX(4px);
-  opacity: 1;
 }
 
 .arrow-right svg {
@@ -149,5 +138,5 @@
 
 /* Simple Clean Design - No Extra Effects */
 .help-link-inner:first-child {
-  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
