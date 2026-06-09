@@ -80,7 +80,8 @@
 
 .header-wrapper {
     padding: 34px 50px 30px;
-    background: var(--body-background-color)
+    background: var(--body-background-color);
+    transition: background 0.3s ease
 }
 
 @media screen and (min-width: 1025px)and (max-width:1366px) {
@@ -210,6 +211,47 @@
 .header-wrapper.header-transparent-landing-page.light-font.transparent-none .header-inner .right-part .right-content .second-nav-content .wishlist-button .header-light-theme-logo,
 .header-wrapper.header-transparent-landing-page.light-font.transparent-none .header-inner .right-part .right-content .second-nav-content .cart-btn .header-light-theme-logo {
     display: none
+}
+
+/* WHITE BACKGROUND ON HOVER */
+.header-wrapper.header-hovered {
+    background: #ffffff !important;
+}
+
+/* When header is hovered, change text color to dark for better visibility */
+.header-wrapper.header-hovered .main-link .parent-link,
+.header-wrapper.header-hovered .link-item .links,
+.header-wrapper.header-hovered .title-label a,
+.header-wrapper.header-hovered .second-nav-content {
+    color: #000000 !important;
+}
+
+/* When header is hovered on transparent pages, override the white text */
+.header-wrapper.header-transparent.header-hovered,
+.header-wrapper.header-transparent-landing-page.header-hovered {
+    background: #ffffff !important;
+}
+
+.header-wrapper.header-transparent.header-hovered .main-link .parent-link,
+.header-wrapper.header-transparent.header-hovered .title-label a,
+.header-wrapper.header-transparent.header-hovered .second-nav-content,
+.header-wrapper.header-transparent-landing-page.header-hovered .main-link .parent-link,
+.header-wrapper.header-transparent-landing-page.header-hovered .title-label a,
+.header-wrapper.header-transparent-landing-page.header-hovered .second-nav-content {
+    color: #000000 !important;
+}
+
+/* Change icon colors to dark when header is hovered */
+.header-wrapper.header-hovered .header-search-icon-wrapper svg path,
+.header-wrapper.header-hovered .custom-account-icon svg path,
+.header-wrapper.header-hovered .second-nav-content .wishlist-button svg path,
+.header-wrapper.header-hovered .second-nav-content .header-cart-btn svg path {
+    stroke: #000000 !important;
+}
+
+/* Ensure the underline appears on hover with dark color */
+.header-wrapper.header-hovered .main-link.active .parent-link:after {
+    border-bottom-color: #000000 !important;
 }
 
 .header-wrapper .topbadge {
