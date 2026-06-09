@@ -4,6 +4,7 @@ import { CloseIcon, WishlistIcon } from "~/images/Icons";
 import SizeSelectorCart from "./SizeSelectorCart";
 import QuantitySelector from "../product/QuantitySelector";
 import CartPrice from "./CartPrice";
+import { RewardPoints } from "./RewardPoints";
 
 export default function CartDrawer({ onClose }: any) {
   const items = useCart((s) => s.items);
@@ -126,7 +127,7 @@ export default function CartDrawer({ onClose }: any) {
                                   }
                                 >
                                   {editingItemKey === item.cartItemKey
-                                    ? "Done"
+                                    ? ""
                                     : "Edit Size"}
                                 </button>
                               </h4>
@@ -151,9 +152,7 @@ export default function CartDrawer({ onClose }: any) {
 
                               updateItemVariant(item.cartItemKey, {
                                 selectedVariantId: variantId,
-                                size:
-                                  variant?.title ||
-                                  item.size,
+                                size: variant?.title || item.size,
                                 price: Number(variant?.price?.amount || 0),
                               });
                             }}
@@ -181,19 +180,29 @@ export default function CartDrawer({ onClose }: any) {
                             }
                           />
 
-                          <button
-                            type="button"
-                            className="cart-item-remove"
-                            onClick={() => handleRemove(item.cartItemKey)}
-                          >
-                            <CloseIcon />
+                          <button className="remove" onClick={() => handleRemove(item.cartItemKey)}>
+                          
+                          <span className="icon icon-mobile-cross">
+                            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4.42383 13.1953L13.1495 4.37349" stroke="#000000" stroke-width="0.76"></path>
+                              <path d="M4.36426 4.40625L13.2094 13.155" stroke="#000000" stroke-width="0.76"></path>
+                            </svg>
+                          </span>
+  
                           </button>
                         </div>
+
+                        <div className="reward-points-wrapper">
+                          <RewardPoints />
+                        </div>
                       </div>
+                       
                     </div>
                   ))}
+                  
                 </div>
               </div>
+             
             </div>
 
             <div className="cart-bottom-wrapper">
