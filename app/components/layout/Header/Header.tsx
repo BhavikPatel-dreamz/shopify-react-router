@@ -59,6 +59,7 @@ export default function Header() {
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const isHome = location.pathname === "/";
 
@@ -95,7 +96,21 @@ export default function Header() {
   const darkFont = logoSrc === logo.dark;
 
   return (
-    <header className={` header-wrapper ${isHome ? "header-transparent" : ""} ${location.pathname === "/pages/rare-rabbit" || location.pathname === "/pages/rareism" || location.pathname === "/pages/kids" || location.pathname === "/pages/rarez-landing-page" ? "header-transparent-landing-page" : ""} ${darkFont ? "dark-font" : ""} `} >
+    <header
+      className={`
+        header-wrapper
+        ${isHome ? "header-transparent" : ""}
+        ${location.pathname === "/pages/rare-rabbit" ||
+              location.pathname === "/pages/rareism" ||
+              location.pathname === "/pages/kids" ||
+              location.pathname === "/pages/rarez-landing-page"
+              ? "header-transparent-landing-page"
+              : ""
+            }
+        ${darkFont ? "dark-font" : ""}
+        ${hoveredLink ? "header-hovered" : ""}
+      `}
+    >
       <div className="header-inner">
         {/* LEFT PART */}
 
@@ -126,29 +141,26 @@ export default function Header() {
               ].map((item) => (
                 <li
                   key={item.label}
-                  className={`main-link ${activeMenu === item.label ||
-                      location.pathname.startsWith(item.path)
-                      ? "active"
-                      : ""
-                    }`}
+                  className={`main-link ${
+                    hoveredLink === item.label ? "active" : ""
+                  }`}
                   data-type={item.type}
                   onMouseEnter={() => {
                     setOpenMenu(item.label);
                     setActiveMenu(item.label);
+                    setHoveredLink(item.label);
                   }}
                   onMouseLeave={() => {
                     setOpenMenu(null);
                     setActiveMenu(null);
+                    setHoveredLink(null);
                   }}
                 >
                   <Link
                     to={item.path}
-                    className={`parent-link ${location.pathname.startsWith(
-                      item.path
-                    )
-                      ? "parent-active"
-                      : ""
-                      }`}
+                    className={`parent-link ${
+                      hoveredLink === item.label ? "parent-active" : ""
+                    }`}
                   >
                     {item.label}
                     <span className="link-spacer">
