@@ -14,8 +14,8 @@ export const megaMenuData = {
             links: [
                 { title: "DENIM", url: "/collections/rare-rabbit-ss-26" },
                 { title: "THIS WEEK", url: "/collections/rare-rabbit-new-arrivals" },
-                { title: "CROQUET CLUB", url: "/pages/rare-rabbit-croquet-club" },
-                { title: "LINEN", url: "/pages/rare-rabbit-linen" },
+                { title: "CROQUET CLUB", url: "/collections/formal-shirt" },
+                { title: "LINEN", url: "/collections/rare-rabbit-new-arrivals" },
                 { title: "LINEN GUILD", url: "/collections/guild-collection" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_this_week_e54ef7f6-8927-40a6-a10e-65b2213b6ae4.webp?v=1779181776",
@@ -114,13 +114,13 @@ export const megaMenuData = {
 
         {
             title: "SHOP THE LOOK",
-            url: "/pages/rare-rabbit",
+            url: "/collections/rare-rabbit-business",
             links: [
-                { title: "SUMMER ESSENTIALS", url: "/pages/rare-rabbit-summer-essentials" },
-                { title: "DENIM ON DENIM", url: "/pages/denim-shop-the-look" },
+                { title: "SUMMER ESSENTIALS", url: "/collections/formal-pants-for-men" },
+                { title: "DENIM ON DENIM", url: "/collections/rare-rabbit-ss-26" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/SHOP_THE_LOOK-_web.webp?v=1779182547",
-            imageLink: "/pages/rare-rabbit",
+            imageLink: "/collections/rare-rabbit-business",
         },
 
         {
@@ -161,7 +161,7 @@ export const megaMenuData = {
                 { title: "DENIM", url: "/collections/rareism-new-arrivals-jeans" },
                 { title: "THIS WEEK", url: "/collections/rareism-new-arrivals" },
                 { title: "TOP MODE ON", url: "/collections/rareism-top" },
-                { title: "SUMMER TALES", url: "/pages/rareism-summer-tale" },
+                { title: "SUMMER TALES", url: "/collections/rareism-new-arrivals" },
                 { title: "RUBY", url: "/collections/rareism-ruby" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-THE_EDIT.webp?v=1779271946",
@@ -241,12 +241,12 @@ export const megaMenuData = {
 
         {
             title: "COLLABORATIONS",
-            url: "/pages/rareism-bobo",
+            url: "/collections/rareism-sale-1",
             links: [
-                { title: "RAREISM X BOBO", url: "/pages/rareism-bobo" },
+                { title: "RAREISM X BOBO", url: "/collections/rareism-sale-1" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-COLLABORATIONS.webp?v=1779272227",
-            imageLink: "/pages/rareism-bobo",
+            imageLink: "/collections/rareism-sale-1",
         },
 
         {

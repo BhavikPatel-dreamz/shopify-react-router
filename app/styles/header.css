@@ -48,7 +48,10 @@
     }
 
     .header-transparent-landing-page.light-font .header-inner .right-part .right-content .custom-account-icon svg path,
-    .header-wrapper.light-font .header-inner .right-part .right-content .custom-account-icon svg path {
+    .header-wrapper.light-font .header-inner .right-part .right-content .custom-account-icon svg path,
+    .header-wrapper.light-font .header-inner .right-part .right-content .wishlist-button svg path,
+    .header-wrapper.light-font .header-inner .right-part .right-content .header-cart-btn svg path,
+    .header-wrapper.light-font .header-inner .right-part .right-content .header-cart-btn svg line {
         stroke: #fff
     }
 
@@ -162,7 +165,7 @@
 
 @media screen and (max-width: 767px)and (prefers-color-scheme:dark) {
     .header-wrapper.header-transparent:not(.transparent-none) .index-page .title-label a {
-        color: var(--body-background-color)
+        color: var(--body-font-color) !important;
     }
 }
 
@@ -708,7 +711,8 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 15px;
-    color: #000
+    color: #000;
+    text-transform: uppercase;
 }
 
 .header-wrapper .header-inner .left-part .header-main-nav .horizontal-list-wrapper .main-link .header-mega-menu-wrapper .header-mega-menu-innerr .header-sub-list-wrapper .list-container .list-result-inner .list-wrapperer .sublist-child-list-wrapper .submenu-child-list .list .submenu-title:hover {
@@ -1190,6 +1194,12 @@
     gap: 5px;
     justify-content: center;
     width: 32px
+}
+
+.header-wrapper .header-inner .right-part .right-content .second-nav-wrapper .second-nav-inner li.custom-account-icon {
+    display: inline-flex;
+    align-items: center;
+    margin: 6px 12px;
 }
 
 .header-wrapper .header-inner .right-part .right-content .second-nav-wrapper .second-nav-inner .second-nav-content {

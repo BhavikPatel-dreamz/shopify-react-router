@@ -7,12 +7,12 @@
 }
 
 @font-face {
-  font-family: Inter;
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//thehouseofrare.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2") format("woff2"),
-       url("//thehouseofrare.com/cdn/fonts/inter/inter_n4.af8052d517e0c9ffac7b814872cecc27ae1fa132.woff") format("woff");
+    font-family: Inter;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("//thehouseofrare.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2") format("woff2"),
+        url("//thehouseofrare.com/cdn/fonts/inter/inter_n4.af8052d517e0c9ffac7b814872cecc27ae1fa132.woff") format("woff");
 }
 
 :root {
@@ -118,7 +118,13 @@
         --font-body-weight: 400;
     }
 }
+:root {
+    --header-height: 120px;
+}
 
+main {
+    padding-top: var(--header-height);
+}
 .swiper {
     margin-left: auto;
     margin-right: auto;
@@ -5702,9 +5708,11 @@ select::-ms-expand {
     justify-content: space-between;
     height: calc(100% - 341px);
 }
+
 body.cart-drawer-open {
     overflow: hidden;
 }
+
 @media screen and (max-width: 767px) {
     .cart-drawer-section .cart-drawer .cart-drawer-inner {
         padding-right: 0
@@ -8228,6 +8236,10 @@ body.cart-drawer-open {
     font-weight: 400
 }
 
+.image-grid-landing-page .landing-image-grid-page-wrapper .container {
+    max-width: 100%;
+}
+
 .image-grid-landing-page .landing-image-grid-page-wrapper .desktop-grid-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -8302,6 +8314,35 @@ body.cart-drawer-open {
     gap: 2px
 }
 
+
+.mobile-bottom-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+    font-size: 12px;
+}
+
+@media (min-width: 768px) {
+    .mobile-bottom-bar {
+        display: none;
+    }
+}
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+    border: none;
+
+    cursor: pointer;
+    z-index: 9999;
+}
 @media screen and (max-width: 767px) {
     .image-grid-landing-page .landing-image-grid-page-wrapper .mobile-grid-wrapper .mobile-split-banner-container {
         gap: 0
