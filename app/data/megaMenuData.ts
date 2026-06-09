@@ -2,256 +2,252 @@ export const megaMenuData = {
     men: [
         {
             title: "NEW IN",
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_new_in_54de08ab-4ef0-4426-a9c9-86d18e2b879a.webp",
+            url: "/collections/rr-new-arrivals-for-men",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_new_in_54de08ab-4ef0-4426-a9c9-86d18e2b879a.webp?v=487269051284930263",
             imageLink: "/men/new-in",
             type: "slider",
         },
 
         {
             title: "THE EDIT",
+            url: "/collections/rare-rabbit-new-arrivals",
             links: [
-                { title: "Denim", url: "/men/denim" },
-                { title: "This Week", url: "/men/this-week" },
-                { title: "Croquet Club", url: "/men/croquet-club" },
-                { title: "Linen", url: "/men/linen" },
-                { title: "Linen Guild", url: "/men/linen-guild" },
+                { title: "DENIM", url: "/collections/rare-rabbit-ss-26" },
+                { title: "THIS WEEK", url: "/collections/rare-rabbit-new-arrivals" },
+                { title: "CROQUET CLUB", url: "/pages/rare-rabbit-croquet-club" },
+                { title: "LINEN", url: "/pages/rare-rabbit-linen" },
+                { title: "LINEN GUILD", url: "/collections/guild-collection" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_this_week_e54ef7f6-8927-40a6-a10e-65b2213b6ae4.webp",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_this_week_e54ef7f6-8927-40a6-a10e-65b2213b6ae4.webp?v=1779181776",
             imageLink: "/men/this-week",
         },
 
         {
             title: "DENIM",
-            links: [
-                { title: "View All", url: "/men/denim" },
-                { title: "Slim Fit", url: "/men/denim/slim" },
-                { title: "Regular Fit", url: "/men/denim/regular" },
-                { title: "Relaxed Fit", url: "/men/denim/relaxed" },
-            ],
+            url: "/collections/rare-rabbit-ss-26",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_denim.webp?v=11832121638737094556",
+
         },
 
         {
             title: "CLOTHING",
+            url: "/collections/rare-rabbit-all-product",
             links: [
-                { title: "View All", url: "/men/clothing" },
-                { title: "Best Seller", url: "/men/best-sellers" },
-                { title: "Shirts", url: "/men/shirts" },
-                { title: "Formal Shirts", url: "/men/formal-shirts" },
-                { title: "T-Shirts", url: "/men/t-shirts" },
-                { title: "Polos", url: "/men/polos" },
-                { title: "Trousers", url: "/men/trousers" },
-                { title: "Jeans", url: "/men/jeans" },
-                { title: "Shorts", url: "/men/shorts" },
-                { title: "Jackets", url: "/men/jackets" },
-                { title: "Suits", url: "/men/suits" },
-                { title: "Blazers", url: "/men/blazers" },
-                { title: "Coats", url: "/men/coats" },
-                { title: "Hoodies", url: "/men/hoodies" },
-                { title: "Sweaters", url: "/men/sweaters" },
-                { title: "Trackpants", url: "/men/trackpants" },
-                { title: "Kurta | Ethnic", url: "/men/ethnic" },
-                { title: "Bandhgala", url: "/men/bandhgala" },
+                { title: "VIEW ALL", url: "/collections/rare-rabbit-all-product" },
+                { title: "BEST SELLER", url: "/collections/rr-best-seller" },
+                { title: "SHIRTS", url: "/collections/rr-shirt" },
+                { title: "FORMAL SHIRTS", url: "/collections/formal-shirt" },
+                { title: "T-SHIRTS", url: "/men/t-shirts" },
+                { title: "POLOS", url: "/men/polos" },
+                { title: "TROUSERS", url: "/men/trousers" },
+                { title: "JEANS", url: "/men/jeans" },
+                { title: "SHORTS", url: "/men/shorts" },
+                { title: "JACKETS", url: "/men/jackets" },
+                { title: "SUITS", url: "/men/suits" },
+                { title: "BLAZERS", url: "/men/blazers" },
+                { title: "COATS", url: "/men/coats" },
+                { title: "HOODIES | SWEATSHIRTS", url: "/men/hoodies" },
+                { title: "SWEATERS | CARDIGANS", url: "/men/sweaters" },
+                { title: "TRACKPANTS", url: "/men/trackpants" },
+                { title: "KURTA | ETHNIC", url: "/men/ethnic" },
+                { title: "BANDHGALA", url: "/men/bandhgala" },
             ],
+            image:"https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_ALL_PRODUCTS.webp?v=1779181383"
         },
 
         {
             title: "SALE",
-            links: [
-                { title: "Shirts", url: "/men/sale/shirts" },
-                { title: "T-Shirts", url: "/men/sale/t-shirts" },
-                { title: "Jeans", url: "/men/sale/jeans" },
-                { title: "Jackets", url: "/men/sale/jackets" },
-            ],
+            url: "/collections/rr-sale-aug",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_SALE.webp?v=7890618138459512982",
         },
 
         {
             title: "WORK | BUSINESS",
+            url: "/collections/rare-rabbit-business",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_workwear.webp?v=1779181865",
             links: [
-                { title: "View All", url: "/men/workwear" },
-                { title: "Shirts", url: "/men/workwear/shirts" },
-                { title: "Suits", url: "/men/workwear/suits" },
-                { title: "Blazers", url: "/men/workwear/blazers" },
-                { title: "Trousers", url: "/men/workwear/trousers" },
-                { title: "Belts", url: "/men/accessories/belts" },
-                { title: "Wallets", url: "/men/accessories/wallets" },
+                { title: "VIEW ALL", url: "/men/workwear" },
+                { title: "SHIRTS", url: "/men/workwear/shirts" },
+                { title: "SUITS", url: "/men/workwear/suits" },
+                { title: "BLAZERS", url: "/men/workwear/blazers" },
+                { title: "TROUSERS", url: "/men/workwear/trousers" },
+                { title: "BELTS", url: "/men/accessories/belts" },
+                { title: "WALLETS", url: "/men/accessories/wallets" },
             ],
         },
 
         {
             title: "INNER WEAR",
+            url: "/collections/rare-rabbit-innerwear",
             links: [
-                { title: "Trunks", url: "/men/innerwear/trunks" },
-                { title: "Briefs", url: "/men/innerwear/briefs" },
-                { title: "Sleepwear", url: "/men/sleepwear" },
-                { title: "Socks", url: "/men/socks" },
+                { title: "TRUNKS", url: "/men/innerwear/trunks" },
+                { title: "BRIEFS", url: "/men/innerwear/briefs" },
+                { title: "SLEEPWEAR", url: "/men/sleepwear" },
+                { title: "SOCKS", url: "/men/socks" },
             ],
+            image:"https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-innerv_3e077b23-1200-40fe-9645-b85272226682.webp?v=1779182261"
         },
 
         {
             title: "ACCESSORIES",
+            url: "/collections/rr-all-accessories",
             links: [
-                { title: "Belts", url: "/men/accessories/belts" },
-                { title: "Wallets", url: "/men/accessories/wallets" },
-                { title: "Pocket Squares", url: "/men/accessories/pocket-squares" },
-                { title: "Bags", url: "/men/accessories/bags" },
+                { title: "BELTS", url: "/men/accessories/belts" },
+                { title: "WALLETS", url: "/men/accessories/wallets" },
+                { title: "POCKET SQUARES", url: "/men/accessories/pocket-squares" },
+                { title: "BAGS | BACKPACKS", url: "/men/accessories/bags" },
             ],
+            image:"https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_acesories.webp?v=1779182327"
         },
 
         {
             title: "LUGGAGE",
-            links: [
-                { title: "Cabin Bags", url: "/men/luggage/cabin" },
-                { title: "Travel Bags", url: "/men/luggage/travel" },
-                { title: "Backpacks", url: "/men/luggage/backpacks" },
-            ],
+            url: "/collections/trolley-bag",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_travel_73eec525-ef22-4a7e-a012-f75ab084a299.webp?v=3557055985093533717",
+
         },
 
         {
             title: "SHOP THE LOOK",
+            url: "/men/shop-the-look",
             links: [
-                { title: "Summer Essentials", url: "/men/shop-the-look/summer" },
-                { title: "Denim On Denim", url: "/men/shop-the-look/denim" },
-                { title: "Winter Wear", url: "/men/shop-the-look/winter" },
+                { title: "SUMMER ESSENTIALS", url: "/men/shop-the-look/summer" },
+                { title: "DENIM ON DENIM", url: "/men/shop-the-look/denim" },
             ],
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/SHOP_THE_LOOK-_web.webp?v=1779182547",
+
         },
 
         {
             title: "SHOES",
+            url: "/collections/rare-rr-men-shoes",
             links: [
-                { title: "View All", url: "/shoes" },
-                { title: "Sneakers", url: "/shoes/sneakers" },
-                { title: "Loafers", url: "/shoes/loafers" },
-                { title: "Boots", url: "/shoes/boots" },
-                { title: "Sandals", url: "/shoes/sandals" },
+                { title: "VIEW ALL", url: "/shoes" },
+                { title: "SNEAKERS", url: "/shoes/sneakers" },
+                { title: "LOAFERS", url: "/shoes/loafers" },
+                { title: "BOOTS", url: "/shoes/boots" },
+                { title: "SLIPPER | SANDALS", url: "/shoes/sandals" },
             ],
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/RAREZ_DESKTOP.webp?v=1779182744",
+
         },
 
         {
             title: "GIFT CARD",
-            links: [
-                { title: "Gift Card", url: "/gift-card" },
-                { title: "Store Locator", url: "/store-locator" },
-            ],
+            url: "/collections/gift-card-1",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
+
         },
     ],
 
     women: [
         {
             title: "NEW IN",
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_new_in.webp?v=1779175946",
+            url: "/collections/rareism-ss-26",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-NEW_IN.webp?v=8872945473860501405",
             imageLink: "/women/new-in",
             type: "slider",
         },
 
         {
             title: "THE EDIT",
+            url: "/collections/rareism-new-arrivals",
             links: [
-                { title: "Denim", url: "/women/denim" },
-                { title: "This Week", url: "/women/this-week" },
-                { title: "Top Mode On", url: "/women/top-mode-on" },
-                { title: "Summer Tales", url: "/women/summer-tales" },
-                { title: "Ruby", url: "/women/ruby" },
+                { title: "DENIM", url: "/women/denim" },
+                { title: "THIS WEEK", url: "/women/this-week" },
+                { title: "TOP MODE ON", url: "/women/top-mode-on" },
+                { title: "SUMMER TALES", url: "/women/summer-tales" },
+                { title: "RUBY", url: "/women/ruby" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-THE_EDIT.webp?v=1779271946",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-THE_EDIT.webp?v=1779271946",
             imageLink: "/women/new-arrivals",
         },
 
         {
             title: "DENIM",
-            links: [
-                { title: "View All", url: "/women/denim" },
-                { title: "Jeans", url: "/women/denim" },
-            ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-DENIM.webp?v=11441343761345001647",
+            url: "/collections/rareism-new-arrivals-jeans",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-DENIM.webp?v=11441343761345001647",
             imageLink: "/women/denim",
         },
 
         {
             title: "CLOTHING",
+            url: "/collections/rareism-all-products",
             links: [
-                { title: "View All", url: "/women/all-products" },
-                { title: "Best Sellers", url: "/women/best-sellers" },
-                { title: "Dress", url: "/women/dress" },
-                { title: "Tops", url: "/women/tops" },
-                { title: "Shirts", url: "/women/shirts" },
-                { title: "T-Shirts", url: "/women/t-shirt" },
-                { title: "Polos", url: "/women/polo" },
-                { title: "Co-ords", url: "/women/co-ords" },
-                { title: "Trouser", url: "/women/trouser" },
-                { title: "Jeans", url: "/women/denim" },
-                { title: "Skirts", url: "/women/skirt" },
-                { title: "Shorts", url: "/women/short" },
-                { title: "Blazer", url: "/women/blazer" },
-                { title: "Trackpants", url: "/women/track-pant" },
-                { title: "Sweater", url: "/women/sweater" },
-                { title: "Cardigan | Shrug", url: "/women/shrug-overlay" },
-                { title: "Sweatshirt", url: "/women/sweatshirt" },
-                { title: "Jackets", url: "/women/jackets" },
-                { title: "Coats", url: "/women/coat" },
+                { title: "VIEW ALL", url: "/women/all-products" },
+                { title: "BEST SELLERS", url: "/women/best-sellers" },
+                { title: "DRESS", url: "/women/dress" },
+                { title: "TOPS", url: "/women/tops" },
+                { title: "SHIRTS", url: "/women/shirts" },
+                { title: "T-SHIRTS", url: "/women/t-shirt" },
+                { title: "POLOS", url: "/women/polo" },
+                { title: "CO-ORDS", url: "/women/co-ords" },
+                { title: "TROUSER", url: "/women/trouser" },
+                { title: "JEANS", url: "/women/denim" },
+                { title: "SKIRTS", url: "/women/skirt" },
+                { title: "SHORTS", url: "/women/short" },
+                { title: "BLAZER", url: "/women/blazer" },
+                { title: "TRACKPANTS", url: "/women/track-pant" },
+                { title: "SWEATER", url: "/women/sweater" },
+                { title: "CARDIGAN | SHRUG", url: "/women/shrug-overlay" },
+                { title: "SWEATSHIRT", url: "/women/sweatshirt" },
+                { title: "JACKETS", url: "/women/jackets" },
+                { title: "COATS", url: "/women/coat" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-ALL_PRODUCTS.webp?v=1779271859",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-ALL_PRODUCTS.webp?v=1779271859",
             imageLink: "/women/all-products",
         },
 
         {
             title: "SALE",
-            links: [
-                { title: "View All", url: "/women/sale" },
-                { title: "Clothing", url: "/women/sale/clothing" },
-                { title: "Shoes", url: "/women/sale/shoes" },
-                { title: "Accessories", url: "/women/sale/accessories" },
-            ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_Sale_-RSM.webp?v=1760444150",
+            url: "/collections/rareism-sale-1",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-SALE.webp?v=2004264745779206160",
             imageLink: "/women/sale",
         },
 
         {
             title: "WORK WEAR",
+            url: "/collections/work-wear-rareism",
             links: [
-                { title: "View All", url: "/women/work-wear" },
-                { title: "Dress", url: "/women/work-wear/dress" },
-                { title: "Tops", url: "/women/work-wear/tops" },
-                { title: "Polo", url: "/women/work-wear/polo" },
-                { title: "Shirts", url: "/women/work-wear/shirts" },
-                { title: "Trousers", url: "/women/work-wear/trousers" },
-                { title: "Blazer", url: "/women/work-wear/blazer" },
+                { title: "VIEW ALL", url: "/women/work-wear" },
+                { title: "DRESS", url: "/women/work-wear/dress" },
+                { title: "TOPS", url: "/women/work-wear/tops" },
+                { title: "POLO", url: "/women/work-wear/polo" },
+                { title: "SHIRTS", url: "/women/work-wear/shirts" },
+                { title: "TROUSERS", url: "/women/work-wear/trousers" },
+                { title: "BLAZER", url: "/women/work-wear/blazer" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-WORK_WEAR.webp?v=1779271819",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-WORK_WEAR.webp?v=1779271819",
             imageLink: "/women/work-wear",
         },
 
         {
             title: "ACCESSORIES",
+            url: "/collections/rareism-accessories-1",
             links: [
-                { title: "Belts", url: "/women/accessories/belts" },
-                { title: "Scarfs", url: "/women/accessories/scarfs" },
-                { title: "Jewellery", url: "/women/accessories/jewellery" },
-                { title: "Bags", url: "/women/accessories/bags" },
+                { title: "BELTS", url: "/women/accessories/belts" },
+                { title: "SCARFS", url: "/women/accessories/scarfs" },
+                { title: "JEWELLERY", url: "/women/accessories/jewellery" },
+                { title: "BAGS", url: "/women/accessories/bags" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-ACCESSORIES.webp?v=1779272156",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-ACCESSORIES.webp?v=1779272156",
             imageLink: "/women/accessories",
         },
 
         {
             title: "COLLABORATIONS",
+            url: "/pages/rareism-bobo",
             links: [
-                { title: "RAREISM x BOBO", url: "/pages/rareism-bobo" },
+                { title: "RAREISM X BOBO", url: "/pages/rareism-bobo" },
             ],
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-COLLABORATIONS.webp?v=1779272227",
+
         },
 
         {
             title: "GIFT CARD",
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
+            url: "/collections/gift-card-1",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
             imageLink: "/collections/gift-card-1",
         },
     ],
@@ -259,68 +255,88 @@ export const megaMenuData = {
     kids: [
         {
             title: "NEW IN",
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_new_in.webp?v=1779175946",
+            url: "/collections/rare-ones-new-arrivals",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_new_in.webp?v=12904578986821097628",
             imageLink: "/kids/new-in",
             type: "slider",
         },
 
         {
-            title: "ALL PRODUCTS",
+            title: "THE EDIT",
+            url: "/collections/ro-ss-26",
             links: [
-                { title: "View All", url: "/kids/all-products" },
-                { title: "Best Sellers", url: "/kids/best-sellers" },
-                { title: "Tops", url: "/kids/tops" },
-                { title: "T-Shirts", url: "/kids/t-shirts" },
-                { title: "Shirts", url: "/kids/shirts" },
-                { title: "Shorts", url: "/kids/shorts" },
-                { title: "Trousers", url: "/kids/trousers" },
-                { title: "Jeans", url: "/kids/jeans" },
-                { title: "Dresses", url: "/kids/dresses" },
-                { title: "Skirts", url: "/kids/skirts" },
-                { title: "Jackets", url: "/kids/jackets" },
-                { title: "Sweaters", url: "/kids/sweaters" },
-                { title: "Hoodies", url: "/kids/hoodies" },
+                { title: "DENIM", url: "/kids/all-products" },
+                { title: "THIS WEEK", url: "/kids/best-sellers" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-ALL_PRODUCTS.webp?v=1779271859",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_The_edit_9d4beafc-2f81-4b84-aaae-4e440412c9ea.webp?v=1779281970",
             imageLink: "/kids/all-products",
         },
 
         {
-            title: "CLOTHING",
-            links: [
-                { title: "Boys", url: "/kids/boys" },
-                { title: "Girls", url: "/kids/girls" },
-                { title: "Unisex", url: "/kids/unisex" },
-            ],
+            title: "DENIM",
+            url: "/collections/rare-ones-ss-26-jeans",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_The_edit-1.webp?v=8880706383563276293",
+
         },
 
         {
-            title: "ACCESSORIES",
+            title: "CLOTHING",
+            url: "/collections/rare-ones-kids-all-products",
             links: [
-                { title: "Bags", url: "/kids/accessories/bags" },
-                { title: "Hats", url: "/kids/accessories/hats" },
-                { title: "Scarves", url: "/kids/accessories/scarves" },
+                { title: "VIEW ALL", url: "/kids/accessories/bags" },
+                { title: "BESTSELLERS", url: "/kids/accessories/hats" },
+                { title: "SHIRT", url: "/kids/accessories/scarves" },
+                { title: "T-SHIRT", url: "/kids/accessories/bags" },
+                { title: "POLO", url: "/kids/accessories/hats" },
+                { title: "JEANS", url: "/kids/accessories/scarves" },
+                { title: "TROUSER", url: "/kids/accessories/bags" },
+                { title: "COAT", url: "/kids/accessories/hats" },
+                { title: "CO-ORDS", url: "/kids/accessories/scarves" },
+                { title: "TRACKPANT", url: "/kids/accessories/bags" },
+                { title: "SHORTS", url: "/kids/accessories/hats" },
+                { title: "JACKET", url: "/kids/accessories/scarves" },
+                { title: "SHACKET", url: "/kids/accessories/bags" },
+                { title: "SWEATSHIRT", url: "/kids/accessories/hats" },
+                { title: "BLAZER", url: "/kids/accessories/scarves" },
             ],
+            image:"https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_The_edit-2_8c6f65b8-c99e-45f3-b841-290ff097363e.webp?v=1779282232"
         },
 
         {
             title: "SALE",
+            url: "/collections/rare-ones-kids-sale",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_SALE.webp?v=16740615326013581290",
+            imageLink: "/kids/sale",
+        },
+        {
+            title: "SHOES | ACCESSORIES",
+            url: "/collections/rare-ones-kids-sneaker",
             links: [
-                { title: "View All", url: "/kids/sale" },
-                { title: "Clothing", url: "/kids/sale/clothing" },
-                { title: "Shoes", url: "/kids/sale/shoes" },
+                { title: "SNEAKER", url: "/kids/sale" },
+                { title: "SOCKS", url: "/kids/sale/clothing" },
+                { title: "BACKPACK", url: "/kids/sale/shoes" },
+                { title: "CAP", url: "/kids/sale/shoes" },
+
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_Sale_-RSM.webp?v=1760444150",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_SALE-1_03fb1d43-c32b-4b8d-8b5b-811e0cac2c6e.webp?v=1779282308",
+            imageLink: "/kids/sale",
+        },
+
+        {
+            title: "SHOP THE LOOK",
+            url: "/collections/rare-ones-kids-co-ords",
+            links: [
+                { title: "CO-ORDS", url: "/kids/sale" },
+                { title: "MINI ME", url: "/kids/sale/clothing" },
+            ],
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_SALE-2_5da8145c-4cb0-4632-bc9e-dc914b9a50e4.webp?v=1779282358",
             imageLink: "/kids/sale",
         },
 
         {
             title: "GIFT CARD",
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
+            url: "/collections/gift-card-1",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
             imageLink: "/collections/gift-card-1",
         },
     ],
@@ -328,67 +344,70 @@ export const megaMenuData = {
     shoes: [
         {
             title: "NEW IN",
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_new_in.webp?v=1779175946",
+            url: "/collections/shoes-new-arrival",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ__NEW_IN__DESKTOP.webp?v=3241569416913406214",
             imageLink: "/shoes/new-in",
             type: "slider",
         },
 
         {
-            title: "ALL SHOES",
+            title: "THE EDIT",
+            url: "/collections/rarez-ragno",
             links: [
-                { title: "View All", url: "/shoes" },
-                { title: "Best Sellers", url: "/shoes/best-sellers" },
-                { title: "Sneakers", url: "/shoes/sneakers" },
-                { title: "Loafers", url: "/shoes/loafers" },
-                { title: "Boots", url: "/shoes/boots" },
-                { title: "Sandals", url: "/shoes/sandals" },
-                { title: "Casual", url: "/shoes/casual" },
-                { title: "Formal", url: "/shoes/formal" },
-                { title: "Sports", url: "/shoes/sports" },
+                { title: "RAGNO", url: "/shoes" },
+                { title: "THROUGH THE AGES", url: "/shoes/best-sellers" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-ALL_PRODUCTS.webp?v=1779271859",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ__THE_EDIT_desktop.webp?v=1780305368",
             imageLink: "/shoes",
         },
 
         {
-            title: "BY STYLE",
-            links: [
-                { title: "Sneakers", url: "/shoes/sneakers" },
-                { title: "Loafers", url: "/shoes/loafers" },
-                { title: "Boots", url: "/shoes/boots" },
-                { title: "Sandals", url: "/shoes/sandals" },
-                { title: "Dress Shoes", url: "/shoes/formal" },
-            ],
+            title: "RANGO",
+            url: "/collections/rarez-ragno",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ__RAGNO_-_DESKTOP.webp?v=7759168167461581707",
+
         },
 
         {
-            title: "BY COLLECTION",
+            title: "ALL PRODUCTS",
+            url: "/collections/rare-rr-men-shoes",
             links: [
-                { title: "Men", url: "/men/shoes" },
-                { title: "Women", url: "/women/shoes" },
-                { title: "Kids", url: "/kids/shoes" },
+                { title: "VIEW ALL", url: "/men/shoes" },
+                { title: "BEST SELLERS", url: "/women/shoes" },
+                { title: "SNEAKERS", url: "/kids/shoes" },
+                { title: "FORMAL", url: "/men/shoes" },
+                { title: "MOCASSINS", url: "/women/shoes" },
+                { title: "HIGH-TOP SNEAKERS", url: "/kids/shoes" },
+                { title: "SANDALS", url: "/men/shoes" },
+                { title: "BOOTS", url: "/women/shoes" },
+
             ],
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ__ALL_PRODUCTS_DESKTOP.webp?v=1780305304",
+
         },
 
         {
             title: "SALE",
+            url: "/collections/shoes-sale",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ-_SALE_DESKTOP.webp?v=23388405262293263",
+            imageLink: "/shoes/sale",
+        },
+        {
+            title: "OCASION",
+            url: "/collections/rarez-business",
             links: [
-                { title: "View All", url: "/shoes/sale" },
-                { title: "Men", url: "/shoes/sale/men" },
-                { title: "Women", url: "/shoes/sale/women" },
-                { title: "Kids", url: "/shoes/sale/kids" },
+                { title: "TRAVEL", url: "/shoes/sale" },
+                { title: "BUSINESS", url: "/shoes/sale/men" },
+                { title: "PARTY", url: "/shoes/sale/women" },
             ],
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_-_DESTKTOP_-_Sale_-RSM.webp?v=1760444150",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RZ-_OCCASSION_DESKTOP.webp?v=1780305143",
             imageLink: "/shoes/sale",
         },
 
         {
             title: "GIFT CARD",
-            image:
-                "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
+            url: "/collections/gift-card-1",
+            image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-GIFT_CARD.webp?v=1840812756811755102",
             imageLink: "/collections/gift-card-1",
         },
     ],

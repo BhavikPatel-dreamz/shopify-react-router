@@ -46,13 +46,20 @@ export default function MegaMenu({
                                         data-id={section.title
                                             .toLowerCase()
                                             .replace(/\s+/g, "-")}
-                                        onMouseEnter={() =>
-                                            setActiveSection(section)
-                                        }
+                                        onMouseEnter={() => {
+                                            setActiveSection(section);
+                                        }}
                                     >
-                                        <span className="links">
+                                        <Link
+                                            to={section.url || "#"}
+                                            className="links"
+                                            onClick={(e) => {
+                                                // Stop propagation to prevent any parent handlers from interfering
+                                                e.stopPropagation();
+                                            }}
+                                        >
                                             {section.title}
-                                        </span>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -84,9 +91,16 @@ export default function MegaMenu({
                                     .replace(/\s+/g, "-")}
                             >
                                 <div className="title-wrapper">
-                                    <span className="sub-list-title">
+                                    <Link
+                                        to={section.url || "#"}
+                                        className="sub-list-title"
+                                        style={{ textDecoration: 'none', color: 'inherit' }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                        }}
+                                    >
                                         {section.title}
-                                    </span>
+                                    </Link>
                                 </div>
 
                                 {(section.links?.length > 0 || section.image) && (
@@ -99,6 +113,9 @@ export default function MegaMenu({
                                                             <Link
                                                                 to={link.url}
                                                                 className="submenu-title"
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                }}
                                                             >
                                                                 {link.title}
                                                             </Link>
@@ -121,8 +138,11 @@ export default function MegaMenu({
                                                     menu-text={parentLink}
                                                 >
                                                     <Link
-                                                        to={section.imageLink || "/"}
+                                                        to={section.imageLink || section.url || "#"}
                                                         className="mega-image"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                        }}
                                                     >
                                                         <img
                                                             src={section.image}
