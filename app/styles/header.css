@@ -162,7 +162,7 @@
 
 @media screen and (max-width: 767px)and (prefers-color-scheme:dark) {
     .header-wrapper.header-transparent:not(.transparent-none) .index-page .title-label a {
-        color: var(--body-background-color)
+        color: var(--body-font-color) !important;
     }
 }
 

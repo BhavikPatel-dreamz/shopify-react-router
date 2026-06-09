@@ -237,7 +237,7 @@ export default function Header() {
 
         <div className={`middle-part ${location.pathname.startsWith("/pages/rareism") ? "rareism-brand" : location.pathname.startsWith("/pages/kids") ? "rare-kid-brand" : location.pathname.startsWith("/pages/rarez-landing-page") ? "rare-shoes-brand" : location.pathname.startsWith("/pages/rare-rabbit") ? "rare-rabbit-brand" : "home-brand"} `} >
           <div className="header-logo-wrapper">
-            <div className={`header-logo-inner ${headerTheme === "dark" ? "light-logo-active" : "dark-logo-active"} ${location.pathname === "/pages/rare-rabbit" || location.pathname === "/pages/rareism" || location.pathname === "/pages/kids" || location.pathname === "/pages/rarez-landing-page" ? "landing-page-logo" : ""} `} >
+            <div className={`header-logo-inner ${headerTheme === "dark" ? "dark-logo-active" : "light-logo-active"} ${location.pathname === "/pages/rare-rabbit" || location.pathname === "/pages/rareism" || location.pathname === "/pages/kids" || location.pathname === "/pages/rarez-landing-page" ? "landing-page-logo" : ""} `} >
               <Link to={logo.href} className={`brand-image ${location.pathname.startsWith("/pages/rareism") ? "rareism-image" : location.pathname.startsWith("/pages/kids") ? "rare-kid-image" : location.pathname.startsWith("/pages/rarez-landing-page") ? "rare-footwear-image" : location.pathname.startsWith("/pages/rare-rabbit") ? "rare-rabbit-image" : "home-image"} `} >
                 <img src={logo.light}alt="logo"className="light-theme-logo"/>
 
