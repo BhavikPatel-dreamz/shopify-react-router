@@ -17,7 +17,7 @@ const logos = {
     light:
       "https://86e75ac3.nitro.getn7.io/cdn/shop/files/hor_1_ac34ebd3-4498-4f64-b50b-ae6bd5404df8.png",
     dark:
-      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/hor_1_ac34ebd3-4498-4f64-b50b-ae6bd5404df8.png",
+      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/hor_2_1dd668d6-9d4b-40ca-9a09-0f65a289eea7.png",
     href: "/",
   },
 
@@ -59,6 +59,7 @@ export default function Header() {
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [headerTheme, setHeaderTheme] = useState<"light" | "dark">("light");
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const isHome = location.pathname === "/";
@@ -74,8 +75,43 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const sections =
+        document.querySelectorAll("[data-header]");
+
+      if (!sections.length) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const theme =
+              (entry.target.getAttribute("data-header") as
+                | "light"
+                | "dark") || "light";
+
+            setHeaderTheme(theme);
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
+
+      sections.forEach((section) =>
+        observer.observe(section)
+      );
+
+      return () => observer.disconnect();
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
+
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  
+
   let logo = logos.home;
 
   if (location.pathname.startsWith("/pages/rareism")) {
@@ -89,28 +125,45 @@ export default function Header() {
   }
 
   const logoSrc =
-    isHome && !scrolled
+    headerTheme === "dark"
       ? logo.light
       : logo.dark;
 
-  const darkFont = logoSrc === logo.dark;
+  const darkFont =
+    headerTheme === "light";
+
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      const header = document.querySelector(
+        ".header-wrapper"
+      ) as HTMLElement;
+
+      if (header) {
+        document.documentElement.style.setProperty(
+          "--header-height",
+          `${header.offsetHeight}px`
+        );
+      }
+    };
+
+    updateHeaderHeight();
+
+    window.addEventListener(
+      "resize",
+      updateHeaderHeight
+    );
+
+    return () =>
+      window.removeEventListener(
+        "resize",
+        updateHeaderHeight
+      );
+  }, []);
+
 
   return (
-    <header
-      className={`
-        header-wrapper
-        ${isHome ? "header-transparent" : ""}
-        ${location.pathname === "/pages/rare-rabbit" ||
-              location.pathname === "/pages/rareism" ||
-              location.pathname === "/pages/kids" ||
-              location.pathname === "/pages/rarez-landing-page"
-              ? "header-transparent-landing-page"
-              : ""
-            }
-        ${darkFont ? "dark-font" : ""}
-        ${hoveredLink ? "header-hovered" : ""}
-      `}
-    >
+    <header className={`header-wrapper ${isHome ? "header-transparent" : ""} ${headerTheme === "dark" ? "light-font" : "dark-font"} ${hoveredLink ? "header-hovered" : ""} `} >
       <div className="header-inner">
         {/* LEFT PART */}
 
@@ -141,9 +194,8 @@ export default function Header() {
               ].map((item) => (
                 <li
                   key={item.label}
-                  className={`main-link ${
-                    hoveredLink === item.label ? "active" : ""
-                  }`}
+                  className={`main-link ${hoveredLink === item.label ? "active" : ""
+                    }`}
                   data-type={item.type}
                   onMouseEnter={() => {
                     setOpenMenu(item.label);
@@ -158,9 +210,8 @@ export default function Header() {
                 >
                   <Link
                     to={item.path}
-                    className={`parent-link ${
-                      hoveredLink === item.label ? "parent-active" : ""
-                    }`}
+                    className={`parent-link ${hoveredLink === item.label ? "parent-active" : ""
+                      }`}
                   >
                     {item.label}
                     <span className="link-spacer">
@@ -184,53 +235,13 @@ export default function Header() {
 
         {/* MIDDLE PART */}
 
-        <div
-          className={` middle-part
-           ${location.pathname.startsWith("/pages/rareism")
-              ? "rareism-brand"
-              : location.pathname.startsWith("/pages/kids")
-                ? "rare-kid-brand"
-                : location.pathname.startsWith("/pages/rarez-landing-page")
-                  ? "rare-shoes-brand"
-                  : location.pathname.startsWith("/pages/rare-rabbit")
-                    ? "rare-rabbit-brand"
-                    : "home-brand"
-            }
-        `}
-        >
+        <div className={`middle-part ${location.pathname.startsWith("/pages/rareism") ? "rareism-brand" : location.pathname.startsWith("/pages/kids") ? "rare-kid-brand" : location.pathname.startsWith("/pages/rarez-landing-page") ? "rare-shoes-brand" : location.pathname.startsWith("/pages/rare-rabbit") ? "rare-rabbit-brand" : "home-brand"} `} >
           <div className="header-logo-wrapper">
-            <div className={`header-logo-inner
-                ${scrolled
-                  ? "dark-logo-active"
-                  : "light-logo-active"
-                }
-                ${location.pathname === "/pages/rare-rabbit" ||
-                  location.pathname === "/pages/rareism" ||
-                  location.pathname === "/pages/kids" ||
-                  location.pathname === "/pages/rarez-landing-page"
-                  ? "landing-page-logo"
-                  : ""
-                }
-              `} 
-            >
-              <Link to={logo.href} className={`brand-image
-                  ${location.pathname.startsWith("/pages/rareism")
-                      ? "rareism-image"
-                      : location.pathname.startsWith("/pages/kids")
-                        ? "rare-kid-image"
-                        : location.pathname.startsWith("/pages/rarez-landing-page")
-                          ? "rare-footwear-image"
-                          : location.pathname.startsWith("/pages/rare-rabbit")
-                            ? "rare-rabbit-image"
-                            : "home-image"
-                    }
-                `}
-              >
-                <img
-                  src={logoSrc}
-                  alt="logo"
-                  className="brand-logo"
-                />
+            <div className={`header-logo-inner ${headerTheme === "dark" ? "light-logo-active" : "dark-logo-active"} ${location.pathname === "/pages/rare-rabbit" || location.pathname === "/pages/rareism" || location.pathname === "/pages/kids" || location.pathname === "/pages/rarez-landing-page" ? "landing-page-logo" : ""} `} >
+              <Link to={logo.href} className={`brand-image ${location.pathname.startsWith("/pages/rareism") ? "rareism-image" : location.pathname.startsWith("/pages/kids") ? "rare-kid-image" : location.pathname.startsWith("/pages/rarez-landing-page") ? "rare-footwear-image" : location.pathname.startsWith("/pages/rare-rabbit") ? "rare-rabbit-image" : "home-image"} `} >
+                <img src={logo.light}alt="logo"className="light-theme-logo"/>
+
+                <img src={logo.dark} alt="logo" className="dark-theme-logo" />
               </Link>
             </div>
           </div>
