@@ -23,17 +23,17 @@ const logos = {
 
   men: {
     light:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/rare-rabbit-white.png",
+      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41821.png",
     dark:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/hor_1_ac34ebd3-4498-4f64-b50b-ae6bd5404df8.png?v=1720351640",
+      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/Frame_41821.png",
     href: "/pages/rare-rabbit",
   },
 
   women: {
     light:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/rareism_white.png",
+      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/LOGO_RAREISM_750_X_541_light_1d28ee09-7205-49c6-aec4-c4b4826dccb2.png",
     dark:
-      "https://cdn.shopify.com/s/files/1/0752/6435/files/LOGO_RAREISM_750_X_541_light_1d28ee09-7205-49c6-aec4-c4b4826dccb2.png?v=1757083866",
+      "https://86e75ac3.nitro.getn7.io/cdn/shop/files/LOGO_RAREISM_750_X_540_Dark_b3bd1fca-9554-4a29-929f-dcb32110746c.png",
     href: "/pages/rareism",
   },
 
@@ -63,6 +63,18 @@ export default function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const isHome = location.pathname === "/";
+
+  const isTransparentHeader =
+    isHome ||
+    location.pathname === "/pages/kids" ||
+    location.pathname === "/pages/rarez-landing-page" ||
+    location.pathname === "/pages/rareism" ||
+    location.pathname === "/pages/rare-rabbit";
+
+  const LightFont =
+    location.pathname === "/pages/kids" ||
+    location.pathname === "/pages/rarez-landing-page" ||
+    location.pathname === "/pages/rare-rabbit"; 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -163,7 +175,7 @@ export default function Header() {
 
 
   return (
-    <header className={`header-wrapper ${isHome ? "header-transparent" : ""} ${headerTheme === "dark" ? "light-font" : "dark-font"} ${hoveredLink ? "header-hovered" : ""} `} >
+    <header className={` header-wrapper ${isTransparentHeader ? "header-transparent" : ""} ${LightFont ? "light-font" : headerTheme === "dark" ? "light-font" : "dark-font"} ${hoveredLink ? "header-hovered" : ""} `} >
       <div className="header-inner">
         {/* LEFT PART */}
 
@@ -191,44 +203,50 @@ export default function Header() {
                   path: "/pages/rarez-landing-page",
                   type: "rare-shoes",
                 },
-              ].map((item) => (
-                <li
-                  key={item.label}
-                  className={`main-link ${hoveredLink === item.label ? "active" : ""
-                    }`}
-                  data-type={item.type}
-                  onMouseEnter={() => {
-                    setOpenMenu(item.label);
-                    setActiveMenu(item.label);
-                    setHoveredLink(item.label);
-                  }}
-                  onMouseLeave={() => {
-                    setOpenMenu(null);
-                    setActiveMenu(null);
-                    setHoveredLink(null);
-                  }}
-                >
-                  <Link
-                    to={item.path}
-                    className={`parent-link ${hoveredLink === item.label ? "parent-active" : ""
-                      }`}
-                  >
-                    {item.label}
-                    <span className="link-spacer">
-                      menu
-                    </span>
-                  </Link>
+              ].map((item) => {
+                const isCurrentPage =
+                  location.pathname === item.path ||
+                  location.pathname.startsWith(item.path + "/");
 
-                  <MegaMenu
-                    sections={
-                      megaMenuData[
-                      item.label.toLowerCase() as keyof typeof megaMenuData
-                      ]
-                    }
-                    isOpen={openMenu === item.label}
-                  />
-                </li>
-              ))}
+                return (
+                  <li
+                    key={item.label}
+                    className={`main-link ${hoveredLink === item.label ? "active" : ""
+                      }`}
+                    data-type={item.type}
+                    onMouseEnter={() => {
+                      setOpenMenu(item.label);
+                      setActiveMenu(item.label);
+                      setHoveredLink(item.label);
+                    }}
+                    onMouseLeave={() => {
+                      setOpenMenu(null);
+                      setActiveMenu(null);
+                      setHoveredLink(null);
+                    }}
+                  >
+                    <Link
+                      to={item.path}
+                      className={`parent-link ${hoveredLink === item.label || isCurrentPage
+                          ? "parent-active"
+                          : ""
+                        }`}
+                    >
+                      {item.label}
+                      <span className="link-spacer">menu</span>
+                    </Link>
+
+                    <MegaMenu
+                      sections={
+                        megaMenuData[
+                        item.label.toLowerCase() as keyof typeof megaMenuData
+                        ]
+                      }
+                      isOpen={openMenu === item.label}
+                    />
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>
@@ -253,17 +271,16 @@ export default function Header() {
           <div className="right-content">
             <div className="second-nav-wrapper">
               <ul className="second-nav-inner">
-                <li>
+                <li className="header-search-icon-wrapper">
                   <Link
                     to="/search"
-                    className="header-search-icon-wrapper"
                     aria-label="search"
                   >
                     <SearchIcon />
                   </Link>
                 </li>
 
-                <li className="second-nav-content">
+                <li className="custom-account-icon">
                   <Link
                     to="/account"
                     aria-label="account"
