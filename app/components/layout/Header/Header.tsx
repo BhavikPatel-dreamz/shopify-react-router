@@ -9,6 +9,7 @@ import {
 } from "~/images/Icons";
 
 import MegaMenu from "./MegaMenu";
+import LoginPopup from "./LoginPopup";
 import { megaMenuData } from "~/data/megaMenuData";
 import "~/styles/header.css";
 
@@ -60,6 +61,7 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
 
   const isHome = location.pathname === "/";
 
@@ -96,219 +98,228 @@ export default function Header() {
   const darkFont = logoSrc === logo.dark;
 
   return (
-    <header
-      className={`
-        header-wrapper
-        ${isHome ? "header-transparent" : ""}
-        ${location.pathname === "/pages/rare-rabbit" ||
-              location.pathname === "/pages/rareism" ||
-              location.pathname === "/pages/kids" ||
-              location.pathname === "/pages/rarez-landing-page"
-              ? "header-transparent-landing-page"
-              : ""
-            }
-        ${darkFont ? "dark-font" : ""}
-        ${hoveredLink ? "header-hovered" : ""}
-      `}
-    >
-      <div className="header-inner">
-        {/* LEFT PART */}
-
-        <div className="left-part xs-hide medium-hide">
-          <nav className="header-main-nav">
-            <ul className="horizontal-list-wrapper">
-              {[
-                {
-                  label: "MEN",
-                  path: "/pages/rare-rabbit",
-                  type: "men",
-                },
-                {
-                  label: "WOMEN",
-                  path: "/pages/rareism",
-                  type: "women",
-                },
-                {
-                  label: "KIDS",
-                  path: "/pages/kids",
-                  type: "kids",
-                },
-                {
-                  label: "SHOES",
-                  path: "/pages/rarez-landing-page",
-                  type: "rare-shoes",
-                },
-              ].map((item) => (
-                <li
-                  key={item.label}
-                  className={`main-link ${
-                    hoveredLink === item.label ? "active" : ""
-                  }`}
-                  data-type={item.type}
-                  onMouseEnter={() => {
-                    setOpenMenu(item.label);
-                    setActiveMenu(item.label);
-                    setHoveredLink(item.label);
-                  }}
-                  onMouseLeave={() => {
-                    setOpenMenu(null);
-                    setActiveMenu(null);
-                    setHoveredLink(null);
-                  }}
-                >
-                  <Link
-                    to={item.path}
-                    className={`parent-link ${
-                      hoveredLink === item.label ? "parent-active" : ""
-                    }`}
-                  >
-                    {item.label}
-                    <span className="link-spacer">
-                      menu
-                    </span>
-                  </Link>
-
-                  <MegaMenu
-                    sections={
-                      megaMenuData[
-                      item.label.toLowerCase() as keyof typeof megaMenuData
-                      ]
-                    }
-                    isOpen={openMenu === item.label}
-                  />
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-
-        {/* MIDDLE PART */}
-
-        <div
-          className={` middle-part
-           ${location.pathname.startsWith("/pages/rareism")
-              ? "rareism-brand"
-              : location.pathname.startsWith("/pages/kids")
-                ? "rare-kid-brand"
-                : location.pathname.startsWith("/pages/rarez-landing-page")
-                  ? "rare-shoes-brand"
-                  : location.pathname.startsWith("/pages/rare-rabbit")
-                    ? "rare-rabbit-brand"
-                    : "home-brand"
-            }
+    <>
+      <header
+        className={`
+          header-wrapper
+          ${isHome ? "header-transparent" : ""}
+          ${location.pathname === "/pages/rare-rabbit" ||
+                location.pathname === "/pages/rareism" ||
+                location.pathname === "/pages/kids" ||
+                location.pathname === "/pages/rarez-landing-page"
+                ? "header-transparent-landing-page"
+                : ""
+              }
+          ${darkFont ? "dark-font" : ""}
+          ${hoveredLink ? "header-hovered" : ""}
         `}
-        >
-          <div className="header-logo-wrapper">
-            <div className={`header-logo-inner
-                ${scrolled
-                  ? "dark-logo-active"
-                  : "light-logo-active"
-                }
-                ${location.pathname === "/pages/rare-rabbit" ||
-                  location.pathname === "/pages/rareism" ||
-                  location.pathname === "/pages/kids" ||
-                  location.pathname === "/pages/rarez-landing-page"
-                  ? "landing-page-logo"
-                  : ""
-                }
-              `} 
-            >
-              <Link to={logo.href} className={`brand-image
-                  ${location.pathname.startsWith("/pages/rareism")
-                      ? "rareism-image"
-                      : location.pathname.startsWith("/pages/kids")
-                        ? "rare-kid-image"
-                        : location.pathname.startsWith("/pages/rarez-landing-page")
-                          ? "rare-footwear-image"
-                          : location.pathname.startsWith("/pages/rare-rabbit")
-                            ? "rare-rabbit-image"
-                            : "home-image"
-                    }
-                `}
-              >
-                <img
-                  src={logoSrc}
-                  alt="logo"
-                  className="brand-logo"
-                />
-              </Link>
-            </div>
-          </div>
-        </div>
+      >
+        <div className="header-inner">
+          {/* LEFT PART */}
 
-        {/* RIGHT PART */}
-
-        <div className="right-part xs-hide medium-hide">
-          <div className="right-content">
-            <div className="second-nav-wrapper">
-              <ul className="second-nav-inner">
-                <li>
-                  <Link
-                    to="/search"
-                    className="header-search-icon-wrapper"
-                    aria-label="search"
+          <div className="left-part xs-hide medium-hide">
+            <nav className="header-main-nav">
+              <ul className="horizontal-list-wrapper">
+                {[
+                  {
+                    label: "MEN",
+                    path: "/pages/rare-rabbit",
+                    type: "men",
+                  },
+                  {
+                    label: "WOMEN",
+                    path: "/pages/rareism",
+                    type: "women",
+                  },
+                  {
+                    label: "KIDS",
+                    path: "/pages/kids",
+                    type: "kids",
+                  },
+                  {
+                    label: "SHOES",
+                    path: "/pages/rarez-landing-page",
+                    type: "rare-shoes",
+                  },
+                ].map((item) => (
+                  <li
+                    key={item.label}
+                    className={`main-link ${
+                      hoveredLink === item.label ? "active" : ""
+                    }`}
+                    data-type={item.type}
+                    onMouseEnter={() => {
+                      setOpenMenu(item.label);
+                      setActiveMenu(item.label);
+                      setHoveredLink(item.label);
+                    }}
+                    onMouseLeave={() => {
+                      setOpenMenu(null);
+                      setActiveMenu(null);
+                      setHoveredLink(null);
+                    }}
                   >
-                    <SearchIcon />
-                  </Link>
-                </li>
+                    <Link
+                      to={item.path}
+                      className={`parent-link ${
+                        hoveredLink === item.label ? "parent-active" : ""
+                      }`}
+                    >
+                      {item.label}
+                      <span className="link-spacer">
+                        menu
+                      </span>
+                    </Link>
 
-                <li className="second-nav-content">
-                  <Link
-                    to="/account"
-                    aria-label="account"
-                  >
-                    <AccountIcon />
-                  </Link>
-                </li>
-
-                <li className="second-nav-content">
-                  <Link
-                    to="/wishlist"
-                    className="wishlist-button"
-                    aria-label="wishlist"
-                  >
-                    <WishlistIcon />
-                  </Link>
-                </li>
-
-                <li className="second-nav-content">
-                  <Link
-                    to="/cart"
-                    className="header-cart-btn"
-                    aria-label="cart"
-                  >
-                    <CartIcon />
-
-                    <span className="Header__CartCount cart-count">
-                      0
-                    </span>
-                  </Link>
-                </li>
+                    <MegaMenu
+                      sections={
+                        megaMenuData[
+                        item.label.toLowerCase() as keyof typeof megaMenuData
+                        ]
+                      }
+                      isOpen={openMenu === item.label}
+                    />
+                  </li>
+                ))}
               </ul>
+            </nav>
+          </div>
+
+          {/* MIDDLE PART */}
+
+          <div
+            className={` middle-part
+             ${location.pathname.startsWith("/pages/rareism")
+                ? "rareism-brand"
+                : location.pathname.startsWith("/pages/kids")
+                  ? "rare-kid-brand"
+                  : location.pathname.startsWith("/pages/rarez-landing-page")
+                    ? "rare-shoes-brand"
+                    : location.pathname.startsWith("/pages/rare-rabbit")
+                      ? "rare-rabbit-brand"
+                      : "home-brand"
+              }
+          `}
+          >
+            <div className="header-logo-wrapper">
+              <div className={`header-logo-inner
+                  ${scrolled
+                    ? "dark-logo-active"
+                    : "light-logo-active"
+                  }
+                  ${location.pathname === "/pages/rare-rabbit" ||
+                    location.pathname === "/pages/rareism" ||
+                    location.pathname === "/pages/kids" ||
+                    location.pathname === "/pages/rarez-landing-page"
+                    ? "landing-page-logo"
+                    : ""
+                  }
+                `} 
+              >
+                <Link to={logo.href} className={`brand-image
+                    ${location.pathname.startsWith("/pages/rareism")
+                        ? "rareism-image"
+                        : location.pathname.startsWith("/pages/kids")
+                          ? "rare-kid-image"
+                          : location.pathname.startsWith("/pages/rarez-landing-page")
+                            ? "rare-footwear-image"
+                            : location.pathname.startsWith("/pages/rare-rabbit")
+                              ? "rare-rabbit-image"
+                              : "home-image"
+                      }
+                  `}
+                >
+                  <img
+                    src={logoSrc}
+                    alt="logo"
+                    className="brand-logo"
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT PART */}
+
+          <div className="right-part xs-hide medium-hide">
+            <div className="right-content">
+              <div className="second-nav-wrapper">
+                <ul className="second-nav-inner">
+                  <li>
+                    <Link
+                      to="/search"
+                      className="header-search-icon-wrapper"
+                      aria-label="search"
+                    >
+                      <SearchIcon />
+                    </Link>
+                  </li>
+
+                  <li className="second-nav-content">
+                    <button
+                      onClick={() => setIsLoginPopupOpen(true)}
+                      aria-label="account"
+                      className="account-btn-reset"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    >
+                      <AccountIcon />
+                    </button>
+                  </li>
+
+                  <li className="second-nav-content">
+                    <Link
+                      to="/wishlist"
+                      className="wishlist-button"
+                      aria-label="wishlist"
+                    >
+                      <WishlistIcon />
+                    </Link>
+                  </li>
+
+                  <li className="second-nav-content">
+                    <Link
+                      to="/cart"
+                      className="header-cart-btn"
+                      aria-label="cart"
+                    >
+                      <CartIcon />
+
+                      <span className="Header__CartCount cart-count">
+                        0
+                      </span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* SECOND STICKY NAVIGATION */}
+        {/* SECOND STICKY NAVIGATION */}
 
-      <div className={` header-bottom xs-show ${scrolled ? "fix-top" : ""} ${isHome ? "index-page" : ""} `} >
-        <div className="title-label">
-          <Link to="/pages/rare-rabbit">MEN</Link>
+        <div className={` header-bottom xs-show ${scrolled ? "fix-top" : ""} ${isHome ? "index-page" : ""} `} >
+          <div className="title-label">
+            <Link to="/pages/rare-rabbit">MEN</Link>
+          </div>
+
+          <div className="title-label">
+            <Link to="/pages/rareism">WOMEN</Link>
+          </div>
+
+          <div className="title-label">
+            <Link to="/pages/kids">KIDS</Link>
+          </div>
+
+          <div className="title-label">
+            <Link to="/pages/rarez-landing-page">SHOES</Link>
+          </div>
         </div>
+      </header>
 
-        <div className="title-label">
-          <Link to="/pages/rareism">WOMEN</Link>
-        </div>
-
-        <div className="title-label">
-          <Link to="/pages/kids">KIDS</Link>
-        </div>
-
-        <div className="title-label">
-          <Link to="/pages/rarez-landing-page">SHOES</Link>
-        </div>
-      </div>
-    </header>
+      <LoginPopup 
+        isOpen={isLoginPopupOpen} 
+        onClose={() => setIsLoginPopupOpen(false)} 
+      />
+    </>
   );
 }

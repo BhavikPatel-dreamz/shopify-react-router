@@ -1,0 +1,265 @@
+/* styles/loginPopup.css */
+.login-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.2s ease;
+}
+
+.login-popup-container {
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-popup-close:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Image on TOP - full width */
+.login-popup-image-top {
+  width: 100%;
+  height: 350px;
+  background-image: url("https://d10srchmli830n.cloudfront.net/1758803131589_resized_image.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* Form wrapper - below the image */
+.login-form-wrapper {
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 3px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.input-addon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  border-right: 1px solid #e0e0e0;
+  background: #f9f9f9;
+}
+
+.flag-icon {
+  width: 24px;
+  height: auto;
+}
+
+.country-code {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.mobile-input {
+  width: 100%;
+  flex: 1;
+  padding: 14px 12px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+}
+
+.mobile-input::placeholder {
+  color: #999;
+}
+
+.mobile-input:focus {
+  background-color: #fff;
+}
+
+.login-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.login-btn:hover {
+  background: #333;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.checkbox-wrapper input {
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  accent-color: #000;
+}
+
+.checkbox-wrapper label {
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  cursor: pointer;
+}
+
+.terms-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.info-icon {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.terms-text a {
+  color: #000;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.terms-text a:hover {
+  color: #333;
+}
+
+/* Header button style */
+.account-btn-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-btn-reset:hover {
+  opacity: 0.7;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .login-popup-container {
+    width: 95%;
+    max-width: 450px;
+  }
+
+  .login-popup-image-top {
+    height: 200px;
+  }
+
+  .login-form-wrapper {
+    padding: 30px 15px;
+  }
+
+  .input-group {
+    flex-wrap: wrap;
+    border-radius: 8px;
+  }
+
+  .input-addon {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .mobile-input {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .login-btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .checkbox-wrapper {
+    margin-top: 15px;
+  }
+}
