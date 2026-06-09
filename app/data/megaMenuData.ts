@@ -114,13 +114,13 @@ export const megaMenuData = {
 
         {
             title: "SHOP THE LOOK",
-            url: "/men/shop-the-look",
+            url: "/pages/rare-rabbit",
             links: [
                 { title: "SUMMER ESSENTIALS", url: "/pages/rare-rabbit-summer-essentials" },
                 { title: "DENIM ON DENIM", url: "/pages/denim-shop-the-look" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/SHOP_THE_LOOK-_web.webp?v=1779182547",
-            imageLink: "/men/shop-the-look",
+            imageLink: "/pages/rare-rabbit",
         },
 
         {
