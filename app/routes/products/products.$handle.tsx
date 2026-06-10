@@ -6,6 +6,8 @@ import ProductInfo from "~/components/product/ProductInfo";
 import CartDrawer from "~/components/Cart/CartDrawer";
 import { PRODUCT_QUERY, RELATED_PRODUCTS_QUERY } from "~/graphQL/product";
 import { createStorefrontClient } from "~/server/storefront.server";
+import CollectionGrid from "~/components/collection/CollectionGrid";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const storefront = createStorefrontClient();
@@ -25,7 +27,19 @@ export async function loader({ params }: Route.LoaderArgs) {
       status: 404,
     });
   }
-
+  
+  const Rdata = await storefront.query<{
+      products: {
+        nodes: any[];
+      };
+    }>(COLLECTION_GRID_QUERY, {
+      variables: {
+        pageBy: 12,
+        country: "IN",
+        language: "EN",
+      },
+    });
+    
   const product = data.product;
 
   const colorTags = product.tags.filter((tag: string) =>
@@ -56,11 +70,12 @@ export async function loader({ params }: Route.LoaderArgs) {
   return {
     product,
     relatedProducts,
+    Rdata: Rdata.products?.nodes ?? [],
   };
 }
 
 export default function ProductPage() {
-  const { product, relatedProducts } = useLoaderData<typeof loader>();
+  const { product, relatedProducts,Rdata } = useLoaderData<typeof loader>();
   const [openCart, setOpenCart] = useState(false);
   
 
@@ -107,9 +122,22 @@ export default function ProductPage() {
           </div>
       </div>
       </div>
-      {openCart && (
-        <CartDrawer onClose={() => setOpenCart(false)} />
-      )}
+      
+      <div className = "product-recommendation-unbox-wrapper-section">
+      <div className="product-recommendation-title-wrapper">
+        <h2 className="product-recommendation-title">
+          
+              Recommended          
+          
+        </h2>
+      </div>
+      </div>
+
+      <CollectionGrid products={Rdata} />;
+
+          {openCart && (
+            <CartDrawer onClose={() => setOpenCart(false)} />
+          )}
 
     </div>
   );

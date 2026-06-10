@@ -1,9 +1,35 @@
 import { useRef, useEffect } from "react";
 import "../../styles/RareRabbitTShirtPage.css";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
+import { createStorefrontClient } from "~/server/storefront.server";
+import type { Route } from "./+types/rare-rabbit-innerv";
+import { useLoaderData } from "react-router";
+import CollectionGrid from "~/components/collection/CollectionGrid";
+
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
 
 export default function RareRabbitTShirtPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
+  const { products } = useLoaderData<typeof loader>();
 
   // Data array for the image sections
   const tshirtItems = [
@@ -134,6 +160,16 @@ export default function RareRabbitTShirtPage() {
           />
         </div>
       </div>
+
+       <CollectionGrid 
+              products={products}
+      
+              enableFilterSortItems={false}
+              enableProductCounts={false}
+              enableGridView={false}
+      
+              gridViewNumber="2"
+              mobileGridViewNumber="1" />;
     </main>
   );
 }

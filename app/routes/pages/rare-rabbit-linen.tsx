@@ -41,16 +41,7 @@ export async function loader({}: Route.LoaderArgs) {
 }
 
 export default function RareRabbitLinenPage({
-  isLoadingMore = false,
   onOpenCart,
-
-  enableCollectionCollapse = false,
-  enableFilterSortItems = true,
-  enableProductCounts = true,
-  enableGridView = true,
-
-  gridViewNumber = "4",
-  mobileGridViewNumber = "2",
 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);

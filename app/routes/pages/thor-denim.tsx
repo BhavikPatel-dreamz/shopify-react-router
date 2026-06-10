@@ -1,9 +1,42 @@
 // ThorDenimPage.jsx
 import React, { useState } from "react";
 import "../../styles/ThorDenimPage.css";
+import CollectionGrid from "~/components/collection/CollectionGrid";
+import { useLoaderData } from "react-router";
+import CartDrawer from "~/components/Cart/CartDrawer";
+import { COLLECTION_QUERY } from "~/graphQL/collection";
+import { createStorefrontClient } from "~/server/storefront.server";
+import CollectionToolbar from "~/components/collection/CollectionToolbar";
+
+
+export async function loader() {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query(COLLECTION_QUERY, {
+    variables: {
+      handle: "rare-thor-all",
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    collectionProducts: data.collection?.products?.nodes ?? [],
+    pageInfo: data.collection?.products?.pageInfo ?? null,
+    productCount: data.collection?.products?.total ?? 12,
+  };
+}
 
 export default function ThorDenimPage() {
   const [activeTab, setActiveTab] = useState("default");
+  const { collectionProducts, pageInfo, productCount } = useLoaderData<typeof loader>();
+
+  const [openCart, setOpenCart] = useState(false);
+
+const openCartDrawer = () => {
+  setOpenCart(true);
+};
 
   return (
     <main className="thor-denim-page">
@@ -24,13 +57,30 @@ export default function ThorDenimPage() {
       </div>
 
       {/* COLLECTION Section - Completely Empty */}
-      {activeTab === "collection" && (
+      {/* {activeTab === "collection" && (
         <section className="collection-section-empty">
           <div className="collection-empty-wrapper">
-            {/* Absolutely nothing here - completely blank */}
           </div>
         </section>
-      )}
+      )} */}
+
+      {activeTab === "collection" && (
+        <>
+       <CollectionToolbar count={productCount} 
+          /> 
+
+      <CollectionGrid
+        products={collectionProducts}
+        onOpenCart={openCartDrawer}
+      />
+      </>
+    )}
+
+    {openCart && (
+      <CartDrawer onClose={() => setOpenCart(false)} />
+    )}
+
+
 
       {/* LOOKBOOK Content - Image Grid Sections */}
       {activeTab === "default" && (
@@ -108,6 +158,8 @@ export default function ThorDenimPage() {
           </div>
         </>
       )}
+
+
     </main>
   );
 }
