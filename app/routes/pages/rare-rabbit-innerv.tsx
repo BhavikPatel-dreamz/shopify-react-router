@@ -1,6 +1,31 @@
 // RareRabbitInnervPage.jsx
 import React from "react";
 import "../../styles/RareRabbitInnervPage.css";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
+import { createStorefrontClient } from "~/server/storefront.server";
+import type { Route } from "./+types/rare-rabbit-linen";
+import { useLoaderData } from "react-router";
+import CollectionGrid from "~/components/collection/CollectionGrid";
+
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
 
 export default function RareRabbitInnervPage() {
   // Data array for the image sections
@@ -62,6 +87,8 @@ export default function RareRabbitInnervPage() {
     }
   ];
 
+  const { products } = useLoaderData<typeof loader>();
+
   return (
     <main className="rare-rabbit-innerv-page">
       <div className="final-landing-image-section">
@@ -102,6 +129,7 @@ export default function RareRabbitInnervPage() {
           ))}
         </div>
       </div>
+        <CollectionGrid products={products} />;
     </main>
   );
 }

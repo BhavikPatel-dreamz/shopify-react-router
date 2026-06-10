@@ -1,8 +1,34 @@
 // FlorensPrintShirtPage.jsx
-import React from "react";
+
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
 import "../../styles/FlorensPrintShirtPage.css";
+import type { Route } from "./+types/rare-rabbit-t-shirt";
+import { createStorefrontClient } from "~/server/storefront.server";
+import { useLoaderData } from "react-router";
+import CollectionGrid from "~/components/collection/CollectionGrid";
+
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
 
 export default function FlorensPrintShirtPage() {
+  const { products } = useLoaderData<typeof loader>();
   // Data array for the image sections
   const florensItems = [
     {
@@ -102,6 +128,7 @@ export default function FlorensPrintShirtPage() {
           ))}
         </div>
       </div>
+       <CollectionGrid products={products} />;
     </main>
   );
 }
