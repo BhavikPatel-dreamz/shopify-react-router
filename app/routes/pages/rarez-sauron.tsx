@@ -1,6 +1,11 @@
 // app/routes/rarez-sauron.tsx
 import React, { useRef, useEffect } from "react";
 import RarezSauronImages from "~/components/homePages/RarezSauronImages";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
+import { createStorefrontClient } from "~/server/storefront.server";
+import type { Route } from "./+types/rarez-sauron";
+import { useLoaderData } from "react-router";
+import CollectionGrid from "~/components/collection/CollectionGrid";
 
 interface SauronItem {
   id: number;
@@ -14,11 +19,33 @@ interface SauronItem {
   alt: string;
 }
 
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
+
 const RarezSauronPage: React.FC = () => {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const mobileVideo1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const mobileVideo2Ref = useRef<HTMLVideoElement>(null);
+
+  const { products } = useLoaderData<typeof loader>();
 
   // Data array for the image sections
   const sauronItems: SauronItem[] = [
@@ -156,6 +183,14 @@ const RarezSauronPage: React.FC = () => {
         sectionId="template--18337744846919__final_landing_image_G6VHDJ"
         paddingClass="section-template--18337744846919__final_landing_image_G6VHDJ-padding"
       />
+
+      <CollectionGrid 
+        products={products}
+        enableFilterSortItems={false}
+        enableProductCounts={false}
+        enableGridView={false}
+        gridViewNumber="2"
+        mobileGridViewNumber="1" />
     </main>
   );
 };
