@@ -7,6 +7,19 @@ import { createStorefrontClient } from "~/server/storefront.server";
 import { useLoaderData } from "react-router";
 import CollectionGrid from "~/components/collection/CollectionGrid";
 
+interface Props {
+  products?: any[];
+  isLoadingMore?: boolean;
+  onOpenCart?: () => void;
+
+  enableCollectionCollapse?: boolean;
+  enableFilterSortItems?: boolean;
+  enableProductCounts?: boolean;
+  enableGridView?: boolean;
+
+  gridViewNumber?: "2" | "4";
+  mobileGridViewNumber?: "1" | "2";
+}
 export async function loader({}: Route.LoaderArgs) {
   const storefront = createStorefrontClient();
 
@@ -88,6 +101,10 @@ export default function FlorensPrintShirtPage() {
     }
   ];
 
+  function onOpenCart(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <main className="florens-print-shirt-page">
       <div className="final-landing-image-section">
@@ -128,7 +145,16 @@ export default function FlorensPrintShirtPage() {
           ))}
         </div>
       </div>
-       <CollectionGrid products={products} />;
+      {/* Collection Grid */}
+              <CollectionGrid
+                products={products}
+                onOpenCart={onOpenCart}
+                enableFilterSortItems={false}
+                enableProductCounts={false}
+                enableGridView={false}
+                gridViewNumber="2"
+                mobileGridViewNumber="1"
+              />
     </main>
   );
 }
