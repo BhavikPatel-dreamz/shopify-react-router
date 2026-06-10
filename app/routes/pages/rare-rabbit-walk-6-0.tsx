@@ -123,7 +123,7 @@ const mediaBlock = homepageBlocks.find(
         enableGridView={false}
 
         gridViewNumber="2"
-        mobileGridViewNumber="1" />;
+        mobileGridViewNumber="1" />
     </div>      
   );
     
