@@ -75,3 +75,59 @@ query Collection(
   }
 }
 `;
+
+export const COLLECTION_GRID_QUERY = `#graphql
+query CollectionGridProducts(
+  $pageBy: Int!
+  $country: CountryCode
+  $language: LanguageCode
+)
+@inContext(
+  country: $country
+  language: $language
+) {
+  products(first: $pageBy) {
+    nodes {
+      id
+      title
+      handle
+
+      options {
+        id
+        name
+        values
+      }
+
+      featuredImage {
+        url
+        altText
+      }
+
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+
+      compareAtPriceRange {
+        minVariantPrice {
+          amount
+        }
+      }
+
+      metafields(
+        identifiers: [
+          { namespace: "my_fields", key: "sub_title" }
+          { namespace: "my_fields", key: "main_title" }
+        ]
+      ) {
+        namespace
+        key
+        value
+        type
+      }
+    }
+  }
+}
+`;

@@ -1,5 +1,9 @@
 import CollectionGrid from "~/components/collection/CollectionGrid";
 import RareRabbitWalk, { type MediaItem } from "~/components/homePages/rareRabbitWalk";
+import { createStorefrontClient } from "~/server/storefront.server";
+import type { Route } from "./+types/rare-rabbit-walk-6-0";
+import { useLoaderData } from "react-router";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
 
 export const homepageBlocks: { type: "mediaGrid"; items: MediaItem[] }[] = [
   {
@@ -12,7 +16,7 @@ export const homepageBlocks: { type: "mediaGrid"; items: MediaItem[] }[] = [
         autoplay: true,
 
         desktop: {
-          src: "https://thehouseofrare.com/cdn/shop/videos/c/vp/0da72bc...1080p.mp4",
+          src: "https://thehouseofrare.com/cdn/shop/videos/c/vp/0da72bc2680b4faa9aa8808b0f2de2de/0da72bc2680b4faa9aa8808b0f2de2de.HD-1080p-4.8Mbps-77632593.mp4",
           poster:
             "https://thehouseofrare.com/cdn/shop/files/preview_images/desktop_poster.jpg",
         },
@@ -76,19 +80,43 @@ export const homepageBlocks: { type: "mediaGrid"; items: MediaItem[] }[] = [
   },
 ];
 
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
+
 export default function RareRabbitWalk60() {
 
 const mediaBlock = homepageBlocks.find(
     (b) => b.type === "mediaGrid"
   );
 
+   const { products } = useLoaderData<typeof loader>();
+
   return (
     <div>
+       
+
       {mediaBlock?.type === "mediaGrid" && (
-        <RareRabbitWalk items={mediaBlock.items} />
-        
+        <RareRabbitWalk items={mediaBlock.items} /> 
       )}
-    </div>
+       <CollectionGrid products={products} />;
+    </div>      
   );
     
 }
