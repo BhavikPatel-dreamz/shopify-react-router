@@ -135,3 +135,25 @@ query ProductDetails(
     }
   }
 `;
+
+export const PRODUCTS_QUERY_FOR_PAGES = `
+  query Products($first: Int!) {
+    products(first: $first) {
+      nodes {
+        id
+        title
+        handle
+        featuredImage {
+          url
+          altText
+        }
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+      }
+    }
+  }
+`;
