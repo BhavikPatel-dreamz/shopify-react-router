@@ -69,7 +69,7 @@ export default function CollectionToolbar({ count, onGridChange }: Props) {
                   <path
                     d="M18.0792 1H1V19.2178H18.0792V1Z"
                     stroke="currentColor"
-                    stroke-width="0.910891"
+                    strokeWidth="0.910891"
                   ></path>
                 </svg>
               </div>
@@ -84,7 +84,7 @@ export default function CollectionToolbar({ count, onGridChange }: Props) {
                   <path
                     d="M18.0792 1H1V19.2178H18.0792V1Z"
                     stroke="currentColor"
-                    stroke-width="0.910891"
+                    strokeWidth="0.910891"
                   ></path>
                   <line
                     x1="9.54001"
@@ -92,7 +92,7 @@ export default function CollectionToolbar({ count, onGridChange }: Props) {
                     x2="9.54001"
                     y2="19.2178"
                     stroke="currentColor"
-                    stroke-width="1.13861"
+                    strokeWidth="1.13861"
                   ></line>
                 </svg>
               </div>
@@ -107,7 +107,7 @@ export default function CollectionToolbar({ count, onGridChange }: Props) {
                   <path
                     d="M17.9991 1H0.919922V19.2178H17.9991V1Z"
                     stroke="currentColor"
-                    stroke-width="0.910891"
+                    strokeWidth="0.910891"
                   ></path>
                   <line
                     x1="9.45993"
@@ -115,12 +115,12 @@ export default function CollectionToolbar({ count, onGridChange }: Props) {
                     x2="9.45993"
                     y2="19.2178"
                     stroke="currentColor"
-                    stroke-width="1.13861"
+                    strokeWidth="1.13861"
                   ></line>
                   <path
                     d="M0.920898 10.1094L18.0001 10.1094"
                     stroke="currentColor"
-                    stroke-width="1.13861"
+                    strokeWidth="1.13861"
                   ></path>
                 </svg>
               </div>

@@ -28,7 +28,7 @@ export default function QuantitySelector({
               <path
                 d="M0 0.417969H11.4519"
                 stroke="#000000"
-                stroke-width="0.76"
+                strokeWidth="0.76"
               ></path>
             </svg>
           </span>
@@ -56,12 +56,12 @@ export default function QuantitySelector({
               <path
                 d="M0.203125 5H10.2031"
                 stroke="#000000"
-                stroke-width="0.76"
+                strokeWidth="0.76"
               ></path>
               <path
                 d="M5.2041 0L5.2041 10"
                 stroke="#000000"
-                stroke-width="0.76"
+                strokeWidth="0.76"
               ></path>
             </svg>
           </span>

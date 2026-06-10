@@ -89,6 +89,10 @@ export default function RareRabbitInnervPage() {
 
   const { products } = useLoaderData<typeof loader>();
 
+  function onOpenCart(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <main className="rare-rabbit-innerv-page">
       <div className="final-landing-image-section">
@@ -129,7 +133,7 @@ export default function RareRabbitInnervPage() {
           ))}
         </div>
       </div>
-        <CollectionGrid products={products} />;
+      <CollectionGrid products={products} onOpenCart={onOpenCart} />
     </main>
   );
 }

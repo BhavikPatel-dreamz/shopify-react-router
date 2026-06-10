@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import SizeModal from "./SizeModal";
 
@@ -27,7 +27,22 @@ export default function ProductCard({ product, onOpenCart }: Props) {
     }, {}) || {};
 
   const [openSize, setOpenSize] = useState(false);
+  
+  useEffect(() => {
+    const mobileBottomBar = document.querySelector(".mobile-bottom-bar");
 
+    if (!mobileBottomBar) return;
+
+    if (openSize) {
+      mobileBottomBar.classList.add("hide");
+    } else {
+      mobileBottomBar.classList.remove("hide");
+    }
+
+    return () => {
+      mobileBottomBar.classList.remove("hide");
+    };
+  }, [openSize]);
 
   return (
     <div className="collection-product-main">
@@ -58,20 +73,18 @@ export default function ProductCard({ product, onOpenCart }: Props) {
           </Link>
 
           {/* SIZE MODAL */}
-          <div className = "product-size-swatch-wrapper">
           {openSize && (
-        <SizeModal
-          product={product}
-          onClose={() => setOpenSize(false)}
-          openCart={onOpenCart}
-        />
-      )}
-
-     
-      </div>
+            <div className="product-size-swatch-wrapper">
+              <SizeModal
+                product={product}
+                onClose={() => setOpenSize(false)}
+                openCart={onOpenCart}
+              />
+            </div>
+          )}
         </div>
 
-        
+
 
         {/* PRODUCT INFO */}
         <div className="product-detail">
@@ -106,7 +119,7 @@ export default function ProductCard({ product, onOpenCart }: Props) {
                         d="M6.08691 0.375V5.91309H11.625V6.08691H6.08691V11.625H5.91309V6.08691H0.375V5.91309H5.91309V0.375H6.08691Z"
                         fill="#000000"
                         stroke="#000000"
-                        stroke-width="0.75"
+                        strokeWidth="0.75"
                       ></path>
                     </svg>
                   </button>
@@ -180,11 +193,11 @@ export default function ProductCard({ product, onOpenCart }: Props) {
             </div>
           </div>
         </div>
-        
+
       </div>
 
-    
-      
+
+
     </div>
   );
 }
