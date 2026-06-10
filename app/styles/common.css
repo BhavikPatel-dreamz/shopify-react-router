@@ -122,9 +122,9 @@
     --header-height: 120px;
 }
 
-main {
+/* main {
     padding-top: var(--header-height);
-}
+} */
 .swiper {
     margin-left: auto;
     margin-right: auto;
