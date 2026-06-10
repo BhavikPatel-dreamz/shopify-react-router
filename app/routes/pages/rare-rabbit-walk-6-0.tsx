@@ -52,9 +52,9 @@ export const homepageBlocks: { type: "mediaGrid"; items: MediaItem[] }[] = [
       {type:"image",
         href: "/products/jena-mens-shirt-dusky-brown",
         desktopImage:
-          "https://86e75ac3.nitro.getn7.io/cdn/shop/files/desktop_-RR_-4.webp?v=1773050926",
+          "https://86e75ac3.nitro.getn7.io/cdn/shop/files/desktop_-RR-1_031a17ba-194c-448a-9932-36b04385b869.webp",
         mobileImage:
-          "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MOB_-_RR-_WALK_6.0-3.webp?v=1772789782",
+          "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MOB_-_RR-_WALK_6.0-1.webp",
       },
       {
         type: "image",
@@ -115,7 +115,15 @@ const mediaBlock = homepageBlocks.find(
       {mediaBlock?.type === "mediaGrid" && (
         <RareRabbitWalk items={mediaBlock.items} /> 
       )}
-       <CollectionGrid products={products} />;
+      <CollectionGrid 
+        products={products}
+
+        enableFilterSortItems={false}
+        enableProductCounts={false}
+        enableGridView={false}
+
+        gridViewNumber="2"
+        mobileGridViewNumber="1" />;
     </div>      
   );
     
