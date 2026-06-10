@@ -1,6 +1,16 @@
 import type { Route } from "../+types/home";
 import "../../styles/about-us.css";
 
+import { useEffect, useRef, useState } from "react";
+import Swiper from "swiper";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { aboutData } from "~/data/aboutData";
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "About Us - The House Of Rare" },
@@ -12,8 +22,123 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function AboutUsPage() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    let imageSwiper: Swiper | null = null;
+    let fullSwiper: Swiper | null = null;
+
+    // First Slider
+    const imageWrapper = document.querySelector(
+      ".linen-image-wrapper"
+    );
+
+    if (imageWrapper && window.innerWidth > 767) {
+      const slides =
+        imageWrapper.querySelectorAll(".linen-image-slide");
+
+      if (slides.length > 2) {
+        imageSwiper = new Swiper(imageWrapper as HTMLElement, {
+          modules: [Autoplay],
+          speed: 400,
+          slidesPerView: 2,
+          spaceBetween: 5,
+          autoHeight: true,
+          loop: true,
+          autoplay: {
+            delay: 2000,
+          },
+        });
+      }
+    }
+
+    // Second Slider
+    const fullSlider =
+      document.querySelector(".full-slider");
+
+    if (fullSlider) {
+      fullSwiper = new Swiper(
+        fullSlider as HTMLElement,
+        {
+          modules: [Autoplay],
+          speed: 400,
+          slidesPerView: 1,
+          spaceBetween: 0,
+          autoHeight: true,
+          loop: true,
+          autoplay: {
+            delay: 2000,
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 5,
+            },
+          },
+        }
+      );
+    }
+
+    // Slider bottom text animation (add/remove "visible" class on scroll)
+    const sliderBottomText = document.querySelector(
+      ".slider-bottom-text .animation-wrapper"
+    );
+
+    if (sliderBottomText) {
+      gsap.fromTo(
+        sliderBottomText,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".slider-bottom-text",
+            start: "top 85%",
+            toggleClass: "visible",
+            once: true, // ensures it behaves like Shopify "reveal once"
+          },
+        }
+      );
+    }
+
+    // Text animation
+    const paragraph =
+      document.querySelector(".right-sub-title p");
+
+    if (paragraph) {
+      const darkMode =
+        window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ".right-sub-title",
+          start: "top center",
+          end: "bottom 80%",
+          scrub: 0.1,
+        },
+      }).to(paragraph, {
+        color:
+          window.innerWidth <= 768 && darkMode
+            ? "#d9d9d9"
+            : "#000000",
+      });
+    }
+
+    return () => {
+      imageSwiper?.destroy(true, true);
+      fullSwiper?.destroy(true, true);
+
+      ScrollTrigger.getAll().forEach((trigger) =>
+        trigger.kill()
+      );
+    };
+  }, []);
   return (
-    <main className="about-us-page">
+    <section className="about-us-page">
       {/* Banner Section */}
       <div className="banner-wrapper">
         <div className="container">
@@ -40,7 +165,7 @@ export default function AboutUsPage() {
       </div>
 
       {/* About Us Content */}
-      <div className="about-us-page-wrapper">
+      <div className="about-us-page-wrapper about-us-page-wrapper-js">
         <div className="about-us-page-inner">
           {/* Who We Are Section */}
           <div className="page-top-content-wrapper">
@@ -49,63 +174,7 @@ export default function AboutUsPage() {
                 <div className="right-content">
                   <div className="right-text">
                     <div className="right-sub-title">
-                      <p>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>The </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>House </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>of </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Rare </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>is </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>a </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>pioneering </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>force </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>in </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>the </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Indian </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>fashion </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>landscape. </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Founded </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>in </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>2015 </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>by </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Mr. </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>and </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Mrs. </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Poddar, </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>our </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>vision </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>is </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>to </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>celebrate </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>individuality </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>and </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>challenge </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>societal </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>norms. </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>With </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>brands </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>like </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Rareism </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>for </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>women, </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Rare </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Rabbit </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>for </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>men, </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>and </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Rare </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>Ones </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>for </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>children, </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>we </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>aim </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>to </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>redefine </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>fashion </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>for </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>the </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>entire </span>
-                        <span style={{ color: "rgba(0, 0, 0, 0.14)" }}>family. </span>
-                      </p>
+                      <p>The House of Rare is a pioneering force in the Indian fashion landscape. Founded in 2015 by Mr. and Mrs. Poddar, our vision is to celebrate individuality and challenge societal norms. With brands like Rareism for women, Rare Rabbit for men, and Rare Ones for children, we aim to redefine fashion for the entire family.</p>
                     </div>
                   </div>
                 </div>
@@ -115,41 +184,20 @@ export default function AboutUsPage() {
               <div className="linen-love-affair-wrapper">
                 <div className="linen-love-affair-inner">
                   <div className="title-and-description">
-                    <p className="linen-title">Welcome to the Burrow</p>
+                    <p className="linen-title">
+                      {aboutData.linenTitle}
+                    </p>
                     <p className="linen-sub-title">
-                      Our commitment to innovation and our unwavering belief in the power of self-expression are the cornerstones of our success.
+                      {aboutData.linenSubText}
                     </p>
                   </div>
-                  <div className="linen-image-wrapper">
-                    <div className="linen-images-grid">
-                      <div className="linen-image-slide">
-                        <img
-                          src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41843.jpg?v=1722838167"
-                          alt="Fashion 1"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="linen-image-slide">
-                        <img
-                          src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41844.jpg?v=1722838166"
-                          alt="Fashion 2"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="linen-image-slide">
-                        <img
-                          src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41852.jpg?v=1722838166"
-                          alt="Fashion 3"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="linen-image-slide">
-                        <img
-                          src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41851.jpg?v=1722838166"
-                          alt="Fashion 4"
-                          loading="lazy"
-                        />
-                      </div>
+                  <div className="linen-image-wrapper swiper">
+                    <div className="swiper-wrapper">
+                      {aboutData.linenImages.map((image, index) => (
+                        <div className="swiper-slide linen-image-slide" key={index}>
+                          <img src={image.image} alt={image.alt} />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -160,25 +208,37 @@ export default function AboutUsPage() {
           {/* Proudly Made In Bharath Bar */}
           <div className="linen-bottom-bar">
             <div className="linen-bottom-bar-inner">
-              <p>
-                Proudly Made In Bharath: We take immense pride in our commitment to showcasing India's rich heritage and artistry. Every product we offer is crafted within the borders of our beloved nation.
-              </p>
+              <p>{aboutData.linenBottomText}</p>
             </div>
           </div>
 
           {/* Full Image Section */}
           <div className="linen-full-image">
-            <div className="linen-background-image"></div>
+            <div
+              className="linen-background-image"
+              style={{
+                backgroundImage: `url(${aboutData.backgroundImage})`,
+                backgroundPosition: "center right",
+              }}
+            ></div>
             <div className="linen-bottom-image xs-hide">
               <img
-                src="https://cdn.shopify.com/s/files/1/0752/6435/files/store_23d3dead-ba3b-4202-a6eb-08795a7a5b7f.jpg?v=1722838167"
-                alt="Store"
+                src={aboutData.linenBottomImage}
+                alt=""
                 loading="lazy"
               />
+
+              <div className="text-over-image">
+                <p>{aboutData.textOverImage}</p>
+              </div>
             </div>
             <div className="linen-bottom-wrapper xs-show">
               <p className="linen-mobile-text">
-                Authenticity: Authenticity is the guiding principle that drives us. We believe in the genuine expression of individuality and originality.
+                {aboutData.linenMobileText}
+              </p>
+
+              <p className="linen-mobile-text-over-image">
+                {aboutData.textOverImage}
               </p>
             </div>
           </div>
@@ -186,41 +246,25 @@ export default function AboutUsPage() {
           {/* Full Slider Section */}
           <div className="full-slider-wrapper">
             <div className="full-slider-inner">
-              <div className="full-slider">
-                <div className="slider-images-grid">
-                  <div className="slider-slide">
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41847.jpg?v=1722838166"
-                      alt="Fashion 1"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="slider-slide">
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41848.jpg?v=1722838167"
-                      alt="Fashion 2"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="slider-slide">
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41849.jpg?v=1722838166"
-                      alt="Fashion 3"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="slider-slide">
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0752/6435/files/Frame_41850.jpg?v=1722838166"
-                      alt="Fashion 4"
-                      loading="lazy"
-                    />
-                  </div>
+              <div className="full-slider swiper">
+                <div className="swiper-wrapper">
+                  {aboutData.sliderImages.map((slide, index) => (
+                    <div
+                      key={index}
+                      className="swiper-slide"
+                    >
+                      <img
+                        src={slide.image}
+                        alt={slide.alt ?? ""}
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="slider-bottom-text">
                 <p className="animation-wrapper">
-                  Modernity: While honoring tradition, we also embrace the spirit of innovation and contemporary design. We seamlessly blend classic aesthetics with modern sensibilities.
+                  {aboutData.sliderBottomText}
                 </p>
               </div>
             </div>
@@ -231,33 +275,35 @@ export default function AboutUsPage() {
             <div className="store-locator-inner">
               <div className="store-locator-image">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0752/6435/files/180_black.gif?v=1724931362"
+                  src={aboutData.storeLocatorImage}
                   alt="Store Locator"
                   className="light-theme-gif"
                   loading="lazy"
                 />
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0752/6435/files/180_white.gif?v=1724931368"
+                  src={aboutData.storeLocatorImageDark}
                   alt="Store Locator"
                   className="dark-theme-gif"
                   loading="lazy"
                 />
               </div>
               <div className="store-locator-title-btn">
-                <p className="store-locator-title">Stores In India</p>
+                <p className="store-locator-title">
+                  {aboutData.storeLocatorText}
+                </p>
                 <a
-                  href="https://stores-rarerabbit.thehouseofrare.com/"
-                  className="store-locator-btn"
+                  href={aboutData.storeLocatorBtnLink}
+                  className="store-locator-btn Button Button--primary"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  RARE INDIA
+                  {aboutData.storeLocatorBtnText}
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
