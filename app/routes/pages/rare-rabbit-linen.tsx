@@ -1,12 +1,25 @@
 // RareRabbitLinenPage.jsx
 import React, { useRef, useEffect } from "react";
-import "../../styles/RareRabbitLinenPage.css";
-import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
-import { createStorefrontClient } from "~/server/storefront.server";
-import type { Route } from "./+types/thor-denim";
 import CollectionGrid from "~/components/collection/CollectionGrid";
+import "../../styles/RareRabbitLinenPage.css";
+import { createStorefrontClient } from "~/server/storefront.server";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
 import { useLoaderData } from "react-router";
+import type { Route } from "../+types/home";
 
+interface Props {
+  products?: any[];  
+  isLoadingMore?: boolean;
+  onOpenCart?: () => void;
+
+  enableCollectionCollapse?: boolean;
+  enableFilterSortItems?: boolean;
+  enableProductCounts?: boolean;
+  enableGridView?: boolean;
+
+  gridViewNumber?: "2" | "4";
+  mobileGridViewNumber?: "1" | "2";
+}
 export async function loader({}: Route.LoaderArgs) {
   const storefront = createStorefrontClient();
 
@@ -27,12 +40,21 @@ export async function loader({}: Route.LoaderArgs) {
   };
 }
 
+export default function RareRabbitLinenPage({
+  isLoadingMore = false,
+  onOpenCart,
 
+  enableCollectionCollapse = false,
+  enableFilterSortItems = true,
+  enableProductCounts = true,
+  enableGridView = true,
 
-export default function RareRabbitLinenPage() {
+  gridViewNumber = "4",
+  mobileGridViewNumber = "2",
+}: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
-
+ 
   // Data array for the image sections
   const linenItems = [
     {
@@ -84,7 +106,7 @@ export default function RareRabbitLinenPage() {
   // Video sources
   const desktopVideoSrc = "https://thehouseofrare.com/cdn/shop/videos/c/vp/bd1e67392daf448fb0dcd455015317eb/bd1e67392daf448fb0dcd455015317eb.HD-1080p-4.8Mbps-80192866.mp4?v=0";
   const desktopPoster = "https://thehouseofrare.com/cdn/shop/files/preview_images/bd1e67392daf448fb0dcd455015317eb.thumbnail.0000000000_1300x.jpg?v=1775207949";
-  
+
   const mobileVideoSrc = "https://thehouseofrare.com/cdn/shop/videos/c/vp/2e9d4a053a4647ce9273db4641a7182f/2e9d4a053a4647ce9273db4641a7182f.HD-720p-4.5Mbps-80204134.mp4?v=0";
   const mobilePoster = "https://thehouseofrare.com/cdn/shop/files/preview_images/2e9d4a053a4647ce9273db4641a7182f.thumbnail.0000000000_500x.jpg?v=1775218050";
 
@@ -177,9 +199,16 @@ export default function RareRabbitLinenPage() {
         </div>
       </div>
 
-      <CollectionGrid products={products} />;
-
-
+      {/* Collection Grid */}
+        <CollectionGrid
+          products={products}
+          onOpenCart={onOpenCart}
+          enableFilterSortItems={false}
+          enableProductCounts={false}
+          enableGridView={false}
+          gridViewNumber="2"
+          mobileGridViewNumber="1"
+        />
     </main>
   );
 }
