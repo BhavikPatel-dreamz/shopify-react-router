@@ -14,10 +14,6 @@ export default function SizeModal({ product, onClose, openCart }: any) {
 
   const sizes = sizeOption?.values || [];
 
-  console.log("product on sizeModal", product);
-
-  console.log("sizes", sizes);
-
   const handleAdd = (size: string) => {
     setSelectedSize(size);
     const variant = product?.variants?.nodes?.find((v: any) =>

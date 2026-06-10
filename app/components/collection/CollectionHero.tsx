@@ -17,6 +17,9 @@ export default function CollectionHero({
             collection.title
           }
           className="image-wrapper"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
     
       )}

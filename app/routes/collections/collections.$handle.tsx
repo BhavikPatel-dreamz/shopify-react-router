@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { useFetcher, useLoaderData } from "react-router";
-import { COLLECTION_QUERY } from "~/graphQL/collection";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { Await,useFetcher, useLoaderData } from "react-router";
+import { COLLECTION_COUNT_QUERY, COLLECTION_QUERY } from "~/graphQL/collection";
 import { createStorefrontClient } from "~/server/storefront.server";
 import CollectionHero from "~/components/collection/CollectionHero";
 import CollectionToolbar from "~/components/collection/CollectionToolbar";
@@ -32,7 +32,6 @@ export async function loader({
         collection?: {
           products?: {
             nodes: any[];
-            options: any[];
             pageInfo?: {
               hasNextPage?: boolean;
               endCursor?: string | null;
@@ -41,7 +40,7 @@ export async function loader({
         };
       } = await storefront.query<{
         collection: any;
-      }>(COLLECTION_QUERY, {
+      }>(COLLECTION_COUNT_QUERY, {
         variables: {
           handle: params.handle,
           pageBy: 250,
@@ -51,15 +50,8 @@ export async function loader({
         },
       });
 
-      const connection:
-        | {
-            nodes: any[];
-            pageInfo?: {
-              hasNextPage?: boolean;
-              endCursor?: string | null;
-            };
-          }
-        | undefined = page.collection?.products;
+      const connection =
+        page.collection?.products;
       if (!connection) break;
 
       total += connection.nodes.length;
@@ -83,10 +75,7 @@ export async function loader({
       },
     });
 
-  const [data, productCount] = await Promise.all([
-    fetchCollectionPage(cursor),
-    getCollectionProductCount(),
-  ]);
+  const data = await fetchCollectionPage(cursor);
 
   if (!data.collection) {
     throw new Response("Collection Not Found", {
@@ -94,20 +83,28 @@ export async function loader({
     });
   }
 
+ const productCountValue = await getCollectionProductCount();
+
+return {
+  collection: data.collection,
+  pageInfo: data.collection.products.pageInfo,
+  productCount: productCountValue,
+};
+}
+
+export function headers() {
   return {
-    collection: data.collection,
-    pageInfo: data.collection.products.pageInfo,
-    productCount,
+    "Cache-Control": "public, max-age=60, s-maxage=300, stale-while-revalidate=86400",
   };
 }
 
 export default function Collection() {
-  const { collection, pageInfo, productCount }: any = useLoaderData();
+  const { collection, pageInfo, productCount }: any = useLoaderData<typeof loader>();
   const fetcher = useFetcher<typeof loader>();
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const [products, setProducts] = useState(collection.products.nodes);
   const [cursor, setCursor] = useState(pageInfo?.endCursor);
-   const [openCart, setOpenCart] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(
     Boolean(pageInfo?.hasNextPage),
   );
@@ -163,11 +160,7 @@ export default function Collection() {
     setHasNextPage(Boolean(nextCollection.products.pageInfo?.hasNextPage));
   }, [fetcher.data]);
 
-  const [grid, setGrid] = useState(4);
-
-  const openCartDrawer = () => {
-  setOpenCart(true);
-};
+  const [, setGrid] = useState(4);
 
   return (
     <div className="shopify-section">
@@ -207,8 +200,20 @@ export default function Collection() {
               </nav>
             </div>
 
-            <CollectionToolbar count={productCount} 
-             onGridChange={setGrid}/>
+            <Suspense
+              fallback={
+                <CollectionToolbar
+                  count={collection.products.nodes.length}
+                  onGridChange={setGrid}
+                />
+              }
+            >
+              <Await resolve={productCount}>
+                {(count) => (
+                  <CollectionToolbar count={count} onGridChange={setGrid} />
+                )}
+              </Await>
+            </Suspense>
 
             <CollectionGrid
               products={products}
@@ -228,9 +233,7 @@ export default function Collection() {
           </div>
         </div>
       </div>
-       {openCart && (
-        <CartDrawer onClose={() => setOpenCart(false)} />
-      )}
+      {openCart && <CartDrawer onClose={() => setOpenCart(false)} />}
     </div>
   );
 }

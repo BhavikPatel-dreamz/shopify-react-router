@@ -21,24 +21,16 @@ query Collection(
       altText
     }
 
-   products(
-  first: $pageBy
-    after: $cursor
-    ) {
-    pageInfo {
+    products(first: $pageBy, after: $cursor) {
+      pageInfo {
         hasNextPage
         endCursor
-    }
+      }
 
       nodes {
         id
         title
         handle
-        options {
-          id
-          name
-          values
-        }
 
         featuredImage {
           url
@@ -59,16 +51,31 @@ query Collection(
         }
 
         metafields(
-        identifiers: [
+          identifiers: [
             { namespace: "my_fields", key: "sub_title" }
             { namespace: "my_fields", key: "main_title" }
-           
-        ]
+          ]
         ) {
-        namespace
-        key
-        value
-        type
+          namespace
+          key
+          value
+          type
+        }
+
+        variants(first: 20) {
+          nodes {
+            id
+            title
+            availableForSale
+            price {
+              amount
+              currencyCode
+            }
+            selectedOptions {
+              name
+              value
+            }
+          }
         }
       }
     }
@@ -126,6 +133,32 @@ query CollectionGridProducts(
         key
         value
         type
+      }
+    }
+  }
+}
+`;
+
+export const COLLECTION_COUNT_QUERY = `#graphql
+query CollectionCount(
+  $handle: String!
+  $pageBy: Int!
+  $cursor: String
+  $country: CountryCode
+  $language: LanguageCode
+)
+@inContext(
+  country: $country
+  language: $language
+) {
+  collection(handle: $handle) {
+    products(first: $pageBy, after: $cursor) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        id
       }
     }
   }

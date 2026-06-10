@@ -69,6 +69,8 @@ export default function ProductCard({ product, onOpenCart }: Props) {
               src={product.featuredImage?.url}
               alt={product.featuredImage?.altText || ""}
               className="w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </Link>
 
