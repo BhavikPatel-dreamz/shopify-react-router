@@ -12,7 +12,18 @@ import CollectionToolbar from "~/components/collection/CollectionToolbar";
 export async function loader() {
   const storefront = createStorefrontClient();
 
-  const data = await storefront.query(COLLECTION_QUERY, {
+  const data = await storefront.query<{
+    collection?: {
+      products?: {
+        nodes: any[];
+        pageInfo?: {
+          hasNextPage?: boolean;
+          endCursor?: string | null;
+        };
+        total?: number;
+      };
+    };
+  }>(COLLECTION_QUERY, {
     variables: {
       handle: "rare-thor-all",
       pageBy: 12,
@@ -24,7 +35,7 @@ export async function loader() {
   return {
     collectionProducts: data.collection?.products?.nodes ?? [],
     pageInfo: data.collection?.products?.pageInfo ?? null,
-    productCount: data.collection?.products?.total ?? 12,
+    productCount: data.collection?.products?.nodes?.length ?? 12,
   };
 }
 

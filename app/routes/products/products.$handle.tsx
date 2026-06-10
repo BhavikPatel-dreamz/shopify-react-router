@@ -28,7 +28,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     });
   }
   
-  const Rdata = await storefront.query<{
+  const recommendedData = await storefront.query<{
       products: {
         nodes: any[];
       };
@@ -46,8 +46,8 @@ export async function loader({ params }: Route.LoaderArgs) {
   tag.startsWith("color-")
 );
 
- if (colorTags.length === 0) {
-    return { product, relatedProducts: [] };
+  if (colorTags.length === 0) {
+    return { product, relatedProducts: [], recommendedProducts: recommendedData.products?.nodes ?? [] };
   }
 
   const queryString = colorTags.join(" OR ");
@@ -70,12 +70,12 @@ export async function loader({ params }: Route.LoaderArgs) {
   return {
     product,
     relatedProducts,
-    Rdata: Rdata.products?.nodes ?? [],
+    recommendedProducts: recommendedData.products?.nodes ?? [],
   };
 }
 
 export default function ProductPage() {
-  const { product, relatedProducts,Rdata } = useLoaderData<typeof loader>();
+  const { product, relatedProducts, recommendedProducts } = useLoaderData<typeof loader>();
   const [openCart, setOpenCart] = useState(false);
   
 
@@ -133,7 +133,7 @@ export default function ProductPage() {
       </div>
       </div>
 
-      <CollectionGrid products={Rdata} />;
+      <CollectionGrid products={recommendedProducts} />
 
           {openCart && (
             <CartDrawer onClose={() => setOpenCart(false)} />
