@@ -26,4 +26,6 @@ export default [
   route("pages/rare-rabbit-innerv","routes/pages/rare-rabbit-innerv.tsx"),
   route("/pages/rare-rabbit-walk-6-0", "routes/pages/rare-rabbit-walk-6-0.tsx"),
   route("pages/rareism-summer-tale","routes/pages/rareism-summer-tale.tsx"),
+  route("pages/rareism-bobo","routes/pages/rareism-bobo.tsx"),
+  route("pages/rare-rabbit-croquet-club","routes/pages/rare-rabbit-croquet-club.tsx"),
 ] satisfies RouteConfig;
