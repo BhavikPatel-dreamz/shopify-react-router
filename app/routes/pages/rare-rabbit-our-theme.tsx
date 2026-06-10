@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function RareRabbitOurThemePage() {
   return (
-    <main className="rare-rabbit-theme-page">
+    <section className="rare-rabbit-theme-page">
       <div className="image-grid-section-wrapper">
         <div className="container">
           {/* Desktop Grid */}
@@ -162,6 +162,6 @@ export default function RareRabbitOurThemePage() {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
