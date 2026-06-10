@@ -30,7 +30,6 @@ export type MediaItem = ImageItem | VideoItem;
 
 const RareRabbitWalk: React.FC<Props> = ({ items }) => {
   return (
-    <div className="Container">
       <div className="final-landing-image-wrapper">
         {items.map((item, index) => (
           <div className="single-image-wrapper" key={index}>
@@ -86,7 +85,6 @@ const RareRabbitWalk: React.FC<Props> = ({ items }) => {
           </div>
         ))}
       </div>
-    </div>
   );
 };
 
