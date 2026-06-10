@@ -1,6 +1,11 @@
 // RareRabbitCroquetClubPage.tsx
 import React from "react";
 import RareRabbitCroquetClubImages from "~/components/homePages/RareRabbitCroquetClubImages";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
+import { createStorefrontClient } from "~/server/storefront.server";
+import type { Route } from "./+types/rareism-summer-tale";
+import { useLoaderData } from "react-router";
+import CollectionGrid from "~/components/collection/CollectionGrid";
 
 interface CroquetClubItem {
   id: number;
@@ -14,7 +19,28 @@ interface CroquetClubItem {
   alt: string;
 }
 
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
+
 const RareRabbitCroquetClubPage: React.FC = () => {
+  const { products } = useLoaderData<typeof loader>();
   // Data array for the image sections
   const croquetClubItems: CroquetClubItem[] = [
     {
@@ -70,6 +96,16 @@ const RareRabbitCroquetClubPage: React.FC = () => {
         sectionId="template--18876279488583__final_landing_image_aTT9EK"
         paddingClass="section-template--18876279488583__final_landing_image_aTT9EK-padding"
       />
+
+       <CollectionGrid 
+          products={products}
+  
+          enableFilterSortItems={false}
+          enableProductCounts={false}
+          enableGridView={false}
+  
+          gridViewNumber="2"
+          mobileGridViewNumber="1" />
     </main>
   );
 };

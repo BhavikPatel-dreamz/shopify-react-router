@@ -1,6 +1,11 @@
 // RareismBoboPage.tsx
 import React from "react";
 import RareismBoboImages from "~/components/homePages/RareismBoboImages";
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
+import { createStorefrontClient } from "~/server/storefront.server";
+import type { Route } from "../+types/home";
+import CollectionGrid from "~/components/collection/CollectionGrid";
+import { useLoaderData } from "react-router";
 
 
 interface BoboItem {
@@ -15,7 +20,28 @@ interface BoboItem {
   alt: string;
 }
 
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
+
 const RareismBoboPage: React.FC = () => {
+  const { products } = useLoaderData<typeof loader>();
   // Data array for the image sections
   const boboItems: BoboItem[] = [
     {
@@ -104,6 +130,16 @@ const RareismBoboPage: React.FC = () => {
         sectionId="template--16962880405575__final_landing_image_Nc9tCp"
         paddingClass="section-template--16962880405575__final_landing_image_Nc9tCp-padding"
       />
+
+      <CollectionGrid 
+              products={products}
+      
+              enableFilterSortItems={false}
+              enableProductCounts={false}
+              enableGridView={false}
+      
+              gridViewNumber="2"
+              mobileGridViewNumber="1" />
     </main>
   );
 };
