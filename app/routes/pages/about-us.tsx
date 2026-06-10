@@ -6,9 +6,6 @@ import Swiper from "swiper";
 import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
-
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { aboutData } from "~/data/aboutData";
 
 export function meta({}: Route.MetaArgs) {
@@ -23,10 +20,22 @@ export function meta({}: Route.MetaArgs) {
 
 export default function AboutUsPage() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  let imageSwiper: Swiper | null = null;
+  let fullSwiper: Swiper | null = null;
+  let ScrollTriggerRef: any = null;
 
-    let imageSwiper: Swiper | null = null;
-    let fullSwiper: Swiper | null = null;
+  async function init() {
+    if (typeof window === "undefined") return;
+
+    const gsapModule = await import("gsap");
+    const scrollTriggerModule = await import("gsap/ScrollTrigger");
+
+    const gsap = gsapModule.default;
+    const ScrollTrigger = scrollTriggerModule.ScrollTrigger;
+
+    ScrollTriggerRef = ScrollTrigger;
+
+    gsap.registerPlugin(ScrollTrigger);
 
     // First Slider
     const imageWrapper = document.querySelector(
@@ -79,7 +88,7 @@ export default function AboutUsPage() {
       );
     }
 
-    // Slider bottom text animation (add/remove "visible" class on scroll)
+    // Slider bottom text animation
     const sliderBottomText = document.querySelector(
       ".slider-bottom-text .animation-wrapper"
     );
@@ -97,7 +106,7 @@ export default function AboutUsPage() {
             trigger: ".slider-bottom-text",
             start: "top 85%",
             toggleClass: "visible",
-            once: true, // ensures it behaves like Shopify "reveal once"
+            once: true,
           },
         }
       );
@@ -127,16 +136,21 @@ export default function AboutUsPage() {
             : "#000000",
       });
     }
+  }
 
-    return () => {
-      imageSwiper?.destroy(true, true);
-      fullSwiper?.destroy(true, true);
+  init();
 
-      ScrollTrigger.getAll().forEach((trigger) =>
-        trigger.kill()
+  return () => {
+    imageSwiper?.destroy(true, true);
+    fullSwiper?.destroy(true, true);
+
+    if (ScrollTriggerRef) {
+      ScrollTriggerRef.getAll().forEach(
+        (trigger: any) => trigger.kill()
       );
-    };
-  }, []);
+    }
+  };
+}, []);
   return (
     <section className="about-us-page">
       {/* Banner Section */}
