@@ -182,7 +182,7 @@ const RareRabbitWalk: React.FC<Props> = ({ items }) => {
                         />
                       ) : (
                         <img
-                            src="https://thehouseofrare.com/cdn/shop/files/volume.svg"
+                          src="https://thehouseofrare.com/cdn/shop/files/volume.svg"
                           width={15}
                           height={15}
                           className="volume-icon"
