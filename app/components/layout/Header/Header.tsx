@@ -123,18 +123,25 @@ export default function Header() {
 
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
+  const pathname = location.pathname;
+
   let logo = logos.home;
 
-  if (location.pathname.startsWith("/pages/rareism")) {
+  if (location.pathname === "/pages/rareism") {
     logo = logos.women;
-  } else if (location.pathname.startsWith("/pages/kids")) {
+  } else if (location.pathname === "/pages/kids") {
     logo = logos.kids;
-  } else if (location.pathname.startsWith("/pages/rarez-landing-page")) {
+  } else if (
+    location.pathname === "/pages/rarez-landing-page"
+  ) {
     logo = logos.shoes;
-  } else if (location.pathname.startsWith("/pages/rare-rabbit")) {
+  } else if (
+    location.pathname === "/pages/rare-rabbit"
+  ) {
     logo = logos.men;
   }
 
+            
   useEffect(() => {
     const updateHeaderHeight = () => {
       const header = document.querySelector(

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import ProductCard from "./ProductCard";
+import CartDrawer from "../Cart/CartDrawer";
 
 interface Props {
   products: any[];
@@ -26,6 +28,11 @@ export default function CollectionGrid({
   mobileGridViewNumber = "2",
   
 }: Props) {
+  const [openCart, setOpenCart] = useState(false);
+  const openCartDrawer = () => {
+    setOpenCart(true);
+  };
+
   const wrapperClasses = [
     "section-custom-collection",
 
@@ -107,7 +114,7 @@ export default function CollectionGrid({
                   <ProductCard
                     key={product.id}
                     product={product}
-                    onOpenCart={onOpenCart}
+                    onOpenCart={() => setOpenCart(true)}
                   />
                 ))}
 
@@ -132,6 +139,9 @@ export default function CollectionGrid({
 
         </div>
       </section>
+       {openCart && (
+              <CartDrawer onClose={() => setOpenCart(false)} />
+            )}
     </div>
   );
 }

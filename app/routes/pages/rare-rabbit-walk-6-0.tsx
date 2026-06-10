@@ -18,13 +18,13 @@ export const homepageBlocks: { type: "mediaGrid"; items: MediaItem[] }[] = [
         desktop: {
           src: "https://thehouseofrare.com/cdn/shop/videos/c/vp/0da72bc2680b4faa9aa8808b0f2de2de/0da72bc2680b4faa9aa8808b0f2de2de.HD-1080p-4.8Mbps-77632593.mp4",
           poster:
-            "https://thehouseofrare.com/cdn/shop/files/preview_images/desktop_poster.jpg",
+            "https://thehouseofrare.com/cdn/shop/files/preview_images/0da72bc2680b4faa9aa8808b0f2de2de.thumbnail.0000000000_1300x.jpg",
         },
 
         mobile: {
           src: "https://thehouseofrare.com/cdn/shop/videos/c/vp/bca6415...720p.mp4",
           poster:
-            "https://thehouseofrare.com/cdn/shop/files/preview_images/mobile_poster.jpg",
+            "https://thehouseofrare.com/cdn/shop/files/preview_images/bca6415b4d2b488c9e88f531d43f0c69.thumbnail.0000000000_500x.jpg",
         },
       }, 
       {
@@ -108,6 +108,10 @@ const mediaBlock = homepageBlocks.find(
 
    const { products } = useLoaderData<typeof loader>();
 
+  function onOpenCart(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div>
        
@@ -117,7 +121,7 @@ const mediaBlock = homepageBlocks.find(
       )}
       <CollectionGrid 
         products={products}
-
+        onOpenCart={onOpenCart}
         enableFilterSortItems={false}
         enableProductCounts={false}
         enableGridView={false}

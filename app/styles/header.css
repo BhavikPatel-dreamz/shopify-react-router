@@ -870,7 +870,8 @@
     .header-wrapper .header-inner .middle-part.rare-rabbit-brand .rare-rabbit-image {
         opacity: 1;
         visibility: visible;
-        z-index: 2
+        z-index: 2;
+        top: -25px;
     }
 }
 

@@ -189,8 +189,8 @@ export default function CartDrawer({ onClose }: any) {
                           
                           <span className="icon icon-mobile-cross">
                             <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M4.42383 13.1953L13.1495 4.37349" stroke="#000000" stroke-width="0.76"></path>
-                              <path d="M4.36426 4.40625L13.2094 13.155" stroke="#000000" stroke-width="0.76"></path>
+                              <path d="M4.42383 13.1953L13.1495 4.37349" stroke="#000000" strokeWidth="0.76"></path>
+                              <path d="M4.36426 4.40625L13.2094 13.155" stroke="#000000" strokeWidth="0.76"></path>
                             </svg>
                           </span>
   
