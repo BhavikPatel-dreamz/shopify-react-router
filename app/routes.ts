@@ -18,7 +18,10 @@ export default [
   route("pages/html-sitemap", "routes/pages/html-sitemap.tsx"),
   route("/pages/rare-rabbit-summer-essentials", "routes/pages/$handle.tsx"),
   route("/pages/corporate-gifting", "routes/pages/corporate-gifting.tsx"),
-  route("pages/thor-denim","routes/pages/thor-denim.tsx"),
-  route("pages/rare-rabbit-t-shirt","routes/pages/rare-rabbit-t-shirt.tsx"),
-  route("pages/luggage","routes/pages/luggage.tsx"),
+  route("pages/thor-denim", "routes/pages/thor-denim.tsx"),
+  route("pages/rare-rabbit-t-shirt", "routes/pages/rare-rabbit-t-shirt.tsx"),
+  route("pages/luggage", "routes/pages/luggage.tsx"),
+  route("pages/rare-rabbit-linen","routes/pages/rare-rabbit-linen.tsx"),
+  route("pages/florens-print-shirt","routes/pages/florens-print-shirt.tsx"),
+  route("pages/rare-rabbit-innerv","routes/pages/rare-rabbit-innerv.tsx"),
 ] satisfies RouteConfig;
