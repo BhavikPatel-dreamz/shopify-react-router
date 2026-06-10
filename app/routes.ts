@@ -24,4 +24,5 @@ export default [
   route("pages/rare-rabbit-linen","routes/pages/rare-rabbit-linen.tsx"),
   route("pages/florens-print-shirt","routes/pages/florens-print-shirt.tsx"),
   route("pages/rare-rabbit-innerv","routes/pages/rare-rabbit-innerv.tsx"),
+  route("/pages/rare-rabbit-walk-6-0", "routes/pages/rare-rabbit-walk-6-0.tsx"),
 ] satisfies RouteConfig;

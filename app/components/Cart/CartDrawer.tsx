@@ -97,6 +97,11 @@ export default function CartDrawer({ onClose }: any) {
               <div className="cart-content-wrapper">
                 <div className="cart-content">
                   {items.map((item) => (
+                    (() => {
+                      const variants = item.product?.variants?.nodes ?? [];
+                      const options = item.product?.options ?? [];
+
+                      return (
                     <div className="cart-item" key={item.cartItemKey}>
                       <div className="cart-item-image-wrapper">
                         <div className="image-wrapper">
@@ -135,18 +140,18 @@ export default function CartDrawer({ onClose }: any) {
 
                             <div className="item-price-wrapper">
                               <CartPrice
-                                variants={item.product.variants.nodes}
+                                variants={variants}
                                 selectedVariantId={item.selectedVariantId}
                               />
                             </div>
                           </div>
 
                           <SizeSelectorCart
-                            variants={item.product.variants.nodes}
-                            options={item.product.options}
+                            variants={variants}
+                            options={options}
                             selectedVariantId={item.selectedVariantId}
                             onSelectVariant={(variantId) => {
-                              const variant = item.product.variants.nodes.find(
+                              const variant = variants.find(
                                 (v: any) => v.id === variantId,
                               );
 
@@ -198,6 +203,8 @@ export default function CartDrawer({ onClose }: any) {
                       </div>
                        
                     </div>
+                      );
+                    })()
                   ))}
                   
                 </div>

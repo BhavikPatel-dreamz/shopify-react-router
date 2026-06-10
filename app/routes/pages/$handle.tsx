@@ -27,10 +27,11 @@ export default function ShopTheLookPage() {
 
   return (
     <div className="shop-the-look-section">
-      {looks.map((look) => (
+      {looks.map((look, index) => (
         <LookSection
           key={look.id}
           look={look}
+          sliderIndex={index}
         />
       ))}
     </div>

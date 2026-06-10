@@ -135,3 +135,4 @@ query ProductDetails(
     }
   }
 `;
+
