@@ -17,4 +17,5 @@ export default [
   route("pages/terms-conditions", "routes/pages/terms-conditions.tsx"),
   route("pages/html-sitemap", "routes/pages/html-sitemap.tsx"),
   route("/pages/rare-rabbit-summer-essentials", "routes/pages/$handle.tsx"),
+  route("/pages/corporate-gifting", "routes/pages/corporate-gifting.tsx"),
 ] satisfies RouteConfig;
