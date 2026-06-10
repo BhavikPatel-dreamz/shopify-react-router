@@ -28,7 +28,6 @@ export async function loader({}: Route.LoaderArgs) {
 }
 
 
-
 export default function RareRabbitLinenPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
@@ -178,7 +177,6 @@ export default function RareRabbitLinenPage() {
       </div>
 
       <CollectionGrid products={products} />;
-
 
     </main>
   );

@@ -1,7 +1,35 @@
 
+import CollectionGrid from "~/components/collection/CollectionGrid";
 import "../../styles/LuggagePage.css"; // External CSS for styling
+import { COLLECTION_GRID_QUERY } from "~/graphQL/collection";
+import { createStorefrontClient } from "~/server/storefront.server";
+import type { Route } from "../+types/home";
+import { useLoaderData } from "react-router";
+
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    products: {
+      nodes: any[];
+    };
+  }>(COLLECTION_GRID_QUERY, {
+    variables: {
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.products?.nodes ?? [],
+  };
+}
 
 export default function LuggagePage() {
+
+  const { products } = useLoaderData<typeof loader>();
+
   // Data array for the image sections
   const luggageItems = [
     {
@@ -90,6 +118,16 @@ export default function LuggagePage() {
           ))}
         </div>
       </div>
+
+      <CollectionGrid 
+        products={products}
+
+        enableFilterSortItems={false}
+        enableProductCounts={false}
+        enableGridView={false}
+
+        gridViewNumber="2"
+        mobileGridViewNumber="1" />;
     </main>
   );
 }
