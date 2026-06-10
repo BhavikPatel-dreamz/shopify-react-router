@@ -8,6 +8,7 @@ import { COLLECTION_QUERY } from "~/graphQL/collection";
 import { createStorefrontClient } from "~/server/storefront.server";
 import CollectionToolbar from "~/components/collection/CollectionToolbar";
 
+
 export async function loader() {
   const storefront = createStorefrontClient();
 
