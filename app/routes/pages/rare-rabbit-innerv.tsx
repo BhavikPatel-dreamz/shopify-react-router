@@ -133,7 +133,7 @@ export default function RareRabbitInnervPage() {
           ))}
         </div>
       </div>
-      <CollectionGrid products={products} onOpenCart={onOpenCart} />;
+      <CollectionGrid products={products} onOpenCart={onOpenCart} />
     </main>
   );
 }
