@@ -50,6 +50,12 @@ query Collection(
           }
         }
 
+         options {
+        id
+        name
+        values
+      }
+
         metafields(
           identifiers: [
             { namespace: "my_fields", key: "sub_title" }
