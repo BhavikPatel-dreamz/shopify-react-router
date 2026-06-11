@@ -1,5 +1,37 @@
-import React from "react";
+
+import React, { useState } from "react";
 import RareismSummerTaleImages from "../../components/homePages/RareismSummerTaleImages";
+import CollectionToolbar from "~/components/collection/CollectionToolbar";
+import CollectionGrid from "~/components/collection/CollectionGrid";
+import CartDrawer from "~/components/Cart/CartDrawer";
+import { useLoaderData } from "react-router";
+import { createStorefrontClient } from "~/server/storefront.server";
+import { COLLECTION_QUERY } from "~/graphQL/collection";
+import type { Route } from "./+types/rarez-sauron";
+
+
+export async function loader({}: Route.LoaderArgs) {
+  const storefront = createStorefrontClient();
+
+  const data = await storefront.query<{
+    collection?: {
+      products?: {
+        nodes: any[];
+      };
+    };
+  }>(COLLECTION_QUERY, {
+    variables: {
+      handle: "rarez-sauron",
+      pageBy: 12,
+      country: "IN",
+      language: "EN",
+    },
+  });
+
+  return {
+    products: data.collection?.products?.nodes ?? [],
+  };
+}
 
 interface SummerTaleItem {
   id: number;
@@ -73,6 +105,15 @@ const RareismSummerTalePage: React.FC = () => {
     }
   ];
 
+  const { collectionProducts, pageInfo, productCount } = useLoaderData<typeof loader>();
+    const [openCart, setOpenCart] = useState(false);
+  
+    const openCartDrawer = () => {
+      setOpenCart(true);
+    };
+  
+    const { products } = useLoaderData<typeof loader>();
+
   return (
     <main className="rareism-summer-tale-page">
       <RareismSummerTaleImages 
@@ -80,6 +121,13 @@ const RareismSummerTalePage: React.FC = () => {
         sectionId="template--18810881441863__final_landing_image_K3aNPL"
         paddingClass="section-template--18810881441863__final_landing_image_K3aNPL-padding"
       />
+      <CollectionGrid 
+              products={products}
+              enableFilterSortItems={false}
+              enableProductCounts={false}
+              enableGridView={false}
+              gridViewNumber="2"
+              mobileGridViewNumber="1" />
     </main>
   );
 };
