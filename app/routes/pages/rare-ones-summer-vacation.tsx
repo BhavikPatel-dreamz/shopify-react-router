@@ -53,11 +53,11 @@ export default function RareOnesSummerVacationPage() {
     "default" | "collection"
   >("default");
 
-   const { collectionProducts, pageInfo, productCount } = useLoaderData<typeof loader>();
+  const { collectionProducts, pageInfo, productCount } = useLoaderData<typeof loader>();
   const [openCart, setOpenCart] = useState(false);
 
   const openCartDrawer = () => {
-  setOpenCart(true);
+    setOpenCart(true);
   };
 
   return (
@@ -71,21 +71,21 @@ export default function RareOnesSummerVacationPage() {
 
       {/* Collection Tab */}
       {activeTab === "collection" && (
-             <>
-            <CollectionToolbar count={productCount} 
-               /> 
-     
-           <CollectionGrid
-             products={collectionProducts}
-             onOpenCart={openCartDrawer}
-           />
-           </>
-         )}
-     
-         {openCart && (
-           <CartDrawer onClose={() => setOpenCart(false)} />
-         )}
-     
+        <>
+          <CollectionToolbar count={productCount}
+          />
+
+          <CollectionGrid
+            products={collectionProducts}
+            onOpenCart={openCartDrawer}
+          />
+        </>
+      )}
+
+      {openCart && (
+        <CartDrawer onClose={() => setOpenCart(false)} />
+      )}
+
 
       {/* Lookbook Tab */}
       {activeTab === "default" && (

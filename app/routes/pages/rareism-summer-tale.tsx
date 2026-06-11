@@ -1,4 +1,3 @@
-// RareismSummerTalePage.tsx
 import React from "react";
 import RareismSummerTaleImages from "../../components/homePages/RareismSummerTaleImages";
 
