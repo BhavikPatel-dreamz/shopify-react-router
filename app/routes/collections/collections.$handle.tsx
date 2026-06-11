@@ -161,7 +161,7 @@ export default function Collection() {
   }, [fetcher.data]);
 
   const [, setGrid] = useState(4);
-
+  // console.log("collection", collection);
   return (
     <div className="shopify-section">
       <div className="main-collection-banner-section">
