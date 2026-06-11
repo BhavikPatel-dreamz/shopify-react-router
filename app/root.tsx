@@ -16,6 +16,7 @@ import Footer from "./components/layout/Footer";
 
 import MobileBottomBar from "./components/layout/MobileBottomBar";
 import BackToTop from "./components/common/BackToTop";
+import LandingVideo from "./components/LandingVideo";
 
 import { getBodyClass } from "./utils/getBodyClass";
 
@@ -132,15 +133,21 @@ export function ErrorBoundary({
     <>
       <Header />
 
-      <main className="pt-16 p-4 container mx-auto">
-        <h1>{message}</h1>
+      <main>
+        {message === "404" ? (
+          <LandingVideo desktopVideoSrc={"https://thehouseofrare.com/cdn/shop/videos/c/vp/7d2d4f05b2e24725ab094afabe6dd34c/7d2d4f05b2e24725ab094afabe6dd34c.SD-480p-0.9Mbps-32766722.mp4"} desktopPoster={"https://thehouseofrare.com/cdn/shop/files/preview_images/7d2d4f05b2e24725ab094afabe6dd34c.thumbnail.0000000000_1300x.jpg"} mobileVideoSrc={"https://thehouseofrare.com/cdn/shop/videos/c/vp/7d2d4f05b2e24725ab094afabe6dd34c/7d2d4f05b2e24725ab094afabe6dd34c.SD-480p-0.9Mbps-32766722.mp4"} mobilePoster={"https://thehouseofrare.com/cdn/shop/files/preview_images/7d2d4f05b2e24725ab094afabe6dd34c.thumbnail.0000000000_1300x.jpg"} />
+        ) : (
+          <div className="pt-16 p-4 container mx-auto">
+            <h1>{message}</h1>
 
-        <p>{details}</p>
+            <p>{details}</p>
 
-        {stack && (
-          <pre className="w-full p-4 overflow-x-auto">
-            <code>{stack}</code>
-          </pre>
+            {stack && (
+              <pre className="w-full p-4 overflow-x-auto">
+                <code>{stack}</code>
+              </pre>
+            )}
+          </div>
         )}
       </main>
 
