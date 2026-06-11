@@ -7838,6 +7838,7 @@ body.cart-drawer-open {
 .section-video .video-with-progress .video-with-pro__media {
     position: relative;
     max-width: 100%;
+    width: 100%;
     height: var(--video-aspect-ratio, 100%)
 }
 
