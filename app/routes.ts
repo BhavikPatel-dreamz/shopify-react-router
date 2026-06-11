@@ -16,7 +16,7 @@ export default [
   route("blogs/news", "routes/blogs/news.tsx"),
   route("pages/terms-conditions", "routes/pages/terms-conditions.tsx"),
   route("pages/html-sitemap", "routes/pages/html-sitemap.tsx"),
-  // route("/pages/rare-rabbit-summer-essentials", "routes/pages/ShopTheLookPage.tsx"),
+  route("/pages/rare-rabbit-summer-essentials", "routes/pages/ShopTheLookPage.tsx"),
   route("/pages/corporate-gifting", "routes/pages/corporate-gifting.tsx"),
   route("pages/thor-denim", "routes/pages/thor-denim.tsx"),
   route("pages/rare-rabbit-t-shirt", "routes/pages/rare-rabbit-t-shirt.tsx"),
