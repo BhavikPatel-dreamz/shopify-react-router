@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-import "../../styles/custom-styles.css";
-import "../../styles/rare-ones-summer-vacation-page.css";
+import "~/styles/custom-styles.css";
+import "~/styles/rare-ones-summer-vacation-page.css";
+import "~/styles/common-image-grids.css";
 
 import LookbookTabs from "~/components/summerVacation/LookbookTabs";
 import CollectionSection from "~/components/summerVacation/CollectionSection";
 import SummerVacationLookbook from "~/components/summerVacation/SummerVacationLookbook";
 
 import {
-  rareOnesSummerVacationBlocks,
+  summerVacationDesktopBlocks,
+  summerVacationMobileBlocks,
 } from "~/data/rareOnesSummerVacation";
 
 export default function RareOnesSummerVacationPage() {
@@ -33,7 +35,12 @@ export default function RareOnesSummerVacationPage() {
       {/* Lookbook Tab */}
       {activeTab === "default" && (
         <SummerVacationLookbook
-          blocks={rareOnesSummerVacationBlocks}
+          desktopBlocks={
+            summerVacationDesktopBlocks
+          }
+          mobileBlocks={
+            summerVacationMobileBlocks
+          }
         />
       )}
 

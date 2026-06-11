@@ -1,36 +1,48 @@
-export type SummerVacationBlock =
-    | {
-        type: "three_images";
-        images: {
-            href: string;
-            img: string;
-            alt: string;
-        }[];
-    }
-    | {
-        type: "single_image";
-        image: {
-            href: string;
-            img: string;
-            alt: string;
-        };
-    }
-    | {
-        type: "two_images";
-        reverse?: boolean;
-        large: {
-            href: string;
-            img: string;
-            alt: string;
-        };
-        small: {
-            href: string;
-            img: string;
-            alt: string;
-        };
+export interface SummerVacationDesktopBlock {
+    type:
+    | "three_images"
+    | "single_image"
+    | "two_images";
+
+    images?: {
+        href: string;
+        img: string;
+        alt: string;
+    }[];
+
+    image?: {
+        href: string;
+        img: string;
+        alt: string;
     };
 
-export const rareOnesSummerVacationBlocks: SummerVacationBlock[] = [
+    large?: {
+        href: string;
+        img: string;
+        alt: string;
+    };
+
+    small?: {
+        href: string;
+        img: string;
+        alt: string;
+    };
+
+    reverse?: boolean;
+}
+
+export interface SummerVacationMobileBlock {
+    type:
+    | "two_images"
+    | "full_image";
+
+    images: {
+        href: string;
+        img: string;
+        alt: string;
+    }[];
+}
+export const summerVacationDesktopBlocks: SummerVacationDesktopBlock[] = [
     {
         type: "three_images",
         images: [
@@ -103,5 +115,102 @@ export const rareOnesSummerVacationBlocks: SummerVacationBlock[] = [
             img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_web_10_add2fcc7-12b8-4bc4-808d-68f131dd7e98.webp?v=1779356252",
             alt: "Vacation Look 10",
         },
+    },
+];
+export const summerVacationMobileBlocks: SummerVacationMobileBlock[] = [
+    {
+        type: "two_images",
+
+        images: [
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-1_caa23770-5e3f-4c3b-89d4-c595d640ea61.webp",
+                alt: "",
+            },
+
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-2_a0a835a3-d3d8-4cfd-8435-4504869b3971.webp",
+                alt: "",
+            },
+        ],
+    },
+
+    {
+        type: "full_image",
+
+        images: [
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-3_d9130385-537d-445c-9c77-fd5707de4da9.webp",
+                alt: "",
+            },
+        ],
+    },
+
+    {
+        type: "two_images",
+
+        images: [
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-4_4bec94d3-6450-43c0-ab76-123192129ab2.webp",
+                alt: "",
+            },
+
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-5_7e4432c8-21a0-4f9b-87aa-9f6a11fccb5d.webp",
+                alt: "",
+            },
+        ],
+    },
+
+    {
+        type: "two_images",
+
+        images: [
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-6_bde9c4d3-2370-41ce-9121-4b74a1dfbd12.webp",
+                alt: "",
+            },
+
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-7_74b7e4b9-52ea-4b6f-85b4-4cb34d432743.webp",
+                alt: "",
+            },
+        ],
+    },
+
+    {
+        type: "full_image",
+
+        images: [
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-8_8312471a-a541-4467-9b44-9018a23be0f0.webp",
+                alt: "",
+            },
+        ],
+    },
+
+    {
+        type: "two_images",
+
+        images: [
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-9_45cbfbd8-b43a-490b-a3dc-58ed7c4fbdd0.webp",
+                alt: "",
+            },
+
+            {
+                href: "",
+                img: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/vacation_app-mob-10_85a95b77-004b-4c96-9163-532941091b06.webp",
+                alt: "",
+            },
+        ],
     },
 ];
