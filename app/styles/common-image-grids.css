@@ -12,43 +12,6 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Tabs Section */
-.lookbook-collection-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 70px 20px 20px;
-  background: #fff;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.lookbook-tab {
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: #999;
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding-bottom: 10px;
-  transition: all 0.3s ease;
-}
-
-.lookbook-tab.active {
-  color: #000;
-  border-bottom: 2px solid #000;
-}
-
-@media screen and (max-width: 768px) {
-  .lookbook-collection-tabs {
-    padding: 36px 20px 10px;
-    gap: 30px;
-  }
-  .lookbook-tab {
-    font-size: 14px;
-  }
-}
-
 /* COLLECTION Section - Completely Empty */
 .collection-section-empty {
   width: 100%;
@@ -125,7 +88,7 @@
 
 @media screen and (max-width: 768px) {
   .hide-mobile {
-    display: none;
+    display: none !important;
   }
   .desktop-blocks-section {
     padding: 20px 15px;
@@ -134,6 +97,6 @@
 
 @media screen and (min-width: 769px) {
   .hide-desktop {
-    display: none;
+    display: none !important;
   }
 }

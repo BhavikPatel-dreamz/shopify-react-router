@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
-import "../../styles/custom-styles.css";
-import "../../styles/rare-ones-summer-vacation-page.css";
+import "~/styles/custom-styles.css";
+import "~/styles/rare-ones-summer-vacation-page.css";
+import "~/styles/common-image-grids.css";
 
 import LookbookTabs from "~/components/summerVacation/LookbookTabs";
 import SummerVacationLookbook from "~/components/summerVacation/SummerVacationLookbook";
 
 import {
-  rareOnesSummerVacationBlocks,
+  summerVacationDesktopBlocks,
+  summerVacationMobileBlocks,
 } from "~/data/rareOnesSummerVacation";
 import CollectionToolbar from "~/components/collection/CollectionToolbar";
 import CollectionGrid from "~/components/collection/CollectionGrid";
@@ -51,11 +53,11 @@ export default function RareOnesSummerVacationPage() {
     "default" | "collection"
   >("default");
 
-   const { collectionProducts, pageInfo, productCount } = useLoaderData<typeof loader>();
+  const { collectionProducts, pageInfo, productCount } = useLoaderData<typeof loader>();
   const [openCart, setOpenCart] = useState(false);
 
   const openCartDrawer = () => {
-  setOpenCart(true);
+    setOpenCart(true);
   };
 
   return (
@@ -69,26 +71,31 @@ export default function RareOnesSummerVacationPage() {
 
       {/* Collection Tab */}
       {activeTab === "collection" && (
-             <>
-            <CollectionToolbar count={productCount} 
-               /> 
-     
-           <CollectionGrid
-             products={collectionProducts}
-             onOpenCart={openCartDrawer}
-           />
-           </>
-         )}
-     
-         {openCart && (
-           <CartDrawer onClose={() => setOpenCart(false)} />
-         )}
-     
+        <>
+          <CollectionToolbar count={productCount}
+          />
+
+          <CollectionGrid
+            products={collectionProducts}
+            onOpenCart={openCartDrawer}
+          />
+        </>
+      )}
+
+      {openCart && (
+        <CartDrawer onClose={() => setOpenCart(false)} />
+      )}
+
 
       {/* Lookbook Tab */}
       {activeTab === "default" && (
         <SummerVacationLookbook
-          blocks={rareOnesSummerVacationBlocks}
+          desktopBlocks={
+            summerVacationDesktopBlocks
+          }
+          mobileBlocks={
+            summerVacationMobileBlocks
+          }
         />
       )}
 
