@@ -14,7 +14,7 @@ export const megaMenuData = {
             links: [
                 { title: "DENIM", url: "/collections/rare-rabbit-ss-26" },
                 { title: "THIS WEEK", url: "/collections/rare-rabbit-new-arrivals" },
-                { title: "CROQUET CLUB", url: "/collections/formal-shirt" },
+                { title: "CROQUET CLUB", url: "/pages/rare-rabbit-croquet-club" },
                 { title: "LINEN", url: "/collections/rare-rabbit-new-arrivals" },
                 { title: "LINEN GUILD", url: "/collections/guild-collection" },
             ],
@@ -161,7 +161,7 @@ export const megaMenuData = {
                 { title: "DENIM", url: "/collections/rareism-new-arrivals-jeans" },
                 { title: "THIS WEEK", url: "/collections/rareism-new-arrivals" },
                 { title: "TOP MODE ON", url: "/collections/rareism-top" },
-                { title: "SUMMER TALES", url: "/collections/rareism-new-arrivals" },
+                { title: "SUMMER TALES", url: "/pages/rareism-summer-tale" },
                 { title: "RUBY", url: "/collections/rareism-ruby" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-THE_EDIT.webp?v=1779271946",
@@ -241,12 +241,12 @@ export const megaMenuData = {
 
         {
             title: "COLLABORATIONS",
-            url: "/collections/rareism-sale-1",
+            url: "/pages/rareism-bobo",
             links: [
-                { title: "RAREISM X BOBO", url: "/collections/rareism-sale-1" },
+                { title: "RAREISM X BOBO", url: "/pages/rareism-bobo" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER-RSM-MOBILE-COLLABORATIONS.webp?v=1779272227",
-            imageLink: "/collections/rareism-sale-1",
+            imageLink: "/pages/rareism-bobo",
         },
 
         {
@@ -281,7 +281,7 @@ export const megaMenuData = {
             title: "DENIM",
             url: "/collections/rare-ones-ss-26-jeans",
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/MENU_BANNER_RO_-_DESTKTOP_-_The_edit-1.webp?v=8880706383563276293",
-            imageLink: "/collections/rare-ones-ss-26-jeans",
+            imageLink: "/pages/thor-denim",
         },
 
         {
