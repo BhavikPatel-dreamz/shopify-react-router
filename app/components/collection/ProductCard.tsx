@@ -44,6 +44,8 @@ export default function ProductCard({ product, onOpenCart }: Props) {
     };
   }, [openSize]);
 
+  console.log("ProductCard render:", product);
+
   return (
     <div className="collection-product-main">
       <div className="product-main-inner">

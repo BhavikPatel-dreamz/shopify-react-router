@@ -10,7 +10,9 @@ import {
 
 import MegaMenu from "./MegaMenu";
 import LoginPopup from "./LoginPopup";
+import CartDrawer from "~/components/Cart/CartDrawer";
 import { megaMenuData } from "~/data/megaMenuData";
+import { useCart } from "~/lib/useCart";
 import "~/styles/header.css";
 import { logos } from "~/data/headerLogos";
 
@@ -22,6 +24,10 @@ export default function Header() {
   const [headerTheme, setHeaderTheme] = useState<"light" | "dark">("light");
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
+
+  const cartItems = useCart((s) => s.items);
+  const cartCount = cartItems.length;
 
   const isHome = location.pathname === "/";
 
@@ -149,6 +155,15 @@ export default function Header() {
 
   const handleClosePopup = () => {
     setIsLoginPopupOpen(false);
+  };
+
+  const handleCartClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsCartDrawerOpen(true);
+  };
+
+  const handleCloseCartDrawer = () => {
+    setIsCartDrawerOpen(false);
   };
 
   return (
@@ -328,17 +343,18 @@ export default function Header() {
                   </li>
 
                   <li className="second-nav-content">
-                    <Link
-                      to="/cart"
+                    <a
+                      href="#"
                       className="header-cart-btn"
                       aria-label="cart"
+                      onClick={handleCartClick}
                     >
                       <CartIcon />
 
                       <span className="Header__CartCount cart-count">
-                        0
+                        {cartCount}
                       </span>
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -372,6 +388,11 @@ export default function Header() {
         isOpen={isLoginPopupOpen} 
         onClose={handleClosePopup} 
       />
+
+      {/* Cart Drawer */}
+      {isCartDrawerOpen && (
+        <CartDrawer onClose={handleCloseCartDrawer} />
+      )}
     </>
   );
 }
