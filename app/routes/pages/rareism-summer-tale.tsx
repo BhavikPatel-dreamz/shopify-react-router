@@ -10,7 +10,7 @@ import { COLLECTION_QUERY } from "~/graphQL/collection";
 import type { Route } from "./+types/rarez-sauron";
 
 
-export async function loader({}: Route.LoaderArgs) {
+export async function loader({ }: Route.LoaderArgs) {
   const storefront = createStorefrontClient();
 
   const data = await storefront.query<{
@@ -32,7 +32,6 @@ export async function loader({}: Route.LoaderArgs) {
     products: data.collection?.products?.nodes ?? [],
   };
 }
-
 interface SummerTaleItem {
   id: number;
   href: string;
@@ -105,14 +104,7 @@ const RareismSummerTalePage: React.FC = () => {
     }
   ];
 
-  const { collectionProducts, pageInfo, productCount } = useLoaderData<typeof loader>();
-    const [openCart, setOpenCart] = useState(false);
-  
-    const openCartDrawer = () => {
-      setOpenCart(true);
-    };
-  
-    const { products } = useLoaderData<typeof loader>();
+  const { products } = useLoaderData<typeof loader>();
 
   return (
     <main className="rareism-summer-tale-page">
