@@ -66,7 +66,7 @@ export default function MegaMenu({
 
                             <div className="help-text-wrapper-inner">
                                 <Link
-                                    to="/help"
+                                    to="/pages/help"
                                     className="help-text"
                                 >
                                     HELP
