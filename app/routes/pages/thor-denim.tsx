@@ -5,7 +5,7 @@ import "~/styles/rare-ones-summer-vacation-page.css";
 import "~/styles/common-image-grids.css";
 
 import LookbookTabs from "~/components/summerVacation/LookbookTabs";
-import CollectionSection from "~/components/summerVacation/CollectionSection";
+// import CollectionSection from "~/components/summerVacation/CollectionSection";
 import ThorDenimLookbook from "~/components/thorDenim/ThorDenimLookbook";
 
 
@@ -29,9 +29,9 @@ export default function ThorDenimPage() {
       />
 
       {/* Collection Tab */}
-      {activeTab === "collection" && (
+      {/* {activeTab === "collection" && (
         <CollectionSection />
-      )}
+      )} */}
 
       {/* Lookbook Tab */}
       {activeTab === "default" && (
