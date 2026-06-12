@@ -114,9 +114,9 @@ export const megaMenuData = {
 
         {
             title: "SHOP THE LOOK",
-            url: "/collections/rare-rabbit-business",
+            url: "#",
             links: [
-                { title: "SUMMER ESSENTIALS", url: "/collections/formal-pants-for-men" },
+                { title: "SUMMER ESSENTIALS", url: "/pages/rare-rabbit-summer-essentials" },
                 { title: "DENIM ON DENIM", url: "/collections/rare-rabbit-ss-26" },
             ],
             image: "https://86e75ac3.nitro.getn7.io/cdn/shop/files/SHOP_THE_LOOK-_web.webp?v=1779182547",
