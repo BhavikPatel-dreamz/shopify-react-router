@@ -36,4 +36,5 @@ export default [
   route("pages/html-sitemap", "routes/pages/htmlSitemap.tsx"),
   route("pages/thor-store-locator", "routes/pages/thorStoreLocator.tsx"),
   route("account", "routes/account.tsx"),
+  route("a/wishlist", "routes/a/wishlist.tsx"),
 ] satisfies RouteConfig;

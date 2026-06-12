@@ -1,0 +1,150 @@
+.wishlist-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.titletext {
+  color: #000000;
+  font-family: Helvetica;
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0 0 30px 0;
+}
+
+.empty-wishlist {
+  color: #ffffff;
+  font-family: Helvetica;
+  font-size: 18px;
+  background-color: #000000;
+  text-align: center;
+  padding: 20px 20px;
+  border-radius: 4px;
+}
+
+.sharebutton {
+  background-color: #000000;
+  color: white;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  transition: opacity 0.3s;
+  margin-bottom: 20px;
+}
+
+.sharebutton:hover {
+  opacity: 0.8;
+}
+
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  pointer-events: all;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.modal-body {
+  padding: 10px 0;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.share-url {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.share-url input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}
+
+.social-sharing {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-sharing a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.social-sharing a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .wishlist-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}

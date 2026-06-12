@@ -27,7 +27,7 @@ export default function CartHeader({ itemCount, onClose }: CartHeaderProps) {
 
         <div className="top-icon-wrapper">
           <div className="wishlist-page-icon">
-            <a href="/wishlist" aria-label="wishlist-icon">
+            <a href="/a/wishlist" aria-label="wishlist-icon">
               <WishlistIcon />
             </a>
           </div>

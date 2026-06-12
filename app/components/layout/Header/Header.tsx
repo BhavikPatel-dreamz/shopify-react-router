@@ -334,7 +334,7 @@ export default function Header() {
 
                   <li className="second-nav-content">
                     <Link
-                      to="/wishlist"
+                      to="/a/wishlist"
                       className="wishlist-button"
                       aria-label="wishlist"
                     >
