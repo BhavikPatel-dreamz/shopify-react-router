@@ -14,7 +14,7 @@ export default [
   route("pages/rare-rabbit-our-theme", "routes/pages/rare-rabbit-our-theme.tsx"),
   route("blogs/news", "routes/blogs/news.tsx"),
   route("pages/terms-conditions", "routes/pages/terms-conditions.tsx"),
-  route("/pages/rare-rabbit-summer-essentials", "routes/pages/ShopTheLookPage.tsx"),
+  route("/pages/rare-rabbit-summer-essentials", "routes/pages/rareRabbitSummerEssentials.tsx"),
   route("/pages/corporate-gifting", "routes/pages/corporate-gifting.tsx"),
   route("pages/thor-denim", "routes/pages/thor-denim.tsx"),
   route("pages/rare-rabbit-t-shirt", "routes/pages/rare-rabbit-t-shirt.tsx"),
@@ -37,4 +37,5 @@ export default [
   route("pages/thor-store-locator", "routes/pages/thorStoreLocator.tsx"),
   route("account", "routes/account.tsx"),
   route("a/wishlist", "routes/a/wishlist.tsx"),
+  route("pages/denim-shop-the-look","routes/pages/denimOnDenim.tsx"),
 ] satisfies RouteConfig;

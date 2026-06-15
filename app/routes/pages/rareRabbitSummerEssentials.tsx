@@ -1,12 +1,11 @@
 import { useLoaderData } from "react-router";
 import LookSection from "~/components/shopTheLook/LookSection";
-import { SHOP_THE_LOOK_PAGE_QUERY } from "~/graphQL/shopthelook.queries";
+import { SHOP_THE_LOOK_SUMMER_ESSENTIALS_PAGE_QUERY } from "~/graphQL/shopthelook.queries";
 import { createStorefrontClient } from "~/server/storefront.server";
 
 interface Props {
   look: any;
 }
-
 
 export async function loader() {
   const storefront = createStorefrontClient();
@@ -15,14 +14,14 @@ export async function loader() {
     metaobjects: {
       nodes: any[];
     };
-  }>(SHOP_THE_LOOK_PAGE_QUERY);
+  }>(SHOP_THE_LOOK_SUMMER_ESSENTIALS_PAGE_QUERY);
 
   return {
     looks: data.metaobjects.nodes,
   };
 }
 
-export default function ShopTheLookPage() {
+export default function RareRabbitSummerEssentialsPage() {
   const { looks } = useLoaderData<typeof loader>();
 
   return (
